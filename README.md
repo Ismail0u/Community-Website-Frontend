@@ -62,4 +62,4 @@ Welcome contributors of all skill levels.
 
 Foster a professional and friendly developer community.
 
-Maintained by the DevByte Community Development Team.
+_Maintained by the DevByte Community Development Team._
