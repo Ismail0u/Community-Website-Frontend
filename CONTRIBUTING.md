@@ -1,5 +1,3 @@
-**CONTRIBUTING.md** (how to contribute)  
-
 # Contributing to DevByte Community
 
 We’re excited that you’re interested in contributing! Follow these steps to make a contribution.
@@ -24,6 +22,9 @@ Push to your fork:
 git push origin feature/your-feature-name
 ```
 Open a Pull Request from your fork’s branch to the main branch of the DevByte repository.
+
+## License
+By contributing, you agree that your contributions will be licensed under the MIT License.
 
 ## Guidelines
 
