@@ -24,7 +24,7 @@ git push origin feature/your-feature-name
 Open a Pull Request from your fork’s branch to the main branch of the DevByte repository.
 
 ## License
-By contributing, you agree that your contributions will be licensed under the MIT License.
+By contributing to this project, you agree that your contributions will be licensed under the terms of the MIT License. See the [LICENSE](./LICENSE.md) file for details.
 
 ## Guidelines
 
