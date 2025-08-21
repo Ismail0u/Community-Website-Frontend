@@ -7,7 +7,7 @@ We’re excited that you’re interested in contributing! Follow these steps to 
 1. **Fork** the repository to your GitHub account.
 2. **Clone** your fork to your local machine:
 ```bash
-git clone https://github.com/YOUR-USERNAME/devbyte-community.git
+git clone https://github.com/devbyte-community/community-website.git
 ```
 Create a branch for your feature or bug fix:
 ```bash
