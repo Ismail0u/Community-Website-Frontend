@@ -23,7 +23,7 @@ This Code of Conduct applies within all community spaces, including GitHub repos
 ## Enforcement
 Community leaders are responsible for clarifying and enforcing our standards.  
 Violations may result in temporary or permanent removal from the community.  
-Reports can be sent confidentially to **devbytecommunity@gmail.com** (or insert your official email/contact).
+Reports can be sent confidentially to **devbytecommunity@gmail.com**
 
 ## Attribution
 This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org/) version 2.1.
