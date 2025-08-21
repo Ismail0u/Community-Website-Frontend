@@ -36,7 +36,7 @@ npm run dev
 ```
 
 ## License
-This project is licensed under the MIT License — see the LICENSE file for details.
+This project is licensed under the MIT License – see the [LICENSE](./LICENSE.md) file for details.
 
 ### Contribution Guidelines & Code of Conduct
 This section introduces important community documentation to ensure a smooth and respectful contribution process.
