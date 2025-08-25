@@ -4,11 +4,10 @@ about: Submit structured proposals for community review, decision-making, and go
 title: "[PROPOSAL] <short descriptive title>"
 labels: discussion, documentation, good first issue, governance, proposal
 assignees: ''
-
 ---
 
 ## 📝 Summary  
-Briefly describe the problem or opportunity. Why does it matter?  
+Briefly describe the problem or opportunity, and explain why it matters.  
 
 ---
 
@@ -31,7 +30,7 @@ What’s your recommended approach? Include examples or diagrams if helpful.
 ---
 
 ## 🔄 Alternatives  
-What other options did you consider? Why is this the best one?  
+What other options did you consider, and why did you choose this one?  
 
 ---
 
@@ -42,14 +41,3 @@ How will this affect:
 - Community governance  
 
 ---
-
-## 🚀 Next Steps  
-List concrete actions needed to move forward.  
-
-- [ ] Action item 1  
-- [ ] Action item 2  
-
----
-
-## 💬 Open Questions  
-Any points that need community feedback before implementation?
