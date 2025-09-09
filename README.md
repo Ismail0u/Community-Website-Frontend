@@ -20,7 +20,7 @@ Make sure you have the following installed:
 1. **Fork** the repository.
 2. **Clone** your fork locally:
 ```bash
-git clone https://github.com/devbyte-community/community-website.git
+git clone https://github.com/devbyte-community/community-website-frontend.git
 ```
 ## Navigate to the project folder:
 ```bash
