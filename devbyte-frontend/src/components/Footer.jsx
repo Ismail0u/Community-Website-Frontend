@@ -25,8 +25,8 @@ const Footer = () => {
   ];
 
   return (
-    <div className={` bg-[#161B22] text-[#D9D9D9] pt-20 pb-10 border-t border-[#D9D9D9]`}>
-      <div className=" flex justify-evenly pb-10">
+    <div className={` bg-[#161B22] text-[#D9D9D9] pt-20 pb-16 sm:pb-10 border-t border-[#D9D9D9]`}>
+      <div className=" flex flex-col sm:flex-row justify-center items-center sm:items-start sm:justify-evenly pb-16 sm:pb-10">
         {/* Logo */}
         <div>
           <img
@@ -37,11 +37,12 @@ const Footer = () => {
           <p className={`text-[0.8rem]`}>DevByte: Learn, Collaborate, Grow.</p>
         </div>
 
-        {/* Navigation Link */}
+        <div className="flex gap-[8rem] sm:gap-[3rem] md:gap-[8rem] mt-10 mb-16 sm:my-0">
+            {/* Navigation Link */}
         <div className="flex flex-col justify-start items-start gap-1">
-          <h2 className="text-[#fff]">Navigation Link</h2>
+          <h2 className="text-[#fff] font-medium">Navigation Link</h2>
           {pages.map((page, index) => (
-            <Link key={index} to={page.href}>
+            <Link key={index} to={page.href} >
               {page.name}
             </Link>
           ))}
@@ -49,17 +50,20 @@ const Footer = () => {
 
         {/* Legal & support */}
         <div className="flex flex-col justify-start items-start gap-1">
-          <h2 className="text-[#fff]">Legal & support</h2>
+          <h2 className="text-[#fff] font-medium">Legal & support</h2>
           {legalAndSupport.map((page, index) => (
             <Link key={index} to={page.href}>
               {page.name}
             </Link>
           ))}
         </div>
+        </div>
+
+        
 
         {/* Websites */}
         <div className=" ">
-          <h2 className="text-[#fff] mb-2">Legal & support</h2>
+          <h2 className="text-[#fff] mb-2 font-medium">Legal & support</h2>
           <div className="flex justify-evenly">
             {sites.map((site, index) => {
               const IconComponent = site.name;
@@ -80,7 +84,7 @@ const Footer = () => {
       </div>
 
       <p className={`text-sm`}>
-        2025 DevByte. All rights reserved.
+        ©2025 DevByte. All rights reserved
       </p>
     </div>
   );
