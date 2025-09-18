@@ -9,15 +9,15 @@ const Login = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
       {/* Top container with message */}
-      <div className="w-full bg-gradient-to-r from-blue-950 to-blue-600 text-white text-center py-20 shadow">
-        <h2 className="text-4xl font-bold">Welcome Back</h2>
-        <p className="text-lg mt-1">Log in to your DevByte account to join discussions and collaborate</p>
+      <div className="w-full bg-gradient-to-r from-blue-950 to-blue-600 text-white text-center py-10 shadow">
+        <h2 className="text-3xl font-bold">Welcome Back</h2>
+        <p className="text-md mt-1">Log in to your DevByte account to join discussions and collaborate</p>
       </div>
 
       {/* Login Form */}
       <div className="flex-1 flex items-center justify-center px-4">
-        <div className="w-full max-w-2xl bg-white shadow rounded-xl px-8 py-10">
-          <form className="flex flex-col space-y-4">
+        <div className="w-full max-w-2xl bg-white shadow rounded-xl px-8 py-5">
+          <form className="flex flex-col space-y-2">
             <input
               type="email"
               placeholder="Email"
