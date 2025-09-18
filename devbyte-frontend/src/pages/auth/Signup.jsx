@@ -8,13 +8,13 @@ const Signup = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
       {/* Top container with message */}
-      <div className="w-full bg-gradient-to-r from-blue-950 to-blue-600 text-white text-center py-20 shadow">
+      <div className="w-full bg-gradient-to-r from-blue-950 to-blue-600 text-white text-center py-10 shadow">
         <h2 className="text-4xl font-bold text-gradient-to-r from-blue-400 to-blue-800">Join DevByte</h2>
         <p className="text-lg mt-1">Become a member of the global DevByte community</p>
       </div>
 
       {/* Signup Form */}
-      <div className="flex-1 flex items-center justify-center px-4 mt-10">
+      <div className="flex-1 flex items-center justify-center px-4 mt-5">
         <div className="w-full max-w-2xl bg-white shadow rounded-xl px-8 py-10">
           <form className="flex flex-col space-y-4">
             <input
@@ -79,7 +79,7 @@ const Signup = () => {
           </form>
 
           {/* Social Auth */}
-          <div className="my-8">
+          <div className="my-5">
             <div className="flex items-center justify-center">
               <span className="border-t border-gray-300 w-full"></span>
               <span className="px-2 text-gray-400 text-sm">OR</span>
