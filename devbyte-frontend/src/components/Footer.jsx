@@ -59,8 +59,6 @@ const Footer = () => {
         </div>
         </div>
 
-        
-
         {/* Websites */}
         <div className=" ">
           <h2 className="text-[#fff] mb-2 font-medium">Legal & support</h2>
