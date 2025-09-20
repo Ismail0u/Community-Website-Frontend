@@ -163,7 +163,7 @@ const Learning = () => {
   });
 
   return (
-    <div className="min-h-screen bg-[#0D1117] pb-10">
+    <div className="min-h-screen max-w-full bg-[#0D1117] ">
       {/* Header */}
       <div className="bg-gradient-to-r from-[#0C546E] to-[#183D72] text-center p-6">
         <h1 className="text-white text-2xl sm:text-3xl lg:text-4xl font-semibold">
@@ -175,7 +175,7 @@ const Learning = () => {
       </div>
 
       {/* Filters */}
-      <div className="container mx-auto px-4 flex flex-wrap gap-4 justify-center items-center bg-[#161B22] text-white p-5 rounded-md mt-6">
+      <div className=" mx-auto px-4 flex flex-wrap gap-4 justify-center items-center bg-[#161B22] text-white p-5 rounded-md mt-6">
         {/* Category */}
         <div className="relative w-full sm:w-40">
           <select
@@ -221,7 +221,7 @@ const Learning = () => {
       </div>
 
       {/* Featured Resources */}
-      <div className="pt-8 container mx-auto px-4">
+      <div className="pt-8 mx-auto px-4">
         <h1 className="text-xl sm:text-2xl font-bold text-white text-center p-5">
           Featured Resources
         </h1>
@@ -235,7 +235,7 @@ const Learning = () => {
       </div>
 
       {/* All Resources */}
-      <div className="pt-10 container mx-auto px-4">
+      <div className="pt-10  mx-auto px-4">
         <h1 className="text-xl sm:text-2xl font-bold text-white text-center pb-5">
           All Resources
         </h1>

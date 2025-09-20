@@ -2,7 +2,6 @@ import React from "react";
 import { Card } from "@/components/ui/card";
 import { Users, Laptop, MicVocal, CircleChevronRight } from "lucide-react";
 import { FaGithub } from "react-icons/fa6";
-import Footer from "../components/Footer.jsx";
 import frame28 from "../assets/images/Frame 28.png";
 import User1 from "../assets/images/User 1.png";
 import User2 from "../assets/images/User 2.png";
@@ -437,8 +436,6 @@ const Home = () => {
           </button>
         </div>
       </div>
-      {/* Footer Component */}
-      <Footer />
     </div>
   );
 };
