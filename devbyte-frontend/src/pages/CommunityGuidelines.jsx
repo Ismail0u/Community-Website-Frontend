@@ -1,4 +1,4 @@
-import Footer from "../components/Footer.jsx";
+import Footer from "../components/layout/Footer.jsx";
 import { Link } from "react-router-dom";
 import {
   FaHandshake,
@@ -44,7 +44,6 @@ const CommunityGuidelines = () => {
   ];
   return (
     <div className="min-h-screen bg-[#0D1117] text-[#D9D9D9]">
-
       {/* Top container with message */}
       <section className="py-14 w-full bg-gradient-to-r from-[#00AEEF] to-[#6A5DFF] ">
         <h1
