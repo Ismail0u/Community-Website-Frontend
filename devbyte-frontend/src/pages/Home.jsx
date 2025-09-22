@@ -440,6 +440,9 @@ const Home = () => {
           </button>
         </div>
       </div>
+
+      {/* Footer Component */}
+      <Footer />
     </div>
   );
 };
