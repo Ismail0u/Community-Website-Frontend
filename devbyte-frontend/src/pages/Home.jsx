@@ -2,6 +2,7 @@ import React from "react";
 import { Card } from "@/components/ui/card";
 import { Users, Laptop, MicVocal, CircleChevronRight } from "lucide-react";
 import { FaGithub } from "react-icons/fa6";
+
 import frame28 from "../assets/images/Frame 28.png";
 import User1 from "../assets/images/User 1.png";
 import User2 from "../assets/images/User 2.png";
@@ -244,6 +245,7 @@ const Home = () => {
             A growing network of developers, designers,tech enthusiasts
           </h1>
         </div>
+
         <div className="flex flex-wrap max-w-[1000px] mx-auto justify-center items-center mt-7 gap-[32px]">
           {members.map((member) => (
             <Card className="flex flex-col items-center space-y-[6px] p-5 w-[310px] h-[212px] shadow-lg">
@@ -440,8 +442,6 @@ const Home = () => {
           </button>
         </div>
       </div>
-
-
     </div>
   );
 };

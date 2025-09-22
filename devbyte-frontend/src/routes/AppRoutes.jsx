@@ -6,6 +6,7 @@ import Home from "@/pages/Home.jsx";
 import CommunityGuidelines from "../pages/CommunityGuidelines.jsx";
 import Learning from "@/pages/Learning.jsx";
 import Layout from "@/components/layout/Layout.jsx";
+import About from "@/pages/About.jsx";
 
 export default function AppRoutes() {
   return (
@@ -16,6 +17,7 @@ export default function AppRoutes() {
         <Route path="signup" element={<Signup />} />
         <Route path="communityGuidelines" element={<CommunityGuidelines />} />
         <Route path="learning" element={<Learning />} />
+        <Route path="about" element={<About />} />
       </Route>
     </Routes>
   );
