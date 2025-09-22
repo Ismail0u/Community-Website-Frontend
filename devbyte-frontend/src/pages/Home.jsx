@@ -137,14 +137,14 @@ const Home = () => {
   ];
 
   return (
-    <div className="relative  overflow-hidden ">
+    <div className="relative  overflow-hidden w-full">
       <div class="absolute top-8 left-20 w-[30%] md:h-64 h-40 bg-gradient-to-r from-[#00AEEF] to-transparent rounded-full blur-3xl"></div>
       <div class="absolute top-8 md:right-40 right-0 md:w-32 w-20 h-28 bg-gradient-to-r from-[#00C38A] to-transparent rounded-full blur-2xl"></div>
 
       <div class="relative z-10 flex flex-col items-center md:justify-center md:mt-0 pt-20 min-h-screen">
         <div class="absolute bottom-20 right-0 w-[20%] h-40 bg-gradient-to-r from-[#6A5DFF] to-transparent rounded-full blur-3xl"></div>
 
-        <div className="w-[70%]">
+        <div className="w-[70%] text-center">
           <h1 className="text-[36px] md:text-[48px] bg-clip-text text-transparent bg-gradient-to-r from-[#00AEEF] to-[#6A5DFF] font-bold">
             DevByte Community
           </h1>
@@ -244,7 +244,7 @@ const Home = () => {
             A growing network of developers, designers,tech enthusiasts
           </h1>
         </div>
-        <div className="flex flex-wrap justify-center mt-7 gap-[32px] max-w-[1000px] mx-auto">
+        <div className="flex flex-wrap max-w-[1000px] mx-auto justify-center items-center mt-7 gap-[32px]">
           {members.map((member) => (
             <Card className="flex flex-col items-center space-y-[6px] p-5 w-[310px] h-[212px] shadow-lg">
               <img src={member.image} alt="" className="w-[80px] h-[80px]" />
