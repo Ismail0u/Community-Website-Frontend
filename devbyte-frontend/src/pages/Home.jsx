@@ -2,6 +2,7 @@ import React from "react";
 import { Card } from "@/components/ui/card";
 import { Users, Laptop, MicVocal, CircleChevronRight } from "lucide-react";
 import { FaGithub } from "react-icons/fa6";
+
 import frame28 from "../assets/images/Frame 28.png";
 import User1 from "../assets/images/User 1.png";
 import User2 from "../assets/images/User 2.png";
@@ -144,7 +145,7 @@ const Home = () => {
       <div class="relative z-10 flex flex-col items-center md:justify-center md:mt-0 pt-20 min-h-screen">
         <div class="absolute bottom-20 right-0 w-[20%] h-40 bg-gradient-to-r from-[#6A5DFF] to-transparent rounded-full blur-3xl"></div>
 
-        <div className="w-[70%]">
+        <div className="max-w-full ">
           <h1 className="text-[36px] md:text-[48px] bg-clip-text text-transparent bg-gradient-to-r from-[#00AEEF] to-[#6A5DFF] font-bold">
             DevByte Community
           </h1>
@@ -162,8 +163,8 @@ const Home = () => {
           </button>
         </div>
 
-        <div className="mt-10 w-[100%] lg:px-60 px-7 inline-grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
-          <Card className=" p-10 flex items-center gap-3 w-full bg-white/90 shadow-lg ">
+        <div className="mt-10  px-7 flex flex-wrap justify-center gap-[45px]">
+          <Card className=" p-10 flex items-center gap-3 bg-white/90 shadow-lg w-[350px] ">
             <Users />
             <div>
               <h1 className="text-[20px] font-semibold text-left">2500+</h1>
@@ -172,7 +173,7 @@ const Home = () => {
               </h1>
             </div>
           </Card>
-          <Card className=" p-10 flex mx-auto items-center gap-3 w-full bg-white/90 shadow-lg ">
+          <Card className=" p-10 flex  items-center gap-3 bg-white/90 shadow-lg w-[350px] ">
             <Laptop />
             <div>
               <h1 className="text-[20px] font-semibold text-left">150+</h1>
@@ -181,7 +182,7 @@ const Home = () => {
               </h1>
             </div>
           </Card>
-          <Card className=" p-10 flex  items-center gap-3 w-full md:justify-center lg:justify-start bg-white/90 shadow-lg lg:col-span-1 md:col-span-2 md:mx-auto">
+          <Card className=" p-10 flex  items-center gap-3  bg-white/90 shadow-lg w-[350px] ">
             <MicVocal />
             <div>
               <h1 className="text-[20px] font-semibold text-left">48</h1>
@@ -193,9 +194,9 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mx-5 mt-20 md:mt-0 md:mx-10 lg:mx-60">
+      <div className="flex flex-wrap justify-center gap-5 mt-20 md:mt-10 ">
         {/* Upcoming Events */}
-        <Card className="flex flex-col items-center p-4 space-y-3 shadow-2xl">
+        <Card className="flex flex-col items-center p-4 space-y-3 shadow-2xl md:w-[681px] w-[350px]">
           <h1 className="border-[1px] border-[#00C38A] rounded-full p-1 text-[12px] font-semibold">
             UPCOMING EVENT
           </h1>
@@ -216,7 +217,7 @@ const Home = () => {
         </Card>
 
         {/* Post */}
-        <Card className="flex flex-col items-center p-4 space-y-3 shadow-2xl">
+        <Card className="flex flex-col items-center p-4 space-y-3 shadow-2xl md:w-[421px] w-[350px]">
           <img src={frame28} alt="" className="w-[200px] h-[120px]" />
           <h1 className="text-xl font-semibold">
             How Open Source Projects Shape AI
@@ -236,13 +237,17 @@ const Home = () => {
 
       {/* Members */}
       <div>
-        <h1 className="text-[28px] font-semibold mt-60">Meet Our Members</h1>
-        <h1 className="pt-2 text-[18px]">
-          A growing network of developers, designers,tech enthusiasts
-        </h1>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 place-items-center mx-10 lg:mx-[500px] md:mx-20 space-y-5">
+        <div className="text-center">
+          <h1 className="text-[28px] font-semibold mt-60 text-center">
+            Meet Our Members
+          </h1>
+          <h1 className="pt-2 text-[18px] text-center">
+            A growing network of developers, designers,tech enthusiasts
+          </h1>
+        </div>
+        <div className="flex flex-wrap justify-center mt-7 gap-[32px] max-w-[1000px] mx-auto">
           {members.map((member) => (
-            <Card className="flex flex-col items-center space-y-[6px] p-5 w-full md:w-fit shadow-lg">
+            <Card className="flex flex-col items-center space-y-[6px] p-5 w-[310px] h-[212px] shadow-lg">
               <img src={member.image} alt="" className="w-[80px] h-[80px]" />
               <h1 className="text-[18px] font-semibold">{member.name}</h1>
               <h1 className="text-[16px]">{member.role}</h1>
@@ -268,7 +273,7 @@ const Home = () => {
 
       {/* Learning */}
       <div className="">
-        <div>
+        <div className="text-center">
           <h1 className="text-[28px] font-semibold mt-40">
             Learn, Share, Grow
           </h1>
@@ -276,9 +281,9 @@ const Home = () => {
             Explore articles, tutorials, and resources from community memebers
           </h1>
         </div>
-        <div className="grid md:grid-cols-3 grid-cols-1 gap-[32px] lg:mx-96 mx-10 pt-7">
+        <div className="flex flex-wrap justify-center gap-[32px]  mt-7">
           {leaarningData.map((data) => (
-            <Card className="p-3 text-left space-y-2 shadow-xl">
+            <Card className="p-3 text-left space-y-2 shadow-xl w-[356px]">
               <img src={data.image} alt="" className="w-full" />
               <h1 className="w-fit bg-gradient-to-r from-[#00AEEF] to-[#6A5DFF] rounded-full text-white py-[2px] px-2 text-[12px]">
                 {data.tag}
@@ -303,18 +308,18 @@ const Home = () => {
 
       {/* Community Projects */}
       <div>
-        <div>
+        <div className="text-center">
           <h1 className="text-[28px] font-semibold mt-40">
             Community Projects
           </h1>
-          <h1 className="pt-2 text-[18ox]">
+          <h1 className="pt-2 text-[18px]">
             Discover and contribute to pen-source projects built by DevByte
             members{" "}
           </h1>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 lg:mx-80 mx-10 gap-[32px] mt-7">
+        <div className="flex flex-wrap justify-center gap-[32px] mt-7">
           {projects.map((project) => (
-            <Card className="p-5 shadow-xl space-y-5">
+            <Card className="p-5 shadow-xl space-y-5 w-[350px]">
               <h1 className="text-[20px] font-semibold">{project.title}</h1>
               <div className="flex justify-center gap-3">
                 {project.technologies.map((technology) => (
@@ -341,7 +346,7 @@ const Home = () => {
 
       {/* opportunities and collaboration */}
       <div>
-        <div>
+        <div className="text-center">
           <h1 className="text-[28px] font-semibold mt-40">
             Opportunities & Collaboration
           </h1>
@@ -350,9 +355,9 @@ const Home = () => {
             next project
           </h1>
         </div>
-        <div className="grid grid-cols-1 lg:mx-80 mx-6 space-y-5 mt-5">
+        <div className="flex flex-col items-center space-y-5 mt-5">
           {opportunities.map((opportunity) => (
-            <Card className="flex md:flex-row flex-col md:justify-between md:p-5 p-[30px] shadow-xl items-center md:text-left text-center">
+            <Card className="flex md:flex-row flex-col md:justify-between md:p-5 p-[30px] shadow-xl items-center md:text-left text-center lg:w-[1000px] md:w-[700px] w-[348px]">
               <div className="space-y-[6px] md:w-[50%]">
                 <h1 className="text-[20px] font-semibold">
                   {opportunity.title}
@@ -389,7 +394,7 @@ const Home = () => {
 
       <div>
         {" "}
-        <div>
+        <div className="text-center">
           <h1 className="text-[28px] font-semibold mt-40">
             From the Devbyte Blog
           </h1>
@@ -397,9 +402,9 @@ const Home = () => {
             Comunity updates, tutorials and industry insights{" "}
           </h1>
         </div>
-        <div className="grid md:grid-cols-3 grid-cols-1 lg:gap-[32px] md:gap-[32px] gap-[32px] lg:mx-80 mx-6 mt-5">
+        <div className="flex flex-wrap justify-center gap-[32px] mt-5">
           {blogPosts.map((blog) => (
-            <Card className="space-y-3 p-3">
+            <Card className="space-y-3 p-3 w-[350px]">
               <img src={blog.image} alt="" className="w-full" />
               <h1 className="bg-gradient-to-r w-fit from-[#00AEEF] to-[#6A5DFF] rounded-full text-white py-[2px] px-2 text-[12px]">
                 UPDATE
@@ -422,7 +427,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="bg-[#00AEEF]/[15%] mt-40 h-[400px] flex flex-col justify-center space-y-5">
+      <div className="bg-[#00AEEF]/[15%] mt-40 h-[400px] flex flex-col justify-center text-center items-center space-y-5">
         <h1 className="text-[36px] font-bold">Join DevByte Today</h1>
         <h1 className="text-[18px] font-semibold">
           Connect, Collaborate, and Grow with developers worldwide

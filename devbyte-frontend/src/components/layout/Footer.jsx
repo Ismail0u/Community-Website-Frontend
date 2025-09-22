@@ -31,7 +31,7 @@ const Footer = () => {
     <div
       className={` bg-[#161B22] text-[#D9D9D9] pt-20 pb-16 sm:pb-10 border-t border-[#D9D9D9]`}
     >
-      <div className=" flex flex-col sm:flex-row justify-center items-center sm:items-start sm:justify-evenly pb-16 sm:pb-10">
+      <div className=" flex flex-col sm:flex-row justify-center items-center sm:items-start sm:justify-evenly pb-16 sm:pb-10 max-w-7xl px-4">
         {/* Logo */}
         <div>
           <img

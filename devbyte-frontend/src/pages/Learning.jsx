@@ -10,16 +10,16 @@ import {
 import { SiTailwindcss, SiFigma, SiFramer } from "react-icons/si";
 
 const tagIcons = {
-  React: <DiReact className="text-sky-400 w-6 h-6" />,
-  JavaScript: <DiJavascript className="text-yellow-400 w-6 h-6" />,
-  JSON: <DiJavascript className="text-yellow-400 w-6 h-6" />,
+  React: <DiReact className="text-sky-500 w-6 h-6" />,
+  JavaScript: <DiJavascript className="text-yellow-500 w-6 h-6" />,
+  JSON: <DiJavascript className="text-yellow-500 w-6 h-6" />,
   CSS: <DiCss3 className="text-blue-500 w-6 h-6" />,
-  Tailwind: <SiTailwindcss className="text-teal-400 w-6 h-6" />,
+  Tailwind: <SiTailwindcss className="text-cyan-500 w-6 h-6" />,
   WordPress: <DiWordpress className="text-indigo-500 w-6 h-6" />,
   Figma: <SiFigma className="text-pink-500 w-6 h-6" />,
-  Framer: <SiFramer className="text-purple-500 w-6 h-6" />,
+  Framer: <SiFramer className="text-purple-500 w6 h-6" />,
   Layout: <DiCss3 className="text-blue-400 w-6 h-6" />,
-  Performance: <DiReact className="text-green-400 w-6 h-6" />,
+  Performance: <DiReact className="text-green-500 w-6 h-6" />,
 };
 
 const resources = [
@@ -105,26 +105,26 @@ const resources = [
 
 const ResourceCard = ({ resource }) => {
   return (
-    <div className="bg-[#161B22] overflow-hidden w-full shadow-md rounded-lg flex flex-col p-3 transition-transform transform hover:scale-105 hover:shadow-lg">
+    <div className="bg-[#FFFF] bg-opacity-20 overflow-hidden w-full shadow-gray-400 shadow-md rounded-lg flex flex-col p-3 transition-transform transform hover:scale-105 hover:shadow-lg">
       <img
         src={resource.image}
         alt={resource.title}
         className="w-full h-40 object-cover rounded-t-lg"
       />
-      <div className="p-4 text-white flex flex-col flex-grow text-center">
+      <div className="p-4 text-[#161B22] flex flex-col flex-grow text-center">
         <h2 className="text-lg sm:text-xl font-semibold mb-2">
           {resource.title}
         </h2>
-        <p className="text-sm sm:text-base font-semibold text-gray-300 mb-3">
+        <p className="text-sm sm:text-base font-semibold text-[#161B22] mb-3">
           {resource.author}
         </p>
         <div className="flex flex-wrap justify-center gap-3 mt-5">
           {resource.tags.map((tag, index) => (
             <div
               key={index}
-              className="bg-[#192331] border border-gray-700 rounded-full flex items-center justify-center px-4 py-1 text-sm"
+              className="bg-[#D9D9D9] border  rounded-full flex items-center justify-center px-6 py-1 text-sm"
             >
-              {tagIcons[tag] || <span>{tag}</span>}
+              {tagIcons[tag] || <span className="text-gray-700">{tag}</span>}
             </div>
           ))}
         </div>
@@ -133,7 +133,7 @@ const ResourceCard = ({ resource }) => {
             href={resource.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-end justify-end mt-4"
+            className="flex items-end  justify-end mt-auto"
           >
             <DiGithubBadge size={30} />
           </a>
@@ -163,25 +163,25 @@ const Learning = () => {
   });
 
   return (
-    <div className="min-h-screen max-w-full bg-[#0D1117] ">
+    <div className="min-h-screen max-w-full bg-[#FFFF] ">
       {/* Header */}
-      <div className="bg-gradient-to-r from-[#0C546E] to-[#183D72] text-center p-6">
+      <div className="bg-gradient-to-r from-[#00AEEF] to-[#6A5DFF] text-center p-6">
         <h1 className="text-white text-2xl sm:text-3xl lg:text-4xl font-semibold">
           Learning Hub
         </h1>
-        <p className="text-gray-300 text-sm sm:text-lg pt-3">
+        <p className="text-[#FFFF] text-sm sm:text-lg pt-3">
           Browse tutorials, articles and resources shared by the community
         </p>
       </div>
 
       {/* Filters */}
-      <div className=" mx-auto px-4 flex flex-wrap gap-4 justify-center items-center bg-[#161B22] text-white p-5 rounded-md mt-6">
+      <div className=" mx-auto max-w-6xl px-4 flex flex-wrap gap-4 justify-center items-center bg-[#D9D9D9] text-[#161B22] p-5  mt-6">
         {/* Category */}
         <div className="relative w-full sm:w-40">
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="w-full bg-gray-800 px-3 py-2 pr-5 rounded-md appearance-none focus:outline-none"
+            className="w-full bg-[#FFFF] px-3 py-2 pr-5 rounded-md appearance-none focus:outline-none font-semibold "
           >
             <option value="">All Category</option>
             <option value="javascript">Javascript</option>
@@ -189,7 +189,7 @@ const Learning = () => {
             <option value="tailwind">Tailwind</option>
             <option value="css">CSS</option>
           </select>
-          <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-300 pointer-events-none" />
+          <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 h-5 w-5 text-[#161B22] pointer-events-none" />
         </div>
 
         {/* Level */}
@@ -197,14 +197,14 @@ const Learning = () => {
           <select
             value={selectedLevel}
             onChange={(e) => setSelectedLevel(e.target.value)}
-            className="w-full bg-gray-800 px-3 py-2 pr-5 rounded-md appearance-none focus:outline-none"
+            className="w-full bg-[#FFFF] text-[#161B22] font-semibold  px-3 py-2 pr-5 rounded-md appearance-none focus:outline-none"
           >
             <option value="">All Levels</option>
             <option value="beginner">Beginner</option>
             <option value="intermediate">Intermediate</option>
             <option value="advanced">Advanced</option>
           </select>
-          <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-300 pointer-events-none" />
+          <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 h-5 w-5 text-[#161B22]  pointer-events-none" />
         </div>
 
         {/* Search */}
@@ -214,15 +214,17 @@ const Learning = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search resources..."
-            className="w-full p-2 bg-gray-800 rounded-md text-white pl-3 focus:outline-none"
+            className="w-full p-2 bg-[#FFFF] placeholder-[#161B22] font-semibold rounded-md           
+ pl-3 focus:outline-none"
           />
-          <SearchIcon className="absolute right-2 top-1/2 -translate-y-1/2 h-5 w-5 text-white" />
+
+          <SearchIcon className="absolute right-2 top-1/2 -translate-y-1/2 h-5 w-5 text-[#161B22] " />
         </div>
       </div>
 
       {/* Featured Resources */}
-      <div className="pt-8 mx-auto px-4">
-        <h1 className="text-xl sm:text-2xl font-bold text-white text-center p-5">
+      <div className="pt-8 mx-auto px-4 max-w-6xl">
+        <h1 className="text-xl sm:text-2xl font-bold text-[#161B22] text-center p-5">
           Featured Resources
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -235,8 +237,8 @@ const Learning = () => {
       </div>
 
       {/* All Resources */}
-      <div className="pt-10  mx-auto px-4">
-        <h1 className="text-xl sm:text-2xl font-bold text-white text-center pb-5">
+      <div className="pt-10  mx-auto px-4 max-w-6xl">
+        <h1 className="text-xl sm:text-2xl font-bold text-[#161B22] text-center pb-5">
           All Resources
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -249,11 +251,11 @@ const Learning = () => {
       </div>
 
       {/* Footer */}
-      <div className="bg-gradient-to-r from-[#0C546E] to-[#183D72] text-center p-6 mt-10">
+      <div className="bg-gradient-to-r from-[#00AEEF] to-[#6A5DFF] text-center p-6 mt-10">
         <h1 className="text-white text-2xl sm:text-3xl lg:text-4xl font-semibold">
           Contribute a Resource
         </h1>
-        <p className="text-gray-300 text-sm sm:text-lg pt-3">
+        <p className="text-[#FFFF] text-sm sm:text-lg pt-3">
           Share articles, tutorials or links with Devbyte
         </p>
         <a
