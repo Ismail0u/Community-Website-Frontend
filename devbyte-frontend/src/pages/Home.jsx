@@ -441,8 +441,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Footer Component */}
-      <Footer />
+
     </div>
   );
 };
