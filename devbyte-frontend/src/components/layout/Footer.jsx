@@ -54,25 +54,7 @@ const Footer = () => {
               </Link>
             ))}
           </div>
-          {/* Navigation Link */}
-          <div className="flex flex-col justify-start items-start gap-1">
-            <h2 className=" font-medium">Navigation Link</h2>
-            {pages.map((page, index) => (
-              <Link key={index} to={page.href}>
-                {page.name}
-              </Link>
-            ))}
-          </div>
 
-          {/* Legal & support */}
-          <div className="flex flex-col justify-start items-start gap-1">
-            <h2 className="font-medium">Legal & support</h2>
-            {legalAndSupport.map((page, index) => (
-              <Link key={index} to={page.href}>
-                {page.name}
-              </Link>
-            ))}
-          </div>
           {/* Legal & support */}
           <div className="flex flex-col justify-start items-start gap-1">
             <h2 className=" font-medium">Legal & support</h2>

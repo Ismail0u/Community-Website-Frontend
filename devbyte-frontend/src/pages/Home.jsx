@@ -2,6 +2,7 @@ import React from "react";
 import { Card } from "@/components/ui/card";
 import { Users, Laptop, MicVocal, CircleChevronRight } from "lucide-react";
 import { FaGithub } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
 import frame28 from "../assets/images/Frame 28.png";
 import User1 from "../assets/images/User 1.png";
@@ -14,6 +15,7 @@ import learning from "../assets/images/learning.png";
 import blog from "../assets/images/blog.png";
 
 const Home = () => {
+  const navigate = useNavigate();
   const members = [
     {
       image: User1,
@@ -158,7 +160,10 @@ const Home = () => {
           <button className="w-full text-[18px] text-nowrap px-3 border border-[#00AEEF] bg-gradient-to-r from-white to-white hover:from-[#00AEEF] hover:to-[#6A5DFF] transition-all duration-700  hover:text-white py-2 rounded-full font-semibold">
             Join Community
           </button>
-          <button className="w-full text-[18px] text-nowrap px-3 border bg-[#00C38A] text-white py-2 rounded-full font-semibold">
+          <button
+            onClick={() => navigate("/communityGuidelines")}
+            className="w-full text-[18px] text-nowrap px-3 border bg-[#00C38A] text-white py-2 rounded-full font-semibold"
+          >
             Learn More
           </button>
         </div>

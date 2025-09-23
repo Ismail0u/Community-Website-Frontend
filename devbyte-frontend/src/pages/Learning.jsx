@@ -105,17 +105,17 @@ const resources = [
 
 const ResourceCard = ({ resource }) => {
   return (
-    <div className="bg-[#FFFF] bg-opacity-20 overflow-hidden w-full shadow-gray-400 shadow-md rounded-lg flex flex-col p-3 transition-transform transform hover:scale-105 hover:shadow-lg">
+    <div className="  bg-opacity-20 overflow-hidden w-full shadow-gray-400 shadow-sm rounded-lg flex flex-col p-3 transition-transform transform hover:scale-105 hover:shadow-lg ">
       <img
         src={resource.image}
         alt={resource.title}
         className="w-full h-40 object-cover rounded-t-lg"
       />
-      <div className="p-4 text-[#161B22] flex flex-col flex-grow text-center">
+      <div className="p-4 text-[#161B22] dark:text-[#FFFF] flex flex-col flex-grow text-center">
         <h2 className="text-lg sm:text-xl font-semibold mb-2">
           {resource.title}
         </h2>
-        <p className="text-sm sm:text-base font-semibold text-[#161B22] mb-3">
+        <p className="text-sm sm:text-base font-semibold text-[#161B22] dark:text-[#FFFF] mb-3">
           {resource.author}
         </p>
         <div className="flex flex-wrap justify-center gap-3 mt-5">
@@ -163,9 +163,9 @@ const Learning = () => {
   });
 
   return (
-    <div className="min-h-screen max-w-full bg-[#FFFF] ">
+    <div className="min-h-screen max-w-full  ">
       {/* Header */}
-      <div className="bg-gradient-to-r from-[#00AEEF] to-[#6A5DFF] text-center p-6">
+      <div className="bg-gradient-to-r from-[#00AEEF] to-[#6A5DFF] darkfrom-[#0C546E] dark:to-[#183D72] text-center p-6">
         <h1 className="text-white text-2xl sm:text-3xl lg:text-4xl font-semibold">
           Learning Hub
         </h1>
@@ -175,13 +175,13 @@ const Learning = () => {
       </div>
 
       {/* Filters */}
-      <div className=" mx-auto max-w-6xl px-4 flex flex-wrap gap-4 justify-center items-center bg-[#D9D9D9] text-[#161B22] p-5  mt-6">
+      <div className=" mx-auto max-w-6xl px-4 flex flex-wrap gap-4 justify-center items-center bg-[#D9D9D9] dark:bg-[#161B22] text-[#161B22] dark:text-[#D9D9D9]  p-5  mt-6">
         {/* Category */}
         <div className="relative w-full sm:w-40">
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="w-full bg-[#FFFF] px-3 py-2 pr-5 rounded-md appearance-none focus:outline-none font-semibold "
+            className="w-full bg-[#FFFF] dark:bg-[#2A2F36] dark:text-[#D9D9D9]  px-3 py-2 pr-5 rounded-md appearance-none focus:outline-none font-semibold "
           >
             <option value="">All Category</option>
             <option value="javascript">Javascript</option>
@@ -189,7 +189,7 @@ const Learning = () => {
             <option value="tailwind">Tailwind</option>
             <option value="css">CSS</option>
           </select>
-          <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 h-5 w-5 text-[#161B22] pointer-events-none" />
+          <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 h-5 w-5 text-[#161B22] dark:text-[#D9D9D9] pointer-events-none" />
         </div>
 
         {/* Level */}
@@ -197,14 +197,14 @@ const Learning = () => {
           <select
             value={selectedLevel}
             onChange={(e) => setSelectedLevel(e.target.value)}
-            className="w-full bg-[#FFFF] text-[#161B22] font-semibold  px-3 py-2 pr-5 rounded-md appearance-none focus:outline-none"
+            className="w-full bg-[#FFFF] text-[#161B22] dark:bg-[#2A2F36] dark:text-[#D9D9D9] font-semibold  px-3 py-2 pr-5 rounded-md appearance-none focus:outline-none"
           >
             <option value="">All Levels</option>
             <option value="beginner">Beginner</option>
             <option value="intermediate">Intermediate</option>
             <option value="advanced">Advanced</option>
           </select>
-          <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 h-5 w-5 text-[#161B22]  pointer-events-none" />
+          <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 h-5 w-5 text-[#161B22] dark:text-[#D9D9D9]  pointer-events-none" />
         </div>
 
         {/* Search */}
@@ -214,17 +214,17 @@ const Learning = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search resources..."
-            className="w-full p-2 bg-[#FFFF] placeholder-[#161B22] font-semibold rounded-md           
+            className="w-full p-2 bg-[#FFFF] dark:bg-[#2A2F36] dark:placeholder-[#D9D9D9] placeholder-[#161B22] font-semibold rounded-md           
  pl-3 focus:outline-none"
           />
 
-          <SearchIcon className="absolute right-2 top-1/2 -translate-y-1/2 h-5 w-5 text-[#161B22] " />
+          <SearchIcon className="absolute right-2 top-1/2 -translate-y-1/2 h-5 w-5 text-[#161B22] dark:text-[#D9D9D9]  " />
         </div>
       </div>
 
       {/* Featured Resources */}
       <div className="pt-8 mx-auto px-4 max-w-6xl">
-        <h1 className="text-xl sm:text-2xl font-bold text-[#161B22] text-center p-5">
+        <h1 className="text-xl sm:text-2xl font-bold text-[#161B22] dark:text-[#D9D9D9] text-center p-5">
           Featured Resources
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -238,7 +238,7 @@ const Learning = () => {
 
       {/* All Resources */}
       <div className="pt-10  mx-auto px-4 max-w-6xl">
-        <h1 className="text-xl sm:text-2xl font-bold text-[#161B22] text-center pb-5">
+        <h1 className="text-xl sm:text-2xl font-bold text-[#161B22] dark:text-[#D9D9D9] text-center pb-5">
           All Resources
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -251,7 +251,7 @@ const Learning = () => {
       </div>
 
       {/* Footer */}
-      <div className="bg-gradient-to-r from-[#00AEEF] to-[#6A5DFF] text-center p-6 mt-10">
+      <div className="bg-gradient-to-r from-[#00AEEF] to-[#6A5DFF] dark:from-[#0C546E] dark:to-[#183D72] text-center p-6 mt-10">
         <h1 className="text-white text-2xl sm:text-3xl lg:text-4xl font-semibold">
           Contribute a Resource
         </h1>
@@ -262,7 +262,7 @@ const Learning = () => {
           href="https://github.com/DevByte-Community/Community-Website-Frontend/tree/4022bfb31f53b91355bcd091b753b2d708c066dd/.github/ISSUE_TEMPLATE"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block px-4 py-1 border border-[#6767ec] hover:border-[#5f5fb8]  text-white rounded-full"
+          className="inline-block px-4 py-1 mt-2 border border-[#6767ec] hover:border-[#5f5fb8]  text-white rounded-full"
         >
           View Source
         </a>
