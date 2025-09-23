@@ -1,4 +1,3 @@
-import Footer from "../components/layout/Footer.jsx";
 import { Link } from "react-router-dom";
 import {
   FaHandshake,
@@ -96,8 +95,6 @@ const CommunityGuidelines = () => {
           </Link>
         </div>
       </section>
-      {/* Footer Component */}
-      <Footer />
     </div>
   );
 };
