@@ -103,37 +103,49 @@ const resources = [
   },
 ];
 
+// Component to display a single resource card
 const ResourceCard = ({ resource }) => {
   return (
-    <div className="  bg-opacity-20 overflow-hidden w-full shadow-gray-400 shadow-sm rounded-lg flex flex-col p-3 transition-transform transform hover:scale-105 hover:shadow-lg ">
+    <div className="bg-opacity-20 overflow-hidden w-full shadow-gray-400 shadow-sm rounded-lg flex flex-col p-3 transition-transform transform hover:scale-105 hover:shadow-lg">
+      {/* Resource image */}
       <img
         src={resource.image}
         alt={resource.title}
         className="w-full h-40 object-cover rounded-t-lg"
       />
+
+      {/* Resource content */}
       <div className="p-4 text-[#161B22] dark:text-[#FFFF] flex flex-col flex-grow text-center">
+        {/* Resource title */}
         <h2 className="text-lg sm:text-xl font-semibold mb-2">
           {resource.title}
         </h2>
+
+        {/* Resource author */}
         <p className="text-sm sm:text-base font-semibold text-[#161B22] dark:text-[#FFFF] mb-3">
           {resource.author}
         </p>
+
+        {/* Tags section */}
         <div className="flex flex-wrap justify-center gap-3 mt-5">
           {resource.tags.map((tag, index) => (
             <div
               key={index}
-              className="bg-[#D9D9D9] border  rounded-full flex items-center justify-center px-6 py-1 text-sm"
+              className="bg-[#D9D9D9] border rounded-full flex items-center justify-center px-6 py-1 text-sm"
             >
+              {/* Show an icon if available, otherwise just show the tag text */}
               {tagIcons[tag] || <span className="text-gray-700">{tag}</span>}
             </div>
           ))}
         </div>
+
+        {/* GitHub link (if resource has one) */}
         {resource.github && (
           <a
             href={resource.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-end  justify-end mt-auto"
+            className="flex items-end justify-end mt-auto"
           >
             <DiGithubBadge size={30} />
           </a>
@@ -144,21 +156,29 @@ const ResourceCard = ({ resource }) => {
 };
 
 const Learning = () => {
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [selectedLevel, setSelectedLevel] = useState("");
-  const [searchQuery, setSearchQuery] = useState("");
+  // State for filtering resources
+  const [selectedCategory, setSelectedCategory] = useState(""); // filter by category
+  const [selectedLevel, setSelectedLevel] = useState(""); // filter by difficulty level
+  const [searchQuery, setSearchQuery] = useState(""); // filter by search input
 
+  // Apply filters to resources
   const filteredResources = resources.filter((res) => {
+    // Match selected category (if any)
     const matchesCategory =
       !selectedCategory ||
       res.category.toLowerCase() === selectedCategory.toLowerCase();
+
+    // Match selected level (if any)
     const matchesLevel =
       !selectedLevel || res.level.toLowerCase() === selectedLevel.toLowerCase();
+
+    // Match search query against title or author
     const matchesSearch =
       !searchQuery ||
       res.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       res.author.toLowerCase().includes(searchQuery.toLowerCase());
 
+    // Resource must satisfy all active filters
     return matchesCategory && matchesLevel && matchesSearch;
   });
 

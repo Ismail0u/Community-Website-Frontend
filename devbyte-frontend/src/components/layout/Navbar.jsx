@@ -6,13 +6,19 @@ import { toggleTheme } from "@/redux/themeSlice";
 import { useSelector, useDispatch } from "react-redux";
 
 const Navbar = () => {
+  // State to control whether the mobile menu is open or closed
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // React Router hook for programmatic navigation
   const navigate = useNavigate();
 
+  // Get the current theme (light or dark) from Redux store
   const theme = useSelector((state) => state.theme.mode);
-  const dispatch = useDispatch();
-  console.log("Current theme:", theme);
 
+  // Dispatch function to update Redux store (e.g., toggling theme)
+  const dispatch = useDispatch();
+
+  // Navigation links (name + path) used for rendering nav items
   const navLinks = [
     { name: "Members", path: "/members" },
     { name: "Events", path: "/events" },
