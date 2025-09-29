@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   FaHandshake,
   FaGlobe,
@@ -9,6 +9,8 @@ import {
 } from "react-icons/fa6";
 
 const CommunityGuidelines = () => {
+  const navigate = useNavigate();
+
   const guidelines = [
     {
       icon: FaHandshake,
@@ -41,16 +43,17 @@ const CommunityGuidelines = () => {
       subtitle: "Respect licenses and contribute positively.",
     },
   ];
+
   return (
-    <div className="min-h-screen bg-[#0D1117] text-[#D9D9D9]">
+    <div className="min-h-screen bg-[#FFFFFF] dark:bg-[#0D1117] text-[#161B22] dark:text-[#D9D9D9]">
       {/* Top container with message */}
-      <section className="py-14 w-full bg-gradient-to-r from-[#00AEEF] to-[#6A5DFF] ">
+      <section className="py-14 w-full bg-gradient-to-r from-[#00AEEF] to-[#6A5DFF] text-center">
         <h1
           className={`text-depth-shadow text-3xl sm:text-5xl font-extrabold mb-2`}
         >
           Community Guidelines
         </h1>
-        <p className="text-[#D9D9D9] text-sm sm:text-lg">
+        <p className=" text-sm sm:text-lg">
           Our shared values for an inclusive and respectful community.
         </p>
       </section>
@@ -64,7 +67,7 @@ const CommunityGuidelines = () => {
             return (
               <div
                 key={index}
-                className="w-[85%] sm:w-[75%] bg-[#2A2F36] flex items-center gap-8 sm:gap-10 px-8 py-6 rounded-xl"
+                className="w-[85%] sm:w-[75%] dark:bg-[#2A2F36] border border-[#2A2F36] flex items-center gap-8 sm:gap-10 px-8 py-6 rounded-xl"
               >
                 <Icon size={35} />
                 <div className="text-left">
@@ -87,12 +90,12 @@ const CommunityGuidelines = () => {
             If you notice behavior that violates these guidelines, report it to
             the moderators via our Contact Page or email.
           </p>
-          <Link
-            to="/contact"
+          <button
+            onClick={() => navigate("/contact")}
             className="bg-gradient-to-r from-[#00AEEF] to-[#6A5DFF] px-8 py-2 rounded-2xl"
           >
             Report a violation
-          </Link>
+          </button>
         </div>
       </section>
     </div>

@@ -16,19 +16,18 @@ const Footer = () => {
     { href: "/contact", name: "Contact Us" },
     { href: "/policy", name: "Private Policy" },
     { href: "/terms", name: "Terms of Service" },
+    { href: "/CommunityGuidelines", name: "Community Guidelines"},
+    { href: "/faq", name: "FAQ"}
+
   ];
 
   const sites = [
-    { href: "https://github.com/DevByte-Community", name: FaGithub },
+    { href: "https://github.com/DevByte-Community", icon: FaGithub },
     {
       href: "https://www.linkedin.com/company/devbyte-community/posts/?feedView=all",
-      name: FaLinkedin,
+      icon: FaLinkedin
     },
-    {
-      href: "https://www.linkedin.com/company/devbyte-community/posts/?feedView=all",
-      name: FaLinkedin,
-    },
-    { href: "/terms", name: FaXTwitter },
+    { href: "/terms", icon: FaXTwitter },
   ];
 
   return (
@@ -71,7 +70,7 @@ const Footer = () => {
           <h2 className=" mb-2 font-medium">Legal & support</h2>
           <div className="flex justify-evenly">
             {sites.map((site, index) => {
-              const IconComponent = site.name;
+              const IconComponent = site.icon;
 
               return (
                 <a
