@@ -157,19 +157,19 @@ const Home = () => {
           </h1>
         </div>
         <div className="mt-7 flex gap-3 ">
-          <button className="w-full text-[18px] text-nowrap px-3 border border-[#00AEEF] bg-gradient-to-r from-white to-white hover:from-[#00AEEF] hover:to-[#6A5DFF] transition-all duration-700  hover:text-white py-2 rounded-full font-semibold">
+          <button className="w-full text-[18px] text-nowrap px-3 border bg-transparent border-[#00AEEF]   hover:bg-[#00C38A] hover:border-[#00C38A] transition-colors ease-in duration-300  hover:text-white py-2 rounded-full font-semibold">
             Join Community
           </button>
           <button
             onClick={() => navigate("/communityGuidelines")}
-            className="w-full text-[18px] text-nowrap px-3 border bg-[#00C38A] text-white py-2 rounded-full font-semibold"
+            className="w-full text-[18px] text-nowrap px-3 border bg-[#00C38A] hover:bg-[#009c6e] transition-colors duration-300 ease-in text-white py-2 rounded-full font-semibold"
           >
             Learn More
           </button>
         </div>
 
         <div className="mt-10  px-7 flex flex-wrap justify-center gap-[45px]">
-          <Card className=" p-10 flex items-center gap-3 bg-white/90 shadow-lg w-[350px] ">
+          <Card className=" p-10 flex items-center gap-3 bg-white/90 dark:bg-black shadow-lg w-[350px] ">
             <Users />
             <div>
               <h1 className="text-[20px] font-semibold text-left">2500+</h1>
@@ -178,7 +178,7 @@ const Home = () => {
               </h1>
             </div>
           </Card>
-          <Card className=" p-10 flex  items-center gap-3 bg-white/90 shadow-lg w-[350px] ">
+          <Card className=" p-10 flex  items-center gap-3 bg-white/90 dark:bg-black shadow-lg w-[350px] ">
             <Laptop />
             <div>
               <h1 className="text-[20px] font-semibold text-left">150+</h1>
@@ -187,7 +187,7 @@ const Home = () => {
               </h1>
             </div>
           </Card>
-          <Card className=" p-10 flex  items-center gap-3  bg-white/90 shadow-lg w-[350px] ">
+          <Card className=" p-10 flex  items-center gap-3  bg-white/90 dark:bg-black shadow-lg w-[350px] ">
             <MicVocal />
             <div>
               <h1 className="text-[20px] font-semibold text-left">48</h1>
@@ -216,7 +216,7 @@ const Home = () => {
             workshop, and networking opportunities designed to help you land
             your dream role
           </h1>
-          <button className="w-fit text-[15px] text-nowrap px-3 border bg-[#00C38A] text-white py-2 rounded-full font-semibold">
+          <button className="w-fit text-[15px] text-nowrap px-3 border bg-[#00C38A] hover:bg-[#009c6e] transition-colors duration-300 ease-in text-white py-2 rounded-full font-semibold">
             Register Now
           </button>
         </Card>
@@ -268,10 +268,10 @@ const Home = () => {
           ))}
         </div>
         <div className="w-full flex flex-col items-center mt-3">
-          <h1 className="border-[1px] border-[#00AEEF] w-fit rounded-full p-2 text-[20px] font-semibold">
+          <h1 className="border-[1px] border-[#00AEEF] hover:bg-[#00C38A] hover:border-[#00C38A] transition-colors ease-in duration-300 hover:text-white cursor-pointer w-fit rounded-full p-2 text-[20px] font-semibold">
             Explore Learning Hub
           </h1>
-          <h1 className="font-semibold text-[18px]">
+          <h1 className="font-semibold text-[18px] mt-2">
             Join Devbyte and get listed
           </h1>
         </div>
@@ -306,7 +306,7 @@ const Home = () => {
           ))}
         </div>
         <div className="w-full flex justify-center mt-5">
-          <h1 className="border-[1px] border-[#00AEEF] w-fit rounded-full p-2 text-[16px] font-semibold">
+          <h1 className="border-[1px] border-[#00AEEF] hover:bg-[#00C38A] hover:border-[#00C38A] transition-colors ease-in duration-300 hover:text-white cursor-pointer w-fit rounded-full p-2 text-[16px] font-semibold">
             Explore Learning Hub
           </h1>
         </div>
@@ -336,7 +336,7 @@ const Home = () => {
               </div>
               <h1 className="text-left text-[16px]">{project.about}</h1>
               <div className="flex justify-center">
-                <button className="w-fit flex items-center gap-2 text-[14px] text-nowrap px-3 border bg-[#00C38A] text-white py-2 rounded-full font-semibold">
+                <button className="w-fit flex items-center gap-2 text-[14px] text-nowrap px-3 border bg-[#00C38A] hover:bg-[#009c6e] transition-colors duration-300 ease-in text-white py-2 rounded-full font-semibold">
                   <FaGithub /> View on GitHub
                 </button>
               </div>
@@ -344,7 +344,7 @@ const Home = () => {
           ))}
         </div>
         <div className="w-full flex justify-center mt-5">
-          <h1 className="border-[1px] border-[#00AEEF] w-fit rounded-xl p-2 text-[16px] font-semibold">
+          <h1 className="border-[1px] border-[#00AEEF] hover:bg-[#00C38A] hover:border-[#00C38A] transition-colors ease-in duration-300 hover:text-white cursor-pointer w-fit rounded-xl p-2 text-[16px] font-semibold">
             Explore All Projects
           </h1>
         </div>
@@ -383,14 +383,14 @@ const Home = () => {
 
                 <h1 className="text-[16px]">{opportunity.details}</h1>
               </div>
-              <button className="w-fit flex items-center gap-2 text-[16px] md:mt-0 mt-5 text-nowrap px-4 border bg-[#00C38A] text-white py-2 md:rounded-full rounded-xl font-semibold">
+              <button className="w-fit flex items-center gap-2 text-[16px] md:mt-0 mt-5 text-nowrap px-4 border bg-[#00C38A] hover:bg-[#009c6e] transition-colors duration-300 ease-in text-white py-2 md:rounded-full rounded-xl font-semibold">
                 Apply Now
               </button>
             </Card>
           ))}
         </div>
         <div className="w-full flex justify-center mt-5">
-          <h1 className="border-[1px] border-[#00AEEF] w-fit rounded-xl p-2 text-[16px] font-semibold">
+          <h1 className="border-[1px] border-[#00AEEF] hover:bg-[#00C38A] hover:border-[#00C38A] transition-colors ease-in duration-300 hover:text-white cursor-pointer w-fit rounded-xl p-2 text-[16px] font-semibold">
             View All Opportunities
           </h1>
         </div>
@@ -427,7 +427,7 @@ const Home = () => {
           ))}
         </div>
         <div className="w-full flex justify-center mt-5">
-          <h1 className="border-[1px] border-[#00AEEF] w-fit rounded-xl p-2 text-[16px] font-semibold">
+          <h1 className="border-[1px] border-[#00AEEF] hover:bg-[#00C38A] hover:border-[#00C38A] transition-colors ease-in duration-300 hover:text-white cursor-pointer w-fit rounded-xl p-2 text-[16px] font-semibold">
             View All Blog Posts
           </h1>
         </div>
@@ -439,10 +439,10 @@ const Home = () => {
           Connect, Collaborate, and Grow with developers worldwide
         </h1>
         <div className="mt-7 flex gap-3 justify-center">
-          <button className="w-fit text-[16px] text-nowrap px-3 border border-[#00AEEF] bg-gradient-to-r from-[#00AEEF]/[15%] to-[#00AEEF]/[15%] hover:from-[#00AEEF] hover:to-[#6A5DFF] transition-all duration-700  hover:text-white py-2 rounded-xl ">
+          <button className="w-fit text-[16px] text-nowrap px-3 border border-[#00AEEF] hover:bg-[#00C38A] hover:border-[#00C38A] transition-colors ease-in duration-300 hover:text-white cursor-pointer py-2 rounded-xl ">
             Sign UP Free
           </button>
-          <button className="w-fit text-[16px] text-nowrap px-3 border bg-[#00C38A] text-white py-2 rounded-xl ">
+          <button className="w-fit text-[16px] text-nowrap px-3 border bg-[#00C38A] hover:bg-[#009c6e] transition-colors duration-300 ease-in text-white py-2 rounded-xl ">
             Login
           </button>
         </div>
