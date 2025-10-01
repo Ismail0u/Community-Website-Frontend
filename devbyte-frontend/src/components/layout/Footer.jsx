@@ -46,7 +46,7 @@ const Footer = () => {
         <div className="flex gap-[8rem] sm:gap-[3rem] md:gap-[8rem] mt-10 mb-16 sm:my-0">
           {/* Navigation Link */}
           <div className="flex flex-col justify-start items-start gap-1">
-            <h2 className="font-medium">Navigation Link</h2>
+            <h2 className="">Navigation Link</h2>
             {pages.map((page, index) => (
               <Link key={index} to={page.href}>
                 {page.name}
