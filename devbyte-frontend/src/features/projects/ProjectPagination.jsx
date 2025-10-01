@@ -2,7 +2,7 @@ import React from "react";
 
 export const ProjectPagination = ({ currentPage, setCurrentPage, totalPages = 3 }) => {
   return (
-    <div className="flex justify-center items-center gap-2 mt-8">
+    <div className="flex justify-center items-center gap-2 mt-8 mb-8">
       <button
         onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
         disabled={currentPage === 1}

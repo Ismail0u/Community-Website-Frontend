@@ -21,16 +21,18 @@ export const ProjectPage = () => {
   } = ProjectFilters(projectData);
 
     // filtering projects as featured or not
- const featuredProjects = filteredProjects.filter((p) => p.featured);
+  const featuredProjects = filteredProjects.filter((p) => p.featured);
+  const regularProjects = filteredProjects.filter((p) => !p.featured);
+
 
   return (
     <div className="min-h-screen">
 
       {/* Main Layout */}
-      <div className="max-w-full mx-0 px-0 sm:px-0 lg:px-2 py-4">
-        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
+      <div className="max-w-full mx-0 px-2 sm:px-2 lg:px-2 py-4">
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-2">
           {/* Sidebar - Mobile: full width, Desktop: sticky sidebar */}
-          <aside className="w-full lg:w-64 shrink-0">
+          <aside className="w-full lg:w-64 shrink-0 lg:border-r lg:border-gray-200 dark:lg:border-gray-700 pr-3 h-screen lg:sticky lg:top-0">
             <div className="lg:sticky lg:top-8">
               <ProjectSidebar
                 selectedTechnology={selectedTechnology}
@@ -48,11 +50,11 @@ export const ProjectPage = () => {
           {/* Main Content */}
           <main className="flex-1 min-w-0">
             {/* Header */}
-            <div className="bg-gradient-to-r from-[#00AEEF] to-[#6A5DFF] dark:from-[#0C546E] dark:to-[#183D72] text-center py-12 px-4 sm:py-16">
-                <h1 className="text-white text-3xl sm:text-4xl lg:text-5xl font-bold mb-3">
-                Open Source Projects
+            <div className="text-center py-12 px-4 sm:py-8">
+                <h1 className="bg-gradient-to-r from-[#00AEEF] to-[#6A5DFF] dark:from-[#0C546E] dark:to-[#183D72] text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-transparent bg-clip-text mb-5">
+                  Open Source Projects
                 </h1>
-                <p className="text-white text-base sm:text-lg max-w-2xl mx-auto">
+                <p className="dark:text-white text-base sm:text-lg max-w-2xl mx-auto">
                 Explore and contribute to projects built by our community
                 </p>
             </div>
@@ -77,7 +79,7 @@ export const ProjectPage = () => {
 
             {/* Projects Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mr-8">
-              {projectData.map((project) => (
+              {regularProjects.map((project) => (
                 <ProjectCard key={project.id} project={project} />
               ))}
             </div>

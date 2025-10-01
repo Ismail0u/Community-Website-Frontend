@@ -4,7 +4,7 @@ export const projectData = [
   {
     id: 1,
     title: "Featured Project 1",
-    Image: "",
+    image: "https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?w=400&h=200&fit=crop",
     description: "Task management app built with React and Firebase. Track projects, collaborate with teams.",
     technology: "React",
     contributors: ["Alice Johnson", "John Doe"],
@@ -15,7 +15,7 @@ export const projectData = [
   {
     id: 2,
     title: "Featured Project 2",
-    Image: "",
+    image: "https://images.unsplash.com/photo-1593642532871-8b12e02d091c?w=400&h=200&fit=crop",
     description: "Powerful command-line interface that streamlines development workflows, manages configurations, automates applications, and automate tasks.",
     technology: "JavaScript",
     contributors: ["DevByte Team", "Jane Smith"],
@@ -26,7 +26,7 @@ export const projectData = [
   {
     id: 3,
     title: "Featured Project 3",
-    Image: "",
+    image: "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?w=400&h=200&fit=crop",
     description: "Beautiful and accessible React components designed for modern web applications. Focus on usability, forms, modals, and navigation elements.",
     technology: "Next.js",
     contributors: ["Alex Brown"],
@@ -37,7 +37,7 @@ export const projectData = [
   {
     id: 4,
     title: "Project 4: Task Manager",
-    Image: "",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=200&fit=crop",
     description: "Task management app built with React and Firebase. Track projects, collaborate with teams.",
     technology: "React",
     contributors: ["Alice Johnson"],
@@ -48,7 +48,7 @@ export const projectData = [
   {
     id: 5,
     title: "Project 5: Workflow CLI",
-    Image: "",
+    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=200&fit=crop",
     description: "Powerful command-line interface that streamlines development workflows, manages configurations, automates applications, and automate tasks.",
     technology: "JavaScript",
     contributors: ["DevByte Team"],
@@ -59,7 +59,7 @@ export const projectData = [
   {
     id: 6,
     title: "Project 6: UI Components",
-    Image: "",
+    image: "https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?w=400&h=200&fit=crop",
     description: "Beautiful and accessible React components designed for modern web applications. Focus on usability, forms, modals, and navigation elements.",
     technology: "Next.js",
     contributors: ["Alex Brown"],
@@ -70,7 +70,7 @@ export const projectData = [
   {
     id: 7,
     title: "Project 7: Mobile App",
-    Image: "",
+    image: "",
     description: "A cross-platform mobile application built with Flutter.",
     technology: "Flutter",
     contributors: ["Sarah Wilson", "John Doe"],
@@ -81,12 +81,23 @@ export const projectData = [
   {
     id: 8,
     title: "Project 8: Design System",
-    Image: "",
+    image: "",
     description: "Comprehensive design system documentation and component library in Figma.",
     technology: "Figma",
     contributors: ["Jane Smith"],
     tags: ["Figma", "Design"],
     featured: false,
     github: "https://github.com/DevByte-Community/project-8",
+  },
+   {
+    id: 9,
+    title: "Project 9: AI ML",
+    image: "",
+    description: "A Machine learning app with intuitive interface",
+    technology: "Python",
+    contributors: ["Jane Smith"],
+    tags: ["Python", "AI"],
+    featured: false,
+    github: "https://github.com/DevByte-Community/project-9",
   },
 ];
