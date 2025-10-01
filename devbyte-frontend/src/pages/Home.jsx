@@ -1,5 +1,5 @@
 import React from "react";
-import { Card } from "@/components/ui/card";
+import Card from "@/components/ui/Card";
 import { Users, Laptop, MicVocal, CircleChevronRight } from "lucide-react";
 import { FaGithub } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
@@ -140,7 +140,7 @@ const Home = () => {
   ];
 
   return (
-    <div className="relative  overflow-hidden w-full">
+    <div className="relative  overflow-hidden w-full z-0 ">
       <div class="absolute top-8 left-20 w-[30%] md:h-64 h-40 bg-gradient-to-r from-[#00AEEF] to-transparent rounded-full blur-3xl"></div>
       <div class="absolute top-8 md:right-40 right-0 md:w-32 w-20 h-28 bg-gradient-to-r from-[#00C38A] to-transparent rounded-full blur-2xl"></div>
 
@@ -168,7 +168,7 @@ const Home = () => {
           </button>
         </div>
 
-        <div className="mt-10  px-7 flex flex-wrap justify-center gap-[45px]">
+        <div className="mt-10  px-7 md flex flex-wrap justify-center gap-[45px]">
           <Card className=" p-10 flex items-center gap-3 bg-white/90 shadow-lg w-[350px] ">
             <Users />
             <div>
