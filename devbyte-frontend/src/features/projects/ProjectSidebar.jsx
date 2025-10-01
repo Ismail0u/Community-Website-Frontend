@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Search } from "lucide-react";
 
+
+// searche bar components
 
 const ProjectSearchBar = ({ searchQuery, setSearchQuery }) => {
   return (
@@ -19,14 +21,34 @@ const ProjectSearchBar = ({ searchQuery, setSearchQuery }) => {
   );
 };
 
+
+// sidebar component
 export const ProjectSidebar = ({
-  selectedCategory,
-  setSelectedCategory,
+  selectedTechnology,
+  setSelectedTechnology,
+  selectedContributors,
+  setSelectedContributors,
+  featuredOnly,
+  setFeaturedOnly,
 }) => {
-  const technologies = ["React", "Node.js", "Python"];
+    const technologies = ["React", "Node.js", "Python"];
+    const contributors = ["Alice", "Bob", "Charlie", "DevByte"];
+    const [searchQuery, setSearchQuery ] = useState("")
+
+    const handleContributorChange = (contributor) => {
+        if (selectedContributors.includes(contributor)) {
+            setSelectedContributors( selectedContributors.filter((c) => c !== contributor));
+        } else {
+            setSelectedContributors([...selectedContributors, contributor]);
+        }
+    };
 
   return (
     <aside className="lg:w-64 bg-white dark:bg-[#161B22] rounded-lg p-5 h-fit shadow-md">
+        <ProjectSearchBar
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+        />
       <h3 className="text-lg font-bold text-[#161B22] dark:text-white mb-4">
         Filters
       </h3>
@@ -42,9 +64,9 @@ export const ProjectSidebar = ({
               <input
                 type="checkbox"
                 className="w-4 h-4 rounded"
-                checked={selectedCategory === tech}
+                checked={selectedTechnology === tech}
                 onChange={(e) =>
-                  setSelectedCategory(e.target.checked ? tech : "")
+                  setSelectedTechnology(e.target.checked ? tech : "")
                 }
               />
               <span className="text-sm text-gray-700 dark:text-gray-300">
@@ -55,15 +77,46 @@ export const ProjectSidebar = ({
         </div>
       </div>
 
-      {/* Contributors Toggle */}
-      <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
-        <label className="flex items-center justify-between cursor-pointer">
-          <span className="text-sm font-semibold text-[#161B22] dark:text-[#D9D9D9]">
-            Solo contributor
-          </span>
-          <input type="checkbox" className="w-10 h-5 rounded-full" />
-        </label>
-      </div>
+       {/* Multi-select Contributors */}
+        <div className="mb-6 border-t border-gray-200 dark:border-gray-700 pt-4">
+            <label className="block text-sm font-semibold text-[#161B22] dark:text-[#D9D9D9] mb-2">
+            Contributors
+            </label>
+            <div className="space-y-2">
+            {contributors.map((contrib) => (
+                <label
+                key={contrib}
+                className="flex items-center gap-2 cursor-pointer"
+                >
+                <input
+                    type="checkbox"
+                    className="w-4 h-4 rounded"
+                    checked={selectedContributors.includes(contrib)}
+                    onChange={() => handleContributorChange(contrib)}
+                />
+                <span className="text-sm text-gray-700 dark:text-gray-300">
+                    {contrib}
+                </span>
+                </label>
+            ))}
+            </div>
+        </div>
+
+        {/* Toggle Featured */}
+        
+        <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
+            <label className="flex items-center justify-between cursor-pointer">
+            <span className="text-sm font-semibold text-[#161B22] dark:text-[#D9D9D9]">
+                Featured Only
+            </span>
+            <input
+                type="checkbox"
+                checked={featuredOnly}
+                onChange={(e) => setFeaturedOnly(e.target.checked)}
+                className="w-5 h-5 rounded"
+            />
+            </label>
+        </div>
     </aside>
   );
 };

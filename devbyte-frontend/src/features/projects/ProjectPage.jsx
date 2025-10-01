@@ -2,9 +2,26 @@ import React, { useState } from "react";
 import { ProjectCard } from "./ProjectCard";
 import { projectData } from "./ProjectData";
 import { ProjectSidebar } from "./ProjectSidebar";
+import { ProjectPagination } from "./ProjectPagination";
+import { ProjectFilters } from "./projectFilter";
 
 export const ProjectPage = () => {
-  const [selectedCategory, setSelectedCategory] = useState(1);
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const {
+        selectedTechnology,
+        setSelectedTechnology,
+        selectedContributors,
+        setSelectedContributors,
+        featuredOnly,
+        setFeaturedOnly,
+        searchQuery,
+        setSearchQuery,
+        filteredProjects,
+  } = ProjectFilters(projectData);
+
+    // filtering projects as featured or not
+ const featuredProjects = filteredProjects.filter((p) => p.featured);
 
   return (
     <div className="min-h-screen">
@@ -16,8 +33,14 @@ export const ProjectPage = () => {
           <aside className="w-full lg:w-64 shrink-0">
             <div className="lg:sticky lg:top-8">
               <ProjectSidebar
-                selectedCategory={selectedCategory}
-                setSelectedCategory={setSelectedCategory}
+                selectedTechnology={selectedTechnology}
+                setSelectedTechnology={setSelectedTechnology}
+                selectedContributors={selectedContributors}
+                setSelectedContributors={setSelectedContributors}
+                featuredOnly={featuredOnly}
+                setFeaturedOnly={setFeaturedOnly}
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
               />
             </div>
           </aside>
@@ -33,6 +56,20 @@ export const ProjectPage = () => {
                 Explore and contribute to projects built by our community
                 </p>
             </div>
+                
+            {/* Featured Projects */}
+            <div className="mb-10">
+                <h2 className="text-2xl font-bold text-[#161B22] dark:text-white mb-5 text-center">
+                Featured Projects
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mr-8">
+                {featuredProjects.map((project) => (
+                    <ProjectCard key={project.id} project={project} />
+                ))}
+                </div>
+            </div>
+
+            {/* All Projects */}
             {/* Title */}
             <h2 className="text-2xl sm:text-3xl font-bold text-[#161B22] dark:text-white mb-6 sm:mb-8 text-center">
               All Projects
@@ -44,6 +81,10 @@ export const ProjectPage = () => {
                 <ProjectCard key={project.id} project={project} />
               ))}
             </div>
+             <ProjectPagination
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
           </main>
         </div>
       </div>
