@@ -32,7 +32,7 @@ const Footer = () => {
 
   return (
     <div className={` pt-20 pb-16 sm:pb-10 border-t border-[#D9D9D9]`}>
-      <div className=" flex flex-col sm:flex-row justify-center items-center sm:items-start sm:justify-evenly pb-16 sm:pb-10">
+      <div className="flex flex-col items-center justify-center pb-16  sm:flex-row sm:items-start sm:justify-evenly sm:pb-10">
         {/* Logo */}
         <div>
           <img
@@ -45,7 +45,7 @@ const Footer = () => {
 
         <div className="flex gap-[8rem] sm:gap-[3rem] md:gap-[8rem] mt-10 mb-16 sm:my-0">
           {/* Navigation Link */}
-          <div className="flex flex-col justify-start items-start gap-1">
+          <div className="flex flex-col items-start justify-start gap-1">
             <h2 className="">Navigation Link</h2>
             {pages.map((page, index) => (
               <Link key={index} to={page.href}>
@@ -55,8 +55,8 @@ const Footer = () => {
           </div>
 
           {/* Legal & support */}
-          <div className="flex flex-col justify-start items-start gap-1">
-            <h2 className=" font-medium">Legal & support</h2>
+          <div className="flex flex-col items-start justify-start gap-1">
+            <h2 className="font-medium ">Legal & support</h2>
             {legalAndSupport.map((page, index) => (
               <Link key={index} to={page.href}>
                 {page.name}
@@ -66,8 +66,8 @@ const Footer = () => {
         </div>
 
         {/* Websites */}
-        <div className=" ">
-          <h2 className=" mb-2 font-medium">Legal & support</h2>
+        <div className="">
+          <h2 className="mb-2 font-medium ">Stay Connected</h2>
           <div className="flex justify-evenly">
             {sites.map((site, index) => {
               const IconComponent = site.icon;
