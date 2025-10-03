@@ -8,7 +8,7 @@ import {
   DiCss3,
 } from "react-icons/di";
 import { SiTailwindcss, SiFigma, SiFramer } from "react-icons/si";
-import Card from "@/components/ui/card";
+import Card from "@/components/ui/Card";
 
 const tagIcons = {
   React: <DiReact className="text-sky-500 w-6 h-6" />,
