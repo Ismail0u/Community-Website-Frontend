@@ -11,6 +11,7 @@ import FAQ from "@/pages/FAQ.jsx";
 import Events from "@/pages/Events.jsx";
 import Projects from "@/pages/Projects.jsx";
 
+
 export default function AppRoutes() {
   return (
     <Routes>
