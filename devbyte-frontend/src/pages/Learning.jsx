@@ -8,6 +8,7 @@ import {
   DiCss3,
 } from "react-icons/di";
 import { SiTailwindcss, SiFigma, SiFramer } from "react-icons/si";
+import Card from "@/components/ui/card";
 
 const tagIcons = {
   React: <DiReact className="text-sky-500 w-6 h-6" />,
@@ -106,7 +107,7 @@ const resources = [
 // Component to display a single resource card
 const ResourceCard = ({ resource }) => {
   return (
-    <div className="bg-opacity-20 overflow-hidden w-full shadow-gray-400 shadow-sm rounded-lg flex flex-col p-3 transition-transform transform hover:scale-105 hover:shadow-lg">
+    <Card className="bg-opacity-20 overflow-hidden w-full flex flex-col">
       {/* Resource image */}
       <img
         src={resource.image}
@@ -117,12 +118,10 @@ const ResourceCard = ({ resource }) => {
       {/* Resource content */}
       <div className="p-4 text-[#161B22] dark:text-[#FFFF] flex flex-col flex-grow text-center">
         {/* Resource title */}
-        <h2 className="text-lg sm:text-xl font-semibold mb-2">
-          {resource.title}
-        </h2>
+        <h2 className="text-lg sm:text-xl  mb-2">{resource.title}</h2>
 
         {/* Resource author */}
-        <p className="text-sm sm:text-base font-semibold text-[#161B22] dark:text-[#FFFF] mb-3">
+        <p className="text-sm sm:text-base  text-[#161B22] dark:text-[#FFFF] mb-3">
           {resource.author}
         </p>
 
@@ -151,7 +150,7 @@ const ResourceCard = ({ resource }) => {
           </a>
         )}
       </div>
-    </div>
+    </Card>
   );
 };
 
@@ -183,10 +182,10 @@ const Learning = () => {
   });
 
   return (
-    <div className="min-h-screen max-w-full  ">
+    <div className="min-h-screen max-w-full z-0  ">
       {/* Header */}
       <div className="bg-gradient-to-r from-[#00AEEF] to-[#6A5DFF] darkfrom-[#0C546E] dark:to-[#183D72] text-center p-6">
-        <h1 className="text-white text-2xl sm:text-3xl lg:text-4xl font-semibold">
+        <h1 className="text-white text-2xl sm:text-3xl lg:text-4xl ">
           Learning Hub
         </h1>
         <p className="text-[#FFFF] text-sm sm:text-lg pt-3">
@@ -201,7 +200,7 @@ const Learning = () => {
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="w-full bg-[#FFFF] dark:bg-[#2A2F36] dark:text-[#D9D9D9]  px-3 py-2 pr-5 rounded-md appearance-none focus:outline-none font-semibold "
+            className="w-full bg-[#FFFF] dark:bg-[#2A2F36] dark:text-[#D9D9D9]  px-3 py-2 pr-5 rounded-md appearance-none focus:outline-none "
           >
             <option value="">All Category</option>
             <option value="javascript">Javascript</option>
@@ -217,7 +216,7 @@ const Learning = () => {
           <select
             value={selectedLevel}
             onChange={(e) => setSelectedLevel(e.target.value)}
-            className="w-full bg-[#FFFF] text-[#161B22] dark:bg-[#2A2F36] dark:text-[#D9D9D9] font-semibold  px-3 py-2 pr-5 rounded-md appearance-none focus:outline-none"
+            className="w-full bg-[#FFFF] text-[#161B22] dark:bg-[#2A2F36] dark:text-[#D9D9D9]  px-3 py-2 pr-5 rounded-md appearance-none focus:outline-none"
           >
             <option value="">All Levels</option>
             <option value="beginner">Beginner</option>
@@ -234,7 +233,7 @@ const Learning = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search resources..."
-            className="w-full p-2 bg-[#FFFF] dark:bg-[#2A2F36] dark:placeholder-[#D9D9D9] placeholder-[#161B22] font-semibold rounded-md           
+            className="w-full p-2 bg-[#FFFF] dark:bg-[#2A2F36] dark:placeholder-[#D9D9D9] placeholder-[#161B22] cursor-pointer  rounded-md           
  pl-3 focus:outline-none"
           />
 
@@ -244,7 +243,7 @@ const Learning = () => {
 
       {/* Featured Resources */}
       <div className="pt-8 mx-auto px-4 max-w-6xl">
-        <h1 className="text-xl sm:text-2xl font-bold text-[#161B22] dark:text-[#D9D9D9] text-center p-5">
+        <h1 className="text-xl sm:text-2xl  text-[#161B22] dark:text-[#D9D9D9] text-center p-5">
           Featured Resources
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -258,7 +257,7 @@ const Learning = () => {
 
       {/* All Resources */}
       <div className="pt-10  mx-auto px-4 max-w-6xl">
-        <h1 className="text-xl sm:text-2xl font-bold text-[#161B22] dark:text-[#D9D9D9] text-center pb-5">
+        <h1 className="text-xl sm:text-2xl  text-[#161B22] dark:text-[#D9D9D9] text-center pb-5">
           All Resources
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -272,17 +271,18 @@ const Learning = () => {
 
       {/* Footer */}
       <div className="bg-gradient-to-r from-[#00AEEF] to-[#6A5DFF] dark:from-[#0C546E] dark:to-[#183D72] text-center p-6 mt-10">
-        <h1 className="text-white text-2xl sm:text-3xl lg:text-4xl font-semibold">
+        <h1 className="text-white text-2xl sm:text-3xl lg:text-4xl ">
           Contribute a Resource
         </h1>
         <p className="text-[#FFFF] text-sm sm:text-lg pt-3">
           Share articles, tutorials or links with Devbyte
         </p>
+
         <a
           href="https://github.com/DevByte-Community/Community-Website-Frontend/tree/4022bfb31f53b91355bcd091b753b2d708c066dd/.github/ISSUE_TEMPLATE"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block px-4 py-1 mt-2 border border-[#6767ec] hover:border-[#5f5fb8]  text-white rounded-full"
+          className="inline-block rounded-full py-1 px-4   mt-2 border border-[#5e5ef0] hover:border-[#5f5fb8]  text-white "
         >
           View Source
         </a>
