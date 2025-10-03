@@ -8,6 +8,7 @@ import Learning from "@/pages/Learning.jsx";
 import Layout from "@/components/layout/Layout.jsx";
 import About from "@/pages/About.jsx";
 import FAQ from "@/pages/FAQ.jsx";
+import Events from "@/pages/Events.jsx";
 import Projects from "@/pages/Projects.jsx";
 
 export default function AppRoutes() {
@@ -21,6 +22,7 @@ export default function AppRoutes() {
         <Route path="learning" element={<Learning />} />
         <Route path="about" element={<About />} />
         <Route path="faq" element={<FAQ />} />
+        <Route path="events" element={<Events />} />
         <Route path="projects" element={<Projects />} />
       </Route>
     </Routes>
