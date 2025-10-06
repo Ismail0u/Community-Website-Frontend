@@ -10,6 +10,7 @@ import About from "@/pages/About.jsx";
 import FAQ from "@/pages/FAQ.jsx";
 import Events from "@/pages/Events.jsx";
 import Projects from "@/pages/Projects.jsx";
+import ForgetPassword from "@/pages/auth/ForgetPassword.jsx";
 
 
 export default function AppRoutes() {
@@ -25,6 +26,7 @@ export default function AppRoutes() {
         <Route path="faq" element={<FAQ />} />
         <Route path="events" element={<Events />} />
         <Route path="projects" element={<Projects />} />
+        <Route path="forget-password" element={<ForgetPassword />} />
       </Route>
     </Routes>
   );
