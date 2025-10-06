@@ -1,18 +1,31 @@
-import React from 'react'
-import { Routes, Route } from 'react-router-dom'
-import Login from '../pages/auth/Login.jsx'
-import Signup from '@/pages/auth/Signup.jsx'
-import App from '@/App.jsx'
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Login from "../pages/auth/Login.jsx";
+import Signup from "@/pages/auth/Signup.jsx";
+import Home from "@/pages/Home.jsx";
+import CommunityGuidelines from "@/pages/CommunityGuidelines.jsx";
+import Learning from "@/pages/Learning.jsx";
+import Layout from "@/components/layout/Layout.jsx";
+import About from "@/pages/About.jsx";
+import FAQ from "@/pages/FAQ.jsx";
+import Events from "@/pages/Events.jsx";
+import Projects from "@/pages/Projects.jsx";
 
 
 export default function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<App/>} />
-      <Route path="login" element= {<Login/>}/> 
-      <Route path="signup" element= {<Signup/>}/> 
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="login" element={<Login />} />
+        <Route path="signup" element={<Signup />} />
+        <Route path="communityGuidelines" element={<CommunityGuidelines />} />
+        <Route path="learning" element={<Learning />} />
+        <Route path="about" element={<About />} />
+        <Route path="faq" element={<FAQ />} />
+        <Route path="events" element={<Events />} />
+        <Route path="projects" element={<Projects />} />
+      </Route>
     </Routes>
-  )
+  );
 }
-
-// This is an optional place holder script

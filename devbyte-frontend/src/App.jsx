@@ -1,37 +1,26 @@
-import AppRoutes from './routes/AppRoutes'
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
+import AppRoutes from "./routes/AppRoutes";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
+  // Access the current theme mode ("light" or "dark") from Redux store
+  const theme = useSelector((state) => state.theme.mode);
+
+  useEffect(() => {
+    //  Add or remove the "dark" class on <html> based on theme
+    // This is how Tailwind knows when to apply dark styles
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [theme]); // Runs every time `theme` changes
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="bg-white dark:bg-[#0D1117] text-[#000000] dark:text-white">
+      <AppRoutes />
+    </div>
+  );
 }
 
-export default App
+export default App;
