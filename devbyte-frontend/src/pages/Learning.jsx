@@ -130,7 +130,7 @@ const ResourceCard = ({ resource }) => {
           {resource.tags.map((tag, index) => (
             <div
               key={index}
-              className="bg-[#D9D9D9] border rounded-full flex items-center justify-center px-6 py-1 text-sm"
+              className="bg-[#D9D9D9] border rounded-sm flex items-center justify-center px-6 py-1 text-sm"
             >
               {/* Show an icon if available, otherwise just show the tag text */}
               {tagIcons[tag] || <span className="text-gray-700">{tag}</span>}
@@ -282,7 +282,7 @@ const Learning = () => {
           href="https://github.com/DevByte-Community/Community-Website-Frontend/tree/4022bfb31f53b91355bcd091b753b2d708c066dd/.github/ISSUE_TEMPLATE"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block rounded-full py-1 px-4   mt-2 border border-[#5e5ef0] hover:border-[#5f5fb8]  text-white "
+          className="inline-block rounded-sm py-1 px-4   mt-2 border border-[#5e5ef0] hover:border-[#5f5fb8]  text-white "
         >
           View Source
         </a>
