@@ -8,7 +8,8 @@ import {
   DiCss3,
 } from "react-icons/di";
 import { SiTailwindcss, SiFigma, SiFramer } from "react-icons/si";
-import Card from "@/components/ui/card";
+import Card from "@/components/ui/Card";
+import HeaderWrapper from "@/components/ui/Header";
 
 const tagIcons = {
   React: <DiReact className="text-sky-500 w-6 h-6" />,
@@ -184,14 +185,12 @@ const Learning = () => {
   return (
     <div className="min-h-screen max-w-full z-0  ">
       {/* Header */}
-      <div className="bg-gradient-to-r from-[#00AEEF] to-[#6A5DFF] darkfrom-[#0C546E] dark:to-[#183D72] text-center p-6">
-        <h1 className="text-white text-2xl sm:text-3xl lg:text-4xl ">
-          Learning Hub
-        </h1>
-        <p className="text-[#FFFF] text-sm sm:text-lg pt-3">
+      <HeaderWrapper className="text-center ">
+        <h1 className=" text-2xl sm:text-3xl lg:text-5xl ">Learning Hub</h1>
+        <p className=" text-md sm:text-lg pt-3">
           Browse tutorials, articles and resources shared by the community
         </p>
-      </div>
+      </HeaderWrapper>
 
       {/* Filters */}
       <div className=" mx-auto max-w-6xl px-4 flex flex-wrap gap-4 justify-center items-center bg-[#D9D9D9] dark:bg-[#161B22] text-[#161B22] dark:text-[#D9D9D9]  p-5  mt-6">
@@ -256,7 +255,7 @@ const Learning = () => {
       </div>
 
       {/* All Resources */}
-      <div className="pt-10  mx-auto px-4 max-w-6xl">
+      <div className="pt-10  mx-auto px-4 max-w-6xl space-y-2">
         <h1 className="text-xl sm:text-2xl  text-[#161B22] dark:text-[#D9D9D9] text-center pb-5">
           All Resources
         </h1>
@@ -270,11 +269,11 @@ const Learning = () => {
       </div>
 
       {/* Footer */}
-      <div className="bg-gradient-to-r from-[#00AEEF] to-[#6A5DFF] dark:from-[#0C546E] dark:to-[#183D72] text-center p-6 mt-10">
-        <h1 className="text-white text-2xl sm:text-3xl lg:text-4xl ">
+      <HeaderWrapper className=" text-center p-6 mt-10">
+        <h1 className="text-[#161B22] dark:text-white text-3xl sm:text-3xl lg:text-4xl ">
           Contribute a Resource
         </h1>
-        <p className="text-[#FFFF] text-sm sm:text-lg pt-3">
+        <p className="text-[#161B22] dark:text-white text-sm sm:text-lg pt-3">
           Share articles, tutorials or links with Devbyte
         </p>
 
@@ -282,11 +281,11 @@ const Learning = () => {
           href="https://github.com/DevByte-Community/Community-Website-Frontend/tree/4022bfb31f53b91355bcd091b753b2d708c066dd/.github/ISSUE_TEMPLATE"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block rounded-sm py-1 px-4   mt-2 border border-[#5e5ef0] hover:border-[#5f5fb8]  text-white "
+          className="inline-block rounded-sm py-1 px-4 bg-[#3f8bee]    mt-2  text-[#161B22] dark:text-white "
         >
           View Source
         </a>
-      </div>
+      </HeaderWrapper>
     </div>
   );
 };

@@ -27,7 +27,7 @@ const Footer = () => {
   ];
 
   return (
-    <div className={` pt-20 pb-16 sm:pb-10 border-t border-[#D9D9D9]`}>
+    <div className={` pt-20 pb-16 sm:pb-10 `}>
       <div className="flex flex-col items-center justify-center pb-16  sm:flex-row sm:items-start sm:justify-evenly sm:pb-10">
         {/* Logo */}
         <div>
@@ -44,7 +44,7 @@ const Footer = () => {
           <div className="flex flex-col justify-start items-start gap-1">
             <h2 className="font-bold">Navigation Link</h2>
             {pages.map((page, index) => (
-              <Link key={index} to={page.href}>
+              <Link key={index} to={page.href} className="hover:text-[#00AEEF]">
                 {page.name}
               </Link>
             ))}
@@ -55,7 +55,7 @@ const Footer = () => {
           <div className="flex flex-col items-start justify-start gap-1">
             <h2 className="font-bold ">Legal & support</h2>
             {legalAndSupport.map((page, index) => (
-              <Link key={index} to={page.href}>
+              <Link key={index} to={page.href} className="hover:text-[#00AEEF]">
                 {page.name}
               </Link>
             ))}

@@ -6,7 +6,7 @@ import ScrollToTop from "@/components/ui/scrollToTop.jsx"
 
 const Layout = () => {
   return (
-    <div className="min-h-screen flex flex-col ">
+    <div className="min-h-screen flex flex-col">
       
       <ScrollToTop/>
       <Navbar />
