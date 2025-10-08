@@ -24,6 +24,9 @@ export const ProjectPage = () => {
   const featuredProjects = filteredProjects.filter((p) => p.featured);
   const regularProjects = filteredProjects.filter((p) => !p.featured);
 
+    // State to control the visibility of the sidebar on mobile
+  const [isSidebarOpen , setIsSidebarOpen] = useState(false) ;
+
 
   return (
     <div className="min-h-screen">
@@ -31,9 +34,27 @@ export const ProjectPage = () => {
       {/* Main Layout */}
       <div className="max-w-full mx-0 px-2 sm:px-2 lg:px-2 py-4">
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-2">
-          {/* Sidebar - Mobile: full width, Desktop: sticky sidebar */}
-          <aside className="w-full lg:w-64 shrink-0 lg:border-r lg:border-gray-200 dark:lg:border-gray-700 pr-3 h-screen lg:sticky lg:top-0">
-            <div className="lg:sticky lg:top-8">
+          {/* Sidebar - Mobile: will use toggle button, Desktop: sticky sidebar */}
+          {/* TOGGLE Button */}
+            <button
+              className="lg:hidden fixed top-20 left-0 z-40 p-2 bg-white dark:bg-gray-900 rounded-r-lg shadow-lg"
+              onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+              aria-label={isSidebarOpen ? "Close sidebar" : "Open Sidebar"}
+            >
+              {isSidebarOpen ? '❮' : '❯'}
+            </button>
+            {/* End of TOGGLE button */}
+
+          <aside
+             className={`
+                fixed top-0 left-0 h-full z-30
+                 w-8/12 sm:w-1/2
+                 transform transition-transform ease-in-out duration-300 
+                 backdrop-opacity-15
+                 lg:w-64 shrink-0 lg:border-r lg:border-gray-200 dark:lg:border-gray-700 pr-3 lg:h-screen lg:sticky lg:top-0 lg:left-auto lg:transform-none
+                 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+               `}>
+            <div className="lg:sticky lg:top-8 mt-1 lg:mt-0 p-1 lg:p-0">
               <ProjectSidebar
                 selectedTechnology={selectedTechnology}
                 setSelectedTechnology={setSelectedTechnology}
@@ -47,11 +68,20 @@ export const ProjectPage = () => {
             </div>
           </aside>
 
+            {/* Mobile Overlay (to close sidebar on outside click) */}
+
+           {isSidebarOpen && (
+              <div
+                className="fixed inset-0 bg-black/50 z-20 lg:hidden"
+                onClick={() => setIsSidebarOpen(false)}
+              />
+            )}
+
           {/* Main Content */}
           <main className="flex-1 min-w-0">
             {/* Header */}
             <div className="text-center py-12 px-4 sm:py-8">
-                <h1 className="bg-gradient-to-r from-[#00AEEF] to-[#6A5DFF] dark:from-[#0C546E] dark:to-[#183D72] text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-transparent bg-clip-text mb-5">
+                <h1 className="bg-gradient-to-r from-[#00AEEF] to-[#6A5DFF] dark:from-[#0C546E] dark:to-[#183D72] text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-transparent bg-clip-text ">
                   Open Source Projects
                 </h1>
                 <p className="dark:text-white text-base sm:text-lg max-w-2xl mx-auto">
