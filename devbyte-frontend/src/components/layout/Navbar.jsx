@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import CommunityLogo from "@/assets/logos/IMG_20250811_164020_018-Photoroom.png";
 import { NavLink, useNavigate } from "react-router-dom";
 import { SunDim, Moon, Menu, X, UserCircle } from "lucide-react";
@@ -32,8 +32,25 @@ const Navbar = () => {
     { name: "Contact", path: "/contact" },
   ];
 
+  const navRef = useRef(null);
+
+  useEffect(() => {
+    const updateNavHeight = () => {
+      if (!navRef.current) return;
+      const height = navRef.current.offsetHeight;
+      document.documentElement.style.setProperty("--nav-h", `${height}px`);
+    };
+
+    updateNavHeight();
+    window.addEventListener("resize", updateNavHeight);
+    return () => window.removeEventListener("resize", updateNavHeight);
+  }, []);
+
   return (
-    <div className=" sticky top-0 z-10 w-full  bg-white dark:bg-[#0D1117] bg-opacity-95  shadow-md transition-colors duration-300">
+    <div
+      ref={navRef}
+      className=" sticky top-0 z-10 w-full  bg-white dark:bg-[#0D1117] bg-opacity-95  shadow-md transition-colors duration-300"
+    >
       <div className="pt-3 pb-4 sm:px-10 px-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
