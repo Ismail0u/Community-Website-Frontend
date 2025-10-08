@@ -13,7 +13,6 @@ import Projects from "@/pages/Projects.jsx";
 import ForgetPassword from "@/pages/auth/ForgetPassword.jsx";
 import OtpVerification from "@/pages/auth/OtpVerification.jsx";
 
-
 export default function AppRoutes() {
   return (
     <Routes>

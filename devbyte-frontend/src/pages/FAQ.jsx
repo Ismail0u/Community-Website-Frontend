@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa6";
+import HeaderWrapper from "@/components/ui/Header";
 
 const FAQ = () => {
   const navigate = useNavigate();
@@ -48,16 +49,18 @@ const FAQ = () => {
   return (
     <div className="min-h-screen bg-[#FFFFFF] dark:bg-[#0D1117] text-[#161B22] dark:text-[#D9D9D9]">
       {/* Top container with message */}
-      <section className="py-14 w-full bg-gradient-to-r from-[#00AEEF] to-[#6A5DFF] text-center">
-        <h1
-          className={`text-depth-shadow text-3xl sm:text-5xl font-extrabold mb-2`}
-        >
-          Frequently Asked Questions
-        </h1>
-        <p className=" text-sm sm:text-lg">
-          Quick answers to common questions about DevByte.
-        </p>
-      </section>
+      <HeaderWrapper className="text-center ">
+        <section>
+          <h1
+            className={`text-depth-shadow text-3xl sm:text-5xl font-extrabold mb-2`}
+          >
+            Frequently Asked Questions
+          </h1>
+          <p className="text-sm sm:text-lg">
+            Quick answers to common questions about DevByte.
+          </p>
+       </section>
+      </HeaderWrapper>
 
       {/* FAQ SECTION */}
       <section className={`w-full`}>
@@ -94,20 +97,23 @@ const FAQ = () => {
           })}
         </div>
 
-        <div className="w-[80%] sm:w-[70%] md:w-[50%] dark:bg-[#2A2F36] border border-[#2A2F36]  px-8 py-10 rounded-xl mx-auto text-center my-10">
-          <h3 className={` text-xl font-semibold mb-2`}>
-            Still have questions?
-          </h3>
-          <p className={` mb-5`}>
-            Reach out to us through the Contact Page or join our community chat.
-          </p>
-          <button
-            onClick={() => navigate("/contact")}
-            className="bg-gradient-to-r from-[#00AEEF] to-[#6A5DFF] px-8 py-2 rounded-2xl"
-          >
-            Go to Contact Page
-          </button>
-        </div>
+        <HeaderWrapper className="p-6 mt-10 text-center ">
+            <div>
+            <h3 className={` text-xl font-semibold mb-2`}>
+              Still have questions?
+            </h3>
+            <p className={` mb-5`}>
+              Reach out to us through the Contact Page or join our community chat.
+            </p>
+            <button
+              onClick={() => navigate("/contact")}
+              className="bg-gradient-to-r bg-[#3f8bee]   px-8 py-2 rounded-sm text-white"
+            >
+              Go to Contact Page
+            </button>
+            </div>
+        </HeaderWrapper>
+        
       </section>
     </div>
   );

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FaMagnifyingGlass, FaChevronDown } from "react-icons/fa6";
 import EventImg from "@/assets/images/black-students-posing-with-gadgets.jpg";
+import SwiperComponent from "@/components/ui/swiper.jsx";
 
 const Events = () => {
   const [inputType, setInputType] = useState("text");
@@ -188,7 +189,7 @@ const Events = () => {
       </section>
 
       {/* Events Sections */}
-      <section className={`w-[95%] sm:w-[90%] lg:w-[80%] mx-auto my-20`}>
+      <section className={`w-[95%] sm:w-[90%] lg:w-[80%] mx-auto my-10 sm:my-20`}>
 
         {/* Upcoming Events */}
         <div>
@@ -199,6 +200,7 @@ const Events = () => {
           >
             {upcomingEvents.map((event) => (
               <li
+                key={event.id}
                 className={`${
                   upcomingEvents.length < 2 ? `w-full h-full` : `sm:w-[48%]`
                 }  h-[42rem] lg:h-1/2 w-full lg:w-full flex flex-col lg:flex-row items-center gap-[2rem] lg:gap-[4rem] mb-6 lg-mb-0 px-4 lg:px-8 py-5 lg:py-7 bg-[#FFFFFF]  dark:bg-[#161B22] rounded-xl shadow-md shadow-gray-400 dark:shadow-gray-800`}
@@ -254,7 +256,8 @@ const Events = () => {
         <div className={` mt-14`}>
           <h2 className="text-3xl text-center font-extrabold">Past Events</h2>
 
-          <ul
+          <SwiperComponent events={pastEvents} />
+          {/* <ul
             className={`flex flex-wrap gap-[4%] md:gap-[2%] h-full w-full my-12 px-6`}
           >
             {pastEvents.map((event) => (
@@ -274,7 +277,7 @@ const Events = () => {
                 </div>
               </li>
             ))}
-          </ul>
+          </ul> */}
         </div>
       </section>
     </div>
