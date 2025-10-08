@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import CommunityLogo from "@/assets/logos/IMG_20250811_164020_018-Photoroom.png";
-
 const Footer = () => {
   const pages = [
     { href: "/", name: "Home" },
@@ -11,27 +10,24 @@ const Footer = () => {
     { href: "/jobs", name: "Jobs" },
     { href: "/blog", name: "Blog" },
   ];
-
   const legalAndSupport = [
     { href: "/contact", name: "Contact Us" },
     { href: "/policy", name: "Private Policy" },
     { href: "/terms", name: "Terms of Service" },
-    { href: "/CommunityGuidelines", name: "Community Guidelines"},
-    { href: "/faq", name: "FAQ"}
-
+    { href: "/CommunityGuidelines", name: "Community Guidelines" },
+    { href: "/faq", name: "FAQ" },
   ];
-
   const sites = [
     { href: "https://github.com/DevByte-Community", icon: FaGithub },
     {
       href: "https://www.linkedin.com/company/devbyte-community/posts/?feedView=all",
-      icon: FaLinkedin
+      icon: FaLinkedin,
     },
     { href: "/terms", icon: FaXTwitter },
   ];
 
   return (
-    <div className={` pt-20 pb-16 sm:pb-10 border-t border-[#D9D9D9]`}>
+    <div className={` pt-20 pb-16 sm:pb-10 `}>
       <div className="flex flex-col items-center justify-center pb-16  sm:flex-row sm:items-start sm:justify-evenly sm:pb-10">
         {/* Logo */}
         <div>
@@ -45,20 +41,21 @@ const Footer = () => {
 
         <div className="flex gap-[8rem] sm:gap-[3rem] md:gap-[8rem] mt-10 mb-16 sm:my-0">
           {/* Navigation Link */}
-          <div className="flex flex-col items-start justify-start gap-1">
-            <h2 className="">Navigation Link</h2>
+          <div className="flex flex-col justify-start items-start gap-1">
+            <h2 className="font-bold">Navigation Link</h2>
             {pages.map((page, index) => (
-              <Link key={index} to={page.href}>
+              <Link key={index} to={page.href} className="hover:text-[#00AEEF]">
                 {page.name}
               </Link>
             ))}
           </div>
 
           {/* Legal & support */}
+
           <div className="flex flex-col items-start justify-start gap-1">
-            <h2 className="font-medium ">Legal & support</h2>
+            <h2 className="font-bold ">Legal & support</h2>
             {legalAndSupport.map((page, index) => (
-              <Link key={index} to={page.href}>
+              <Link key={index} to={page.href} className="hover:text-[#00AEEF]">
                 {page.name}
               </Link>
             ))}
@@ -66,12 +63,12 @@ const Footer = () => {
         </div>
 
         {/* Websites */}
+
         <div className="">
-          <h2 className="mb-2 font-medium ">Stay Connected</h2>
+          <h2 className="mb-2 font-bold ">Stay Connected</h2>
           <div className="flex justify-evenly">
             {sites.map((site, index) => {
               const IconComponent = site.icon;
-
               return (
                 <a
                   key={index}
@@ -86,12 +83,10 @@ const Footer = () => {
           </div>
         </div>
       </div>
-
       <p className={`text-sm text-center`}>
         ©2025 DevByte. All rights reserved
       </p>
     </div>
   );
 };
-
 export default Footer;
