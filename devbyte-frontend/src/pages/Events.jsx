@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaMagnifyingGlass, FaChevronDown } from "react-icons/fa6";
-import EventImg from "@/assets/images/black-students-posing-with-gadgets.jpg";
+import EventImg from "@/assets/images/black-students-posing-with-gadgets.webp";
 
 const Events = () => {
   const [inputType, setInputType] = useState("text");
@@ -189,7 +189,6 @@ const Events = () => {
 
       {/* Events Sections */}
       <section className={`w-[95%] sm:w-[90%] lg:w-[80%] mx-auto my-20`}>
-
         {/* Upcoming Events */}
         <div>
           <h2 className="text-3xl font-bold mb-2">Upcoming Events</h2>

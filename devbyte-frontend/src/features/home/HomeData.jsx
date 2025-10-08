@@ -6,11 +6,11 @@ import User5 from "@/assets/images/User 5.png";
 import User6 from "@/assets/images/User 6.png";
 import learning from "@/assets/images/learning.png";
 import blog from "@/assets/images/blog.png";
-import slide1 from "@/assets/images/black-students-posing-with-gadgets.jpg";
-import slide2 from "@/assets/images/young-international-people-working-together-use-laptop.jpg";
-import slide3 from "@/assets/images/black-people-integrate-vr-ai-into-their-daily-job-routine.jpg";
-import slide4 from "@/assets/images/black-couple-balances-remote-work-technology-home-office.jpg";
-import slide5 from "@/assets/images/enthusiastic-multiracial-friends-looking-phone.jpg";
+import slide1 from "@/assets/images/black-students-posing-with-gadgets.webp";
+import slide2 from "@/assets/images/young-international-people-working-together-use-laptop.webp";
+import slide3 from "@/assets/images/black-people-integrate-vr-ai-into-their-daily-job-routine.webp";
+import slide4 from "@/assets/images/black-couple-balances-remote-work-technology-home-office.webp";
+import slide5 from "@/assets/images/enthusiastic-multiracial-friends-looking-phone.webp";
 
 // Memebers Data
 export const members = [
