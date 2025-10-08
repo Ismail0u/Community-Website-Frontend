@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaMagnifyingGlass, FaChevronDown } from "react-icons/fa6";
-import EventImg from "@/assets/images/black-students-posing-with-gadgets.jpg";
+import EventImg from "@/assets/images/black-students-posing-with-gadgets.webp";
 import SwiperComponent from "@/components/ui/swiper.jsx";
 
 const Events = () => {
