@@ -1,19 +1,22 @@
 import React, { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { FaGithub, FaGoogle, FaLinkedin, FaXTwitter } from "react-icons/fa6";
+import HeaderWrapper from "@/components/ui/Header";
 
 const Login = () => {
   const [show, setShow] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col">
+    <div className="flex flex-col min-h-[150vh] bg-gray-100">
       {/* Top container with message */}
-      <div className="w-full bg-gradient-to-r from-blue-950 to-blue-600 text-white text-center py-10 shadow">
-        <h2 className="text-3xl font-bold">Welcome Back</h2>
-        <p className="text-md mt-1">
-          Log in to your DevByte account to join discussions and collaborate
-        </p>
-      </div>
+      <HeaderWrapper className="text-center ">
+          <div>
+          <h2 className="text-3xl font-bold">Welcome Back</h2>
+          <p className="mt-1 text-md">
+            Log in to your DevByte account to join discussions and collaborate
+          </p>
+        </div>
+      </HeaderWrapper>
 
       {/* Login Form */}
       <div className="flex-1 flex items-center justify-center px-4 dark:bg-[#0D1117] dark:text-[#D9D9D9]">
@@ -34,7 +37,7 @@ const Login = () => {
               <button
                 type="button"
                 onClick={() => setShow(!show)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                className="absolute text-gray-500 -translate-y-1/2 right-3 top-1/2 hover:text-gray-700"
               >
                 {show ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>
@@ -59,37 +62,37 @@ const Login = () => {
           {/* Social Auth */}
           <div className="my-8">
             <div className="flex items-center justify-center">
-              <span className="border-t border-gray-300 w-full"></span>
-              <span className="px-2 text-gray-400 text-sm">OR</span>
-              <span className="border-t border-gray-300 w-full"></span>
+              <span className="w-full border-t border-gray-300"></span>
+              <span className="px-2 text-sm text-gray-400">OR</span>
+              <span className="w-full border-t border-gray-300"></span>
             </div>
           </div>
 
           <div className="flex justify-center gap-6 mt-4">
             <button
                 type="button"
-                className="flex items-center justify-center w-12 h-12 border border-gray-300 rounded-full dark:bg-white hover:bg-gray-100 transition"
+                className="flex items-center justify-center w-12 h-12 transition border border-gray-300 rounded-full dark:bg-white hover:bg-gray-100"
             >
               <FaGoogle className="text-red-500" size={22} />
             </button>
 
             <button
                 type="button"
-                className="flex items-center justify-center w-12 h-12 border border-gray-300 rounded-full dark:bg-white hover:bg-gray-100 transition"
+                className="flex items-center justify-center w-12 h-12 transition border border-gray-300 rounded-full dark:bg-white hover:bg-gray-100"
             >
               <FaGithub className="text-gray-800" size={22} />
             </button>
 
             <button
                 type="button"
-                className="flex items-center justify-center w-12 h-12 border border-gray-300 rounded-full dark:bg-white hover:bg-gray-100 transition"
+                className="flex items-center justify-center w-12 h-12 transition border border-gray-300 rounded-full dark:bg-white hover:bg-gray-100"
             >
               <FaLinkedin className="text-blue-600" size={22} />
             </button>
 
             <button
                 type="button"
-                className="flex items-center justify-center w-12 h-12 border border-gray-300 rounded-full dark:bg-white hover:bg-gray-100 transition"
+                className="flex items-center justify-center w-12 h-12 transition border border-gray-300 rounded-full dark:bg-white hover:bg-gray-100"
             >
               <FaXTwitter className="text-black" size={22} />
             </button>
@@ -99,7 +102,7 @@ const Login = () => {
             Don’t have an account?{" "}
             <a
               href="/signup"
-              className="text-indigo-600 font-medium hover:underline"
+              className="font-medium text-indigo-600 hover:underline"
             >
               Sign Up
             </a>
