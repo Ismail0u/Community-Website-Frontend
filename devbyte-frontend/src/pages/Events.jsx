@@ -189,7 +189,7 @@ const Events = () => {
       </section>
 
       {/* Events Sections */}
-      <section className={`w-[95%] sm:w-[90%] lg:w-[80%] mx-auto my-20`}>
+      <section className={`w-[95%] sm:w-[90%] lg:w-[80%] mx-auto my-10 sm:my-20`}>
 
         {/* Upcoming Events */}
         <div>

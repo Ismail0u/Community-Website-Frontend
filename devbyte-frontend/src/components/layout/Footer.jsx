@@ -27,7 +27,7 @@ const Footer = () => {
   ];
 
   return (
-    <div className={` pt-20 pb-16 sm:pb-10 `}>
+    <div className={`px-6 sm:px-0 pt-20 pb-16 sm:pb-10 `}>
       <div className="flex flex-col items-center justify-center pb-16  sm:flex-row sm:items-start sm:justify-evenly sm:pb-10">
         {/* Logo */}
         <div>
@@ -44,7 +44,7 @@ const Footer = () => {
           <div className="flex flex-col justify-start items-start gap-1">
             <h2 className="font-bold">Navigation Link</h2>
             {pages.map((page, index) => (
-              <Link key={index} to={page.href} className="hover:text-[#00AEEF]">
+              <Link key={index} to={page.href} className="hover:text-[#00AEEF] hover:underline">
                 {page.name}
               </Link>
             ))}
@@ -55,7 +55,7 @@ const Footer = () => {
           <div className="flex flex-col items-start justify-start gap-1">
             <h2 className="font-bold ">Legal & support</h2>
             {legalAndSupport.map((page, index) => (
-              <Link key={index} to={page.href} className="hover:text-[#00AEEF]">
+              <Link key={index} to={page.href} className="hover:text-[#00AEEF] hover:underline">
                 {page.name}
               </Link>
             ))}
@@ -76,14 +76,14 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <IconComponent size="22" />
+                  <IconComponent size="22" className="hover:text-[#00AEEF] " />
                 </a>
               );
             })}
           </div>
         </div>
       </div>
-      <p className={`text-sm text-center`}>
+      <p className={`text-sm text-center`}>included padding on the x axis on mobile view
         ©2025 DevByte. All rights reserved
       </p>
     </div>
