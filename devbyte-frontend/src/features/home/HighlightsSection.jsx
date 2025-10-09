@@ -6,9 +6,9 @@ import Button from "@/components/ui/Button";
 
 const HighlightsSection = () => {
   return (
-    <div className="mt-28 ">
-      <div className="max-w-[1200px] mx-auto px-4 flex flex-wrap justify-center gap-6">
-        <Card className=" p-10 flex items-center gap-3 bg-white/90 dark:bg-black shadow-lg w-[350px] ">
+    <div className="py-[100px] bg-[#00AEEF]/[15%]">
+      <div className="max-w-[1200px] mx-auto flex flex-wrap justify-center gap-5">
+        <Card className=" p-10 flex items-center gap-3 bg-white/90 dark:bg-white dark:text-black shadow-sm w-[386px] ">
           <Users />
           <div>
             <h1 className="text-[20px] font-semibold text-left">2500+</h1>
@@ -17,7 +17,7 @@ const HighlightsSection = () => {
             </h1>
           </div>
         </Card>
-        <Card className=" p-10 flex  items-center gap-3 bg-white/90 dark:bg-black shadow-lg w-[350px] ">
+        <Card className=" p-10 flex  items-center gap-3  dark:bg-white dark:text-black bg-white/90 dark:bg-black shadow-sm w-[350px] ">
           <Laptop />
           <div>
             <h1 className="text-[20px] font-semibold text-left">150+</h1>
@@ -26,7 +26,7 @@ const HighlightsSection = () => {
             </h1>
           </div>
         </Card>
-        <Card className=" p-10 flex  items-center gap-3  bg-white/90 dark:bg-black shadow-lg w-[350px] ">
+        <Card className=" p-10 flex  dark:bg-white dark:text-black  items-center gap-3  bg-white/90 dark:bg-black shadow-sm w-[350px] ">
           <MicVocal />
           <div>
             <h1 className="text-[20px] font-semibold text-left">48</h1>
@@ -37,10 +37,10 @@ const HighlightsSection = () => {
         </Card>
       </div>
 
-      <div className="flex flex-wrap justify-center gap-6 mt-10">
+      <div className="flex flex-wrap justify-center gap-5 mt-20">
         {/* Upcoming Events */}
-        <Card className="flex flex-col items-center p-4 space-y-3 shadow-2xl md:w-[681px] w-[350px]">
-          <h1 className="border-[1px] border-[#00C38A] rounded-full p-1 text-[12px] font-semibold">
+        <Card className="flex flex-col  bg-white items-center dark:text-black p-4 space-y-5 shadow-sm md:w-[681px] w-[350px]">
+          <h1 className="border-0 rounded-full p-1 text-[16px] font-bold">
             UPCOMING EVENT
           </h1>
           <h1 className="text-[24px] font-semibold">
@@ -56,12 +56,12 @@ const HighlightsSection = () => {
           </h1>
           <Button
             children="Register Now"
-            className="bg-blue-500 text-white hover:bg-blue-700 transition-colors duration-500 ease-in-out"
+            className="text-white transition-colors duration-500 ease-in-out bg-blue-500 hover:bg-blue-700"
           />
         </Card>
 
         {/* Post */}
-        <Card className="flex flex-col items-center p-4 space-y-3 shadow-2xl md:w-[421px] w-[350px]">
+        <Card className="flex flex-col  bg-white items-center dark:text-black p-4 space-y-3 shadow-sm md:w-[421px] w-[350px]">
           <img src={frame28} alt="" className="w-[200px] h-[120px]" />
           <h1 className="text-xl font-semibold">
             How Open Source Projects Shape AI

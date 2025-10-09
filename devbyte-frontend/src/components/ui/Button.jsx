@@ -9,7 +9,7 @@ const Button = ({
   disabled = false, // button is enabled by default
 }) => {
   // Base styles applied to all buttons
-  const baseStyles = "px-4 py-1 rounded-sm focus:outline-none transition-all ";
+  const baseStyles = "px-5 py-2 rounded-sm focus:outline-none transition-all ";
 
   return (
     <button

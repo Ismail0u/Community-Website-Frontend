@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { FaGithub, FaGoogle, FaLinkedin, FaXTwitter } from "react-icons/fa6";
+import HeaderWrapper from "@/components/ui/Header";
 
 const Login = () => {
   const [show, setShow] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col">
+    <div className="min-h-[150vh] bg-gray-100 flex flex-col">
       {/* Top container with message */}
-      <div className="w-full bg-gradient-to-r from-blue-950 to-blue-600 text-white text-center py-10 shadow">
-        <h2 className="text-3xl font-bold">Forgot Password</h2>
-        <p className="text-md mt-1">
-          Enter your email to reset your password.
-        </p>
-      </div>
+        <HeaderWrapper className="p-6 text-center ">
+          <h2 className="text-3xl font-bold">Forgot Password</h2>
+          <p className="text-md mt-1">
+            Enter your email to reset your password.
+          </p>
+        </HeaderWrapper>
 
       {/* Login Form */}
       <div className="flex-1 flex items-center justify-center px-4 dark:bg-[#0D1117] dark:text-[#D9D9D9]">

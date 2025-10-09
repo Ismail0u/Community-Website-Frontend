@@ -27,7 +27,7 @@ const Footer = () => {
   ];
 
   return (
-    <div className={`px-6 sm:px-0 pt-20 pb-16 sm:pb-10 `}>
+    <div className={`px-6 sm:px-0 pt-20 pb-16 sm:pb-10`}>
       <div className="flex flex-col items-center justify-center pb-16 sm:flex-row sm:items-start sm:justify-evenly sm:pb-10">
         {/* Logo */}
         <div>
