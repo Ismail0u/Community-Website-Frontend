@@ -10,6 +10,7 @@ import {
 import { SiTailwindcss, SiFigma, SiFramer } from "react-icons/si";
 import Card from "@/components/ui/Card";
 import HeaderWrapper from "@/components/ui/Header";
+import Button from "@/components/ui/Button";
 
 const tagIcons = {
   React: <DiReact className="w-6 h-6 text-sky-500" />,
@@ -281,9 +282,10 @@ const Learning = () => {
           href="https://github.com/DevByte-Community/Community-Website-Frontend/tree/4022bfb31f53b91355bcd091b753b2d708c066dd/.github/ISSUE_TEMPLATE"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block rounded-sm py-1 px-4 bg-[#3f8bee]    mt-2  text-[#FFFFFF] dark:text-white "
         >
+        <Button className="inline-block  bg-blue-500 hover:bg-blue-700 mt-2  text-[#FFFFFF] dark:text-white ">
           View Source
+        </Button>
         </a>
       </HeaderWrapper>
     </div>

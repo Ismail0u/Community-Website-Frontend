@@ -11,7 +11,7 @@ const HeroSection = ({
   navigate,
 }) => {
   return (
-    <div className="flex h-[calc(100vh-var(--nav-h))] w-full">
+    <div className="flex pb-[50px] w-full">
       <div className="w-full">
         <div className="relative h-[calc(100vh-var(--nav-h))] ">
           {/* Slides Container */}
@@ -68,13 +68,13 @@ const HeroSection = ({
                     <div className="mt-7 flex flex-row gap-3">
                       <Button
                         children="Join Community"
-                        className="bg-blue-600 text-white hover:bg-blue-700 transition-colors duration-500 ease-in-out"
+                        className="bg-blue-600 hover:bg-yellow-500 text-white transition-colors duration-500 ease-in-out"
                       />
 
                       <Button
                         children="Learn More"
                         onClick={() => navigate("/communityGuidelines")}
-                        className="bg-blue-600 text-white hover:bg-blue-700 transition-colors duration-500 ease-in-out"
+                        className="text-black dark:text-white hover:bg-yellow-500 hover:text-white hover:border-yellow-500 border-[1px] border-yellow-500 transition-colors duration-500 ease-in-out"
                       />
                     </div>
                   </div>

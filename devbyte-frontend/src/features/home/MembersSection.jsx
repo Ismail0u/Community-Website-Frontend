@@ -13,7 +13,7 @@ const MembersSection = ({
   goToMembersSlide,
 }) => {
   return (
-    <div className="mt-28">
+    <div className="py-[100px]">
       <div className="text-center max-w-[1200px] mx-auto px-4">
         <h1 className="text-[28px] font-semibold text-center">{title}</h1>
         <h1 className="pt-2 text-[18px] text-center">{subtitle}</h1>
@@ -33,12 +33,12 @@ const MembersSection = ({
                     : "opacity-0 translate-x-full"
                 }`}
               >
-                <div className="w-full h-full flex items-center justify-center">
-                  <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center ">
+                <div className="flex items-center justify-center w-full h-full">
+                  <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 justify-items-center ">
                     {chunk.map((member, mIdx) => (
                       <Card
                         key={`member-card-${idx}-${mIdx}`}
-                        className="flex flex-col items-center space-y-[6px] p-5 w-[310px] h-[212px] shadow-lg"
+                        className="flex flex-col items-center space-y-[6px] p-5 w-[360px] h-[212px] shadow-sm bg-[#00AEEF]/[5%]  dark:bg-white dark:text-black"
                       >
                         <img
                           src={member.image}
@@ -53,7 +53,7 @@ const MembersSection = ({
                           {member.technologies.map((technology, tIdx) => (
                             <h1
                               key={`tech-${idx}-${mIdx}-${tIdx}`}
-                              className="bg-gradient-to-r from-[#00AEEF] to-[#6A5DFF] rounded-full text-white py-[2px] px-2 text-[14px]"
+                              className="bg-gradient-to-r from-[#e2e3e4] to-[#e0e0e0] rounded-sm text-black py-[2px] px-2 text-[12px] font-semibold"
                             >
                               {technology}
                             </h1>
@@ -69,21 +69,21 @@ const MembersSection = ({
           {/* Navigation Buttons */}
           <button
             onClick={goToPrevMembers}
-            className="absolute left-0 top-1/2 -translate-y-1/2 bg-black/10 hover:bg-black/20 dark:bg-white/20 dark:hover:bg-white/40 p-2 rounded-full"
+            className="absolute left-0 p-2 -translate-y-1/2 rounded-full top-1/2 bg-black/10 hover:bg-black/20 dark:bg-white/20 dark:hover:bg-white/40"
             aria-label="Previous members"
           >
             <ChevronLeft size={22} />
           </button>
           <button
             onClick={goToNextMembers}
-            className="absolute right-0 top-1/2 -translate-y-1/2 bg-black/10 hover:bg-black/20 dark:bg-white/20 dark:hover:bg-white/40 p-2 rounded-full"
+            className="absolute right-0 p-2 -translate-y-1/2 rounded-full top-1/2 bg-black/10 hover:bg-black/20 dark:bg-white/20 dark:hover:bg-white/40"
             aria-label="Next members"
           >
             <ChevronRight size={22} />
           </button>
 
           {/* Dots */}
-          <div className=" mb-10 flex justify-center gap-2">
+          <div className="flex justify-center gap-2 mb-10 ">
             {memberChunks.map((_, i) => (
               <button
                 key={`member-dot-${i}`}
@@ -100,15 +100,11 @@ const MembersSection = ({
         </div>
       </div>
 
-      <div className="w-full flex flex-col items-center mt-10 md:mt-12 px-4">
+      <div className="flex flex-col items-center w-full px-4 mt-10 md:mt-12">
         <Button
           children="Explore All Members"
-          className="bg-blue-500 text-white hover:bg-blue-700 transition-colors duration-500 ease-in-out"
+          className="text-white transition-colors duration-500 ease-in-out bg-blue-500 hover:bg-blue-700"
         />
-
-        <h1 className="font-semibold text-[18px] mt-2">
-          Join Devbyte and get listed
-        </h1>
       </div>
     </div>
   );

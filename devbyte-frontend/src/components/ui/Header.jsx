@@ -1,6 +1,6 @@
 import React from "react";
 
-const HeaderWrapper = ({ height = "h-[300px]", className = "", children }) => {
+const HeaderWrapper = ({ height = "h-[270px]", className = "", children }) => {
   return (
     <section
       className={`relative bg-gradient-to-r from-[#00AEEF]/15 to-[#6A5DFF]/15 

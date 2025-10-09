@@ -16,6 +16,7 @@ import {
   carouselSlides,
 } from "../features/home/HomeData";
 import Button from "@/components/ui/Button";
+import HeaderWrapper from "@/components/ui/Header";
 
 const Home = ({ navRef }) => {
   const navigate = useNavigate();
@@ -145,22 +146,24 @@ const Home = ({ navRef }) => {
 
       <BlogSection blogPosts={blogPosts} />
 
-      <div className="bg-[#00AEEF]/[15%] mt-28 h-[400px] flex flex-col justify-center text-center items-center space-y-5 px-4">
-        <h1 className="text-[36px] font-bold">Join DevByte Today</h1>
-        <h1 className="text-[18px] font-semibold">
-          Connect, Collaborate, and Grow with developers worldwide
-        </h1>
-        <div className="mt-7 flex gap-3 justify-center">
-          <Button
-            children="Sign UP Free"
-            className="bg-blue-500 text-white hover:bg-blue-700 transition-colors duration-500 ease-in-out"
-          />
-          <Button
-            children="Login"
-            className="bg-blue-500 text-white hover:bg-blue-700 transition-colors duration-500 ease-in-out"
-          />
-        </div>
-      </div>
+      {/* <div className="bg-[#00AEEF]/[15%] mt-28 h-[400px] flex flex-col justify-center text-center items-center space-y-5 px-4"> */}
+        <HeaderWrapper className="text-center ">
+          <h1 className="text-[36px] font-bold">Join DevByte Today</h1>
+          <h1 className="text-[18px] font-semibold">
+            Connect, Collaborate, and Grow with developers worldwide
+          </h1>
+          <div className="mt-7 flex gap-3 justify-center">
+            <Button
+              children="Sign Up Free"
+              className="bg-blue-500 text-white hover:bg-blue-700 transition-colors duration-500 ease-in-out"
+            />
+            <Button
+              children="Login"
+              className="bg-blue-500 text-white hover:bg-blue-700 transition-colors duration-500 ease-in-out"
+            />
+          </div>
+         </HeaderWrapper>
+      {/* </div> */}
     </div>
   );
 };
