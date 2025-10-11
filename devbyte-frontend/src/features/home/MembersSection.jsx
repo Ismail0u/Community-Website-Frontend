@@ -1,0 +1,113 @@
+import React from "react";
+import Card from "@/components/ui/Card";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import Button from "@/components/ui/Button";
+
+const MembersSection = ({
+  title,
+  subtitle,
+  memberChunks,
+  membersSlideIndex,
+  goToPrevMembers,
+  goToNextMembers,
+  goToMembersSlide,
+}) => {
+  return (
+    <div className="py-[100px]">
+      <div className="text-center max-w-[1200px] mx-auto px-4">
+        <h1 className="text-[28px] font-semibold text-center">{title}</h1>
+        <h1 className="pt-2 text-[18px] text-center">{subtitle}</h1>
+      </div>
+
+      <div className="relative max-w-[1200px] mx-auto px-4 mt-7 ">
+        <div className="relative h-[250px] ">
+          <div className="relative h-full">
+            {memberChunks.map((chunk, idx) => (
+              <div
+                key={`members-chunk-${idx}`}
+                className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+                  idx === membersSlideIndex
+                    ? "opacity-100 translate-x-0"
+                    : idx < membersSlideIndex
+                    ? "opacity-0 -translate-x-full"
+                    : "opacity-0 translate-x-full"
+                }`}
+              >
+                <div className="flex items-center justify-center w-full h-full">
+                  <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 justify-items-center ">
+                    {chunk.map((member, mIdx) => (
+                      <Card
+                        key={`member-card-${idx}-${mIdx}`}
+                        className="flex flex-col items-center space-y-[6px] p-5 w-[360px] h-[212px] shadow-sm bg-[#00AEEF]/[5%]  dark:bg-white dark:text-black"
+                      >
+                        <img
+                          src={member.image}
+                          alt=""
+                          className="w-[80px] h-[80px]"
+                        />
+                        <h1 className="text-[18px] font-semibold">
+                          {member.name}
+                        </h1>
+                        <h1 className="text-[16px]">{member.role}</h1>
+                        <div className="flex gap-5">
+                          {member.technologies.map((technology, tIdx) => (
+                            <h1
+                              key={`tech-${idx}-${mIdx}-${tIdx}`}
+                              className="bg-gradient-to-r from-[#e2e3e4] to-[#e0e0e0] rounded-sm text-black py-[2px] px-2 text-[12px] font-semibold"
+                            >
+                              {technology}
+                            </h1>
+                          ))}
+                        </div>
+                      </Card>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          {/* Navigation Buttons */}
+          <button
+            onClick={goToPrevMembers}
+            className="absolute left-0 p-2 -translate-y-1/2 rounded-full top-1/2 bg-black/10 hover:bg-black/20 dark:bg-white/20 dark:hover:bg-white/40"
+            aria-label="Previous members"
+          >
+            <ChevronLeft size={22} />
+          </button>
+          <button
+            onClick={goToNextMembers}
+            className="absolute right-0 p-2 -translate-y-1/2 rounded-full top-1/2 bg-black/10 hover:bg-black/20 dark:bg-white/20 dark:hover:bg-white/40"
+            aria-label="Next members"
+          >
+            <ChevronRight size={22} />
+          </button>
+
+          {/* Dots */}
+          <div className="flex justify-center gap-2 mb-10 ">
+            {memberChunks.map((_, i) => (
+              <button
+                key={`member-dot-${i}`}
+                onClick={() => goToMembersSlide(i)}
+                className={`h-2 rounded-full transition-all ${
+                  i === membersSlideIndex
+                    ? "w-6 bg-black dark:bg-white"
+                    : "w-2 bg-black/40 dark:bg-white/40"
+                }`}
+                aria-label={`Go to members slide ${i + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="flex flex-col items-center w-full px-4 mt-10 md:mt-12">
+        <Button
+          children="Explore All Members"
+          className="text-white transition-colors duration-500 ease-in-out bg-blue-500 hover:bg-blue-700"
+        />
+      </div>
+    </div>
+  );
+};
+
+export default MembersSection;

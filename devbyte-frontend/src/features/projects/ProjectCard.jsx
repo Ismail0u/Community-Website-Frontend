@@ -2,8 +2,8 @@ import { DiGithubBadge } from "react-icons/di";
 
 export const ProjectCard = ({ project }) => {
   return (
-    <div className="m-3 p-4 bg-[#fafafa] dark:bg-[#2A2F36] w-full rounded-xl shadow-md 
-                    flex flex-col overflow-hidden  border-2 border-black-300 rounded-xl p-6
+    <div className="m-3 bg-[#fafafa] dark:bg-[#161B22] w-full rounded-xl shadow-md 
+                    flex flex-col overflow-hidden  border-2 dark:border-[#2A2F36]  p-6
                     transition-transform transform hover:scale-105 hover:shadow-xl">
       
       {/* Image */}
