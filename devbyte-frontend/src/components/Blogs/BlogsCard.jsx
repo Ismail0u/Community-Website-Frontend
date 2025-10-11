@@ -2,10 +2,8 @@ import React from "react";
 import { ArrowRight } from "lucide-react";
 
 const BlogsCard = ({ data }) => {
-  console.log(data);
   return (
     <div className="my-2 mx-2 w-[20rem] lg:w-[24rem]   rounded-xl md:w-[22rem] border border-border overflow-hidden shadow-sm hover:shadow-md cursor-pointer transition-all duration-300 hover:-translate-y-1">
-      {/* Image Container */}
       <div className="relative h-48 overflow-hidden bg-muted">
         <img
           src={data.image}
@@ -14,9 +12,7 @@ const BlogsCard = ({ data }) => {
         />
       </div>
 
-      {/* Content */}
       <div className="p-6 ">
-        {/* Category Badge */}
         <div className="mb-3">
           <span className="inline-block   text-sm font-medium text-primary  rounded-full text-sky-400">
             {data.category}
@@ -37,7 +33,6 @@ const BlogsCard = ({ data }) => {
           excepturi. */}
         </p>
 
-        {/* Read More Link */}
         <a
           href="#"
           className="inline-flex items-center gap-2 text-primary font-medium text-sm hover:gap-2 transition-all duration-200 group/link text-sky-400"
