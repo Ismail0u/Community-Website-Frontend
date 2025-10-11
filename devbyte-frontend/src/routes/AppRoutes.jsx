@@ -12,6 +12,7 @@ import Events from "@/pages/Events.jsx";
 import Projects from "@/pages/Projects.jsx";
 import ForgetPassword from "@/pages/auth/ForgetPassword.jsx";
 import OtpVerification from "@/pages/auth/OtpVerification.jsx";
+import ResetPassword from "@/pages/auth/ResetPassword.jsx";
 
 
 export default function AppRoutes() {
@@ -29,6 +30,7 @@ export default function AppRoutes() {
         <Route path="projects" element={<Projects />} />
         <Route path="forget-password" element={<ForgetPassword />} />
         <Route path="otpVerification" element={<OtpVerification />} />
+        <Route path="reset-password" element={<ResetPassword />} />
       </Route>
     </Routes>
   );

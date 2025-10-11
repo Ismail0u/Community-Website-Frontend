@@ -23,7 +23,7 @@ const OtpVerification = () => {
       setVerified(true);
       setTimeout(() => {
         // simulate redirect
-        window.location.href = "/";
+        window.location.href = "/reset-password";
       }, 2500);
     } else {
       alert("Please enter all 6 digits of your OTP");
@@ -131,7 +131,7 @@ const OtpVerification = () => {
                   transition={{ delay: 0.5 }}
                   className="text-gray-600 dark:text-gray-300 mt-2"
                 >
-                  Redirecting to your dashboard...
+                  Redirecting to reset your password...
                 </motion.p>
               </motion.div>
             )}
