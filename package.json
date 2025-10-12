@@ -45,4 +45,7 @@
   "main": "eslint.config.js",
   "author": "",
   "license": "ISC"
+  "dependencies": {
+    "lucide-react": "^0.545.0"
+  }
 }

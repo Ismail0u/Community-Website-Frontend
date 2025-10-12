@@ -7,6 +7,7 @@ import {
   FaDesktop,
   FaBan,
 } from "react-icons/fa6";
+import HeaderWrapper from "@/components/ui/Header";
 
 const CommunityGuidelines = () => {
   const navigate = useNavigate();
@@ -47,16 +48,18 @@ const CommunityGuidelines = () => {
   return (
     <div className="min-h-screen bg-[#FFFFFF] dark:bg-[#0D1117] text-[#161B22] dark:text-[#D9D9D9]">
       {/* Top container with message */}
-      <section className="py-14 w-full bg-gradient-to-r from-[#00AEEF] to-[#6A5DFF] text-center">
-        <h1
-          className={`text-depth-shadow text-3xl sm:text-5xl font-extrabold mb-2`}
-        >
-          Community Guidelines
-        </h1>
-        <p className=" text-sm sm:text-lg">
-          Our shared values for an inclusive and respectful community.
-        </p>
-      </section>
+      <HeaderWrapper className="text-center ">
+        <section>
+          <h1
+            className={`text-depth-shadow text-3xl sm:text-5xl font-extrabold mb-2`}
+          >
+            Community Guidelines
+          </h1>
+          <p className="text-sm sm:text-lg">
+            Our shared values for an inclusive and respectful community.
+          </p>
+        </section>
+      </HeaderWrapper>
 
       {/* Guidelines Section */}
       <section className={`w-full`}>
@@ -81,22 +84,24 @@ const CommunityGuidelines = () => {
           })}
         </div>
 
-        {/* Report Violations */}
-        <div className="w-[80%] flex flex-col justify-center items-center gap-3 sm:gap-4 my-20 mx-auto">
-          <h2 className="font-semibold text-[1,2rem] sm:text-[1.4rem]">
-            Report Violations
-          </h2>
-          <p className="text-sm sm:text-[1rem]">
-            If you notice behavior that violates these guidelines, report it to
-            the moderators via our Contact Page or email.
-          </p>
-          <button
-            onClick={() => navigate("/contact")}
-            className="bg-gradient-to-r from-[#00AEEF] to-[#6A5DFF] px-8 py-2 rounded-2xl"
-          >
-            Report a violation
-          </button>
-        </div>
+       <HeaderWrapper className="p-6 mt-10 text-center ">
+          {/* Report Violations */}
+          <div className="w-[80%] flex flex-col justify-center items-center gap-3 sm:gap-4 my-20 mx-auto">
+            <h2 className="font-semibold text-[1,2rem] sm:text-[1.4rem]">
+              Report Violations
+            </h2>
+            <p className="text-sm sm:text-[1rem]">
+              If you notice behavior that violates these guidelines, report it to
+              the moderators via our Contact Page or email.
+            </p>
+            <button
+              onClick={() => navigate("/contact")}
+              className="bg-gradient-to-r bg-[#3f8bee]   px-8 py-2 rounded-sm text-white"
+            >
+              Report a violation
+            </button>
+          </div>
+        </HeaderWrapper>
       </section>
     </div>
   );

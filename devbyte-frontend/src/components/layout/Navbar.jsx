@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import CommunityLogo from "@/assets/logos/IMG_20250811_164020_018-Photoroom.png";
 import { NavLink, useNavigate } from "react-router-dom";
 import { SunDim, Moon, Menu, X, UserCircle } from "lucide-react";
@@ -32,8 +32,25 @@ const Navbar = () => {
     { name: "Contact", path: "/contact" },
   ];
 
+  const navRef = useRef(null);
+
+  useEffect(() => {
+    const updateNavHeight = () => {
+      if (!navRef.current) return;
+      const height = navRef.current.offsetHeight;
+      document.documentElement.style.setProperty("--nav-h", `${height}px`);
+    };
+
+    updateNavHeight();
+    window.addEventListener("resize", updateNavHeight);
+    return () => window.removeEventListener("resize", updateNavHeight);
+  }, []);
+
   return (
-    <div className=" sticky top-0 z-10 w-full  bg-white dark:bg-[#0D1117]  shadow-md transition-colors duration-300">
+    <div
+      ref={navRef}
+      className=" sticky top-0 z-10 w-full  bg-white dark:bg-[#0D1117] bg-opacity-95  shadow-md transition-colors duration-300"
+    >
       <div className="pt-3 pb-4 sm:px-10 px-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
@@ -48,12 +65,19 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Nav Links */}
-          <div className="hidden  lg:flex gap-6 text-lg  text-[#161B22] dark:text-gray-100">
+          <div className="hidden  lg:flex gap-6 text-lg   dark:text-gray-100">
             {navLinks.map((link) => (
               <NavLink
                 key={link.path}
                 to={link.path}
-                className="hover:underline decoration-[#6A5DFF] underline-offset-4 decoration-2"
+                className={({ isActive }) =>
+                  `hover:underline decoration-[#00AEEF] underline-offset-4 decoration-2
+     ${
+       isActive
+         ? "text-[#00AEEF] font-semibold"
+         : "text-[#161B22] dark:text-gray-100"
+     }`
+                }
               >
                 {link.name}
               </NavLink>
@@ -65,13 +89,13 @@ const Navbar = () => {
             <div className="hidden lg:flex gap-3">
               <Button
                 onClick={() => navigate("/signup")}
-                className="border border-[#6A5DFF]   sm:px-4  text-sm sm:text-base  text-[#161B22] dark:bg-gray-600 dark:text-gray-100 hover:bg-[#6767ec] hover:text-white transition whitespace-nowrap"
+                className="bg-[#6A5DFF]/15   sm:px-4  text-sm sm:text-base  text-[#161B22] dark:bg-gray-600 dark:text-gray-100   whitespace-nowrap"
               >
                 Sign Up
               </Button>
               <Button
                 onClick={() => navigate("/login")}
-                className="border border-[#6A5DFF]   sm:px-4  text-sm sm:text-base  text-[#161B22] dark:bg-gray-600 dark:text-gray-100 hover:bg-[#6767ec] hover:text-white transition whitespace-nowrap"
+                className="bg-[#6A5DFF]/15 sm:px-4  text-sm sm:text-base   text-[#161B22] dark:bg-gray-600 dark:text-gray-100    whitespace-nowrap"
               >
                 Log In
               </Button>

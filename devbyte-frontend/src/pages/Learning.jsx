@@ -9,18 +9,20 @@ import {
 } from "react-icons/di";
 import { SiTailwindcss, SiFigma, SiFramer } from "react-icons/si";
 import Card from "@/components/ui/Card";
+import HeaderWrapper from "@/components/ui/Header";
+import Button from "@/components/ui/Button";
 
 const tagIcons = {
-  React: <DiReact className="text-sky-500 w-6 h-6" />,
-  JavaScript: <DiJavascript className="text-yellow-500 w-6 h-6" />,
-  JSON: <DiJavascript className="text-yellow-500 w-6 h-6" />,
-  CSS: <DiCss3 className="text-blue-500 w-6 h-6" />,
-  Tailwind: <SiTailwindcss className="text-cyan-500 w-6 h-6" />,
-  WordPress: <DiWordpress className="text-indigo-500 w-6 h-6" />,
-  Figma: <SiFigma className="text-pink-500 w-6 h-6" />,
-  Framer: <SiFramer className="text-purple-500 w6 h-6" />,
-  Layout: <DiCss3 className="text-blue-400 w-6 h-6" />,
-  Performance: <DiReact className="text-green-500 w-6 h-6" />,
+  React: <DiReact className="w-6 h-6 text-sky-500" />,
+  JavaScript: <DiJavascript className="w-6 h-6 text-yellow-500" />,
+  JSON: <DiJavascript className="w-6 h-6 text-yellow-500" />,
+  CSS: <DiCss3 className="w-6 h-6 text-blue-500" />,
+  Tailwind: <SiTailwindcss className="w-6 h-6 text-cyan-500" />,
+  WordPress: <DiWordpress className="w-6 h-6 text-indigo-500" />,
+  Figma: <SiFigma className="w-6 h-6 text-pink-500" />,
+  Framer: <SiFramer className="h-6 text-purple-500 w6" />,
+  Layout: <DiCss3 className="w-6 h-6 text-blue-400" />,
+  Performance: <DiReact className="w-6 h-6 text-green-500" />,
 };
 
 const resources = [
@@ -107,18 +109,18 @@ const resources = [
 // Component to display a single resource card
 const ResourceCard = ({ resource }) => {
   return (
-    <Card className="bg-opacity-20 overflow-hidden w-full flex flex-col">
+    <Card className="flex flex-col w-full overflow-hidden bg-opacity-20">
       {/* Resource image */}
       <img
         src={resource.image}
         alt={resource.title}
-        className="w-full h-40 object-cover rounded-t-lg"
+        className="object-cover w-full h-40 rounded-t-lg"
       />
 
       {/* Resource content */}
       <div className="p-4 text-[#161B22] dark:text-[#FFFF] flex flex-col flex-grow text-center">
         {/* Resource title */}
-        <h2 className="text-lg sm:text-xl  mb-2">{resource.title}</h2>
+        <h2 className="mb-2 text-lg sm:text-xl">{resource.title}</h2>
 
         {/* Resource author */}
         <p className="text-sm sm:text-base  text-[#161B22] dark:text-[#FFFF] mb-3">
@@ -130,7 +132,7 @@ const ResourceCard = ({ resource }) => {
           {resource.tags.map((tag, index) => (
             <div
               key={index}
-              className="bg-[#D9D9D9] border rounded-full flex items-center justify-center px-6 py-1 text-sm"
+              className="bg-[#D9D9D9] border rounded-sm flex items-center justify-center px-6 py-1 text-sm"
             >
               {/* Show an icon if available, otherwise just show the tag text */}
               {tagIcons[tag] || <span className="text-gray-700">{tag}</span>}
@@ -182,16 +184,14 @@ const Learning = () => {
   });
 
   return (
-    <div className="min-h-screen max-w-full z-0  ">
+    <div className="z-0 max-w-full min-h-screen ">
       {/* Header */}
-      <div className="bg-gradient-to-r from-[#00AEEF] to-[#6A5DFF] darkfrom-[#0C546E] dark:to-[#183D72] text-center p-6">
-        <h1 className="text-white text-2xl sm:text-3xl lg:text-4xl ">
-          Learning Hub
-        </h1>
-        <p className="text-[#FFFF] text-sm sm:text-lg pt-3">
+      <HeaderWrapper className="text-center ">
+        <h1 className="text-2xl sm:text-3xl lg:text-5xl">Learning Hub</h1>
+        <p className="pt-3 text-md sm:text-lg">
           Browse tutorials, articles and resources shared by the community
         </p>
-      </div>
+      </HeaderWrapper>
 
       {/* Filters */}
       <div className=" mx-auto max-w-6xl px-4 flex flex-wrap gap-4 justify-center items-center bg-[#D9D9D9] dark:bg-[#161B22] text-[#161B22] dark:text-[#D9D9D9]  p-5  mt-6">
@@ -242,11 +242,11 @@ const Learning = () => {
       </div>
 
       {/* Featured Resources */}
-      <div className="pt-8 mx-auto px-4 max-w-6xl">
+      <div className="max-w-6xl px-4 pt-8 mx-auto">
         <h1 className="text-xl sm:text-2xl  text-[#161B22] dark:text-[#D9D9D9] text-center p-5">
           Featured Resources
         </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {filteredResources
             .filter((res) => res.featured)
             .map((res) => (
@@ -256,11 +256,11 @@ const Learning = () => {
       </div>
 
       {/* All Resources */}
-      <div className="pt-10  mx-auto px-4 max-w-6xl">
+      <div className="max-w-6xl px-4 pt-10 mx-auto space-y-2">
         <h1 className="text-xl sm:text-2xl  text-[#161B22] dark:text-[#D9D9D9] text-center pb-5">
           All Resources
         </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {filteredResources
             .filter((res) => !res.featured)
             .map((res) => (
@@ -270,11 +270,11 @@ const Learning = () => {
       </div>
 
       {/* Footer */}
-      <div className="bg-gradient-to-r from-[#00AEEF] to-[#6A5DFF] dark:from-[#0C546E] dark:to-[#183D72] text-center p-6 mt-10">
-        <h1 className="text-white text-2xl sm:text-3xl lg:text-4xl ">
+      <HeaderWrapper className="p-6 mt-10 text-center ">
+        <h1 className="text-[#161B22] dark:text-white text-3xl sm:text-3xl lg:text-4xl ">
           Contribute a Resource
         </h1>
-        <p className="text-[#FFFF] text-sm sm:text-lg pt-3">
+        <p className="text-[#161B22] dark:text-white text-sm sm:text-lg pt-3">
           Share articles, tutorials or links with Devbyte
         </p>
 
@@ -282,11 +282,12 @@ const Learning = () => {
           href="https://github.com/DevByte-Community/Community-Website-Frontend/tree/4022bfb31f53b91355bcd091b753b2d708c066dd/.github/ISSUE_TEMPLATE"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block rounded-full py-1 px-4   mt-2 border border-[#5e5ef0] hover:border-[#5f5fb8]  text-white "
         >
+        <Button className="inline-block  bg-blue-500 hover:bg-blue-700 mt-2  text-[#FFFFFF] dark:text-white ">
           View Source
+        </Button>
         </a>
-      </div>
+      </HeaderWrapper>
     </div>
   );
 };
