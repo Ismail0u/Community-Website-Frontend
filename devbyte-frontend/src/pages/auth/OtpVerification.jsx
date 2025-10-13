@@ -1,10 +1,31 @@
-import React, { useState } from "react";
+import React from "react";
+import { useEffect, useState } from "react";
 import { ArrowLeft, CheckCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const OtpVerification = () => {
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const [verified, setVerified] = useState(false);
+  const [timer, setTimer] = useState(30);
+
+// Countdown timer logic
+  useEffect(() => {
+    if (timer <= 0) return;
+
+    const countdown = setInterval(() => {
+      setTimer((prev) => prev - 1);
+    }, 1000);
+
+    return () => clearInterval(countdown);
+  }, [timer]);
+
+
+  const handleResend = () => {
+    alert("Resend OTP clicked");
+    setTimer(30); // Reset timer after resend
+  };
+
+
 
   const handleChange = (e, index) => {
     const value = e.target.value;
@@ -23,7 +44,7 @@ const OtpVerification = () => {
       setVerified(true);
       setTimeout(() => {
         // simulate redirect
-        window.location.href = "/";
+        window.location.href = "/reset-password";
       }, 2500);
     } else {
       alert("Please enter all 6 digits of your OTP");
@@ -85,15 +106,22 @@ const OtpVerification = () => {
                   </button>
                 </form>
 
-                <p className="text-gray-600 dark:text-gray-300 mt-6 text-sm">
-                  Didn’t receive the code?{" "}
+              <p className="text-gray-600 dark:text-gray-300 mt-6 text-sm">
+                Didn’t receive the code?{" "}
+                {timer > 0 ? (
+                  <span className="text-blue-400 font-medium">
+                    Resend in {timer}s
+                  </span>
+                ) : (
                   <button
                     className="text-blue-400 hover:text-blue-600 font-medium transition"
-                    onClick={() => alert("Resend OTP clicked")}
+                    onClick={handleResend}
                   >
                     Resend
                   </button>
-                </p>
+                )}
+              </p>
+
               </motion.div>
             ) : (
               <motion.div
@@ -131,7 +159,7 @@ const OtpVerification = () => {
                   transition={{ delay: 0.5 }}
                   className="text-gray-600 dark:text-gray-300 mt-2"
                 >
-                  Redirecting to your dashboard...
+                  Redirecting to reset your password...
                 </motion.p>
               </motion.div>
             )}
