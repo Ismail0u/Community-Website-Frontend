@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FaMagnifyingGlass, FaChevronDown } from "react-icons/fa6";
 import EventImg from "@/assets/images/black-students-posing-with-gadgets.webp";
 import SwiperComponent from "@/components/ui/swiper.jsx";
+import HeaderWrapper from "@/components/ui/Header";
 
 const Events = () => {
   const [inputType, setInputType] = useState("text");
@@ -117,25 +118,24 @@ const Events = () => {
   return (
     <div className="min-h-screen bg-[#FFFFFF] dark:bg-[#0D1117] text-[#161B22] dark:text-[#D9D9D9]">
       {/* Top container with message */}
-      <section className="py-14 w-full bg-gradient-to-r from-[#00AEEF] to-[#6A5DFF] text-center">
-        <h1
-          className={`text-depth-shadow text-3xl sm:text-5xl font-extrabold mb-2`}
-        >
-          Community Events & Meetups
-        </h1>
-        <p className=" text-sm sm:text-lg">
-          Learn, connect, and grow with our upcoming and past events.
-        </p>
-      </section>
-
+       <HeaderWrapper className="text-center ">
+          <h1
+            className={`text-depth-shadow text-3xl sm:text-5xl font-extrabold mb-2`}
+          >
+            Community Events & Meetups
+          </h1>
+          <p className="text-sm sm:text-lg">
+            Learn, connect, and grow with our upcoming and past events.
+          </p>
+       </HeaderWrapper>
       {/* FILTER SECTION */}
       <section
-        className={` bg-[#FFFFFF] dark:bg-[#161B22] flex justify-center gap-2 sm:gap-10 border border-[#161B22] py-3`}
+        className={`mx-auto max-w-6xl px-4 flex flex-wrap gap-4 justify-center items-center bg-[#D9D9D9] dark:bg-[#161B22] text-[#161B22] dark:text-[#D9D9D9] mt-[20px] py-[20px]`}
       >
         {/* EVENT TYPE */}
-        <div className="w-[25%] sm:w-[15%] bg-[#D9D9D9] dark:dark:bg-gray-600 font-medium px-1 sm:px-4 py-2 rounded-lg">
+        <div className="w-[25%] sm:w-[15%] bg-[white] text-[black] dark:dark:bg-gray-600 font-medium px-1 sm:px-4 py-2 rounded-lg">
           <select
-            className="w-full bg-inherit outline-none"
+            className="w-[150px] bg-white outline-none bg-inherit"
             value={selectedEventType}
             onChange={(e) => setSelectedEventType(e.target.value)}
           >
@@ -149,7 +149,7 @@ const Events = () => {
 
         {/* DATE */}
         <div
-          className="w-[25%] sm:w-[15%] h-[10] flex items-center justify-between bg-[#D9D9D9] dark:bg-gray-600 px-2 sm:px-6 rounded-lg cursor-pointer font-medium "
+          className="w-[25%] sm:w-[15%] h-[10] flex items-center justify-between py-2  bg-[white] text-[black] dark:bg-gray-600 px-2 sm:px-6 rounded-lg cursor-pointer font-medium "
           onClick={() => {
             setInputType("date");
           }}
@@ -178,7 +178,7 @@ const Events = () => {
         </div>
 
         {/* SEARCH INPUT */}
-        <div className="w-[40%] md:w-[25%] flex items-center justify-between bg-[#D9D9D9] dark:dark:bg-gray-600 px-2 sm:px-6 py-2 rounded-lg font-medium ">
+        <div className="w-[40%] md:w-[25%] flex items-center justify-between bg-[white] text-[black] dark:dark:bg-gray-600 px-2 sm:px-6 py-2 rounded-lg font-medium ">
           <input
             className="bg-transparent w-[90%] outline-none"
             type="text"
@@ -193,7 +193,7 @@ const Events = () => {
 
         {/* Upcoming Events */}
         <div>
-          <h2 className="text-3xl font-bold mb-2">Upcoming Events</h2>
+          <h2 className="mb-2 text-3xl font-bold">Upcoming Events</h2>
 
           <ul
             className={` h-full w-full flex flex-wrap lg:flex-nowrap flex-col sm:flex-row lg:flex-col justify-between px-4 lg:px-6 py-4`}
@@ -213,14 +213,14 @@ const Events = () => {
                 >
                   <img
                     src={event.image}
-                    className="w-full h-full object-cover object-center rounded-xl lg:rounded-3xl"
+                    className="object-cover object-center w-full h-full rounded-xl lg:rounded-3xl"
                   />
                 </div>
 
                 {/* Content and Buttons Area (Right) */}
-                <div className="w-full lg:w-2/3 h-2/3 lg:h-full flex flex-col gap-3 lg:gap-5">
+                <div className="flex flex-col w-full gap-3 lg:w-2/3 h-2/3 lg:h-full lg:gap-5">
                   <div>
-                    <div className="flex items-start lg:items-center justify-between font-bold">
+                    <div className="flex items-start justify-between font-bold lg:items-center">
                       <h3 className="text-xl">{event.title}</h3>
                       <p>{event.type}</p>
                     </div>
@@ -254,7 +254,7 @@ const Events = () => {
 
         {/* Past Events */}
         <div className={` mt-14`}>
-          <h2 className="text-3xl text-center font-extrabold">Past Events</h2>
+          <h2 className="text-3xl font-extrabold text-center">Past Events</h2>
 
           <SwiperComponent events={pastEvents} />
           {/* <ul
@@ -267,13 +267,13 @@ const Events = () => {
                 <div>
                   <img
                     src={event.image}
-                    className="w-full h-full object-cover object-center rounded-t-2xl rounded-b-none"
+                    className="object-cover object-center w-full h-full rounded-b-none rounded-t-2xl"
                   />
                 </div>
 
-                <div className=" px-2 md:px-3">
+                <div className="px-2 md:px-3">
                   <h3 className="text-[0.9rem] font-semibold">{event.title}</h3>
-                  <p className="font-medium text-sm ">{event.date}</p>
+                  <p className="text-sm font-medium ">{event.date}</p>
                 </div>
               </li>
             ))}
