@@ -16,14 +16,18 @@ const LearningSection = ({ learningData }) => {
         {learningData.map((data, idx) => (
           <Card
             key={`learn-${idx}`}
-            className="p-3 text-left space-y-3 shadow-sm bg-white"
+            className="p-3 text-left space-y-3 shadow-sm bg-white "
           >
             <img src={data.image} alt="" className="w-full" />
             <h1 className="w-fit bg-gradient-to-r from-[#e2e3e4] to-[#e0e0e0] rounded-sm border-0 text-black font-semibold py-[2px] px-2 text-[12px]">
               {data.tag}
             </h1>
-            <h1 className="text-[20px] font-semibold dark:text-black">{data.title}</h1>
-            <h1 className="line-clamp-3 text-[16px]  dark:text-black">{data.body}</h1>
+            <h1 className="text-[20px] font-semibold dark:text-black">
+              {data.title}
+            </h1>
+            <h1 className="line-clamp-3 text-[16px]  dark:text-black">
+              {data.body}
+            </h1>
             <a
               className="flex gap-2 justify-start items-center bg-clip-text text-transparent bg-gradient-to-r from-[#00AEEF] to-[#6A5DFF] text-[14px] w-full"
               href=""
