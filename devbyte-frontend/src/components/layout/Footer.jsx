@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import CommunityLogo from "@/assets/logos/IMG_20250811_164020_018-Photoroom.png";
+import HeaderWrapper from "../ui/Header";
 const Footer = () => {
   const pages = [
     { href: "/", name: "Home" },
@@ -27,8 +28,11 @@ const Footer = () => {
   ];
 
   return (
-    <div className={`px-6 sm:px-0 pt-20 pb-16 sm:pb-10`}>
-      <div className="flex flex-col items-center justify-center pb-16 sm:flex-row sm:items-start sm:justify-evenly sm:pb-10">
+    <HeaderWrapper
+      height="auto"
+      className={`px-6 sm:px-0 pt-20  sm:pb-10 border border-t-gray-500 `}
+    >
+      <div className="flex flex-col items-center  justify-center pb-16 sm:flex-row sm:items-start sm:justify-evenly sm:pb-10">
         {/* Logo */}
         <div>
           <img
@@ -44,7 +48,11 @@ const Footer = () => {
           <div className="flex flex-col items-start justify-start gap-1">
             <h2 className="font-bold">Navigation Link</h2>
             {pages.map((page, index) => (
-              <Link key={index} to={page.href} className="hover:text-[#00AEEF] hover:underline">
+              <Link
+                key={index}
+                to={page.href}
+                className="hover:text-[#00AEEF] hover:underline"
+              >
                 {page.name}
               </Link>
             ))}
@@ -55,7 +63,11 @@ const Footer = () => {
           <div className="flex flex-col items-start justify-start gap-1">
             <h2 className="font-bold ">Legal & support</h2>
             {legalAndSupport.map((page, index) => (
-              <Link key={index} to={page.href} className="hover:text-[#00AEEF] hover:underline">
+              <Link
+                key={index}
+                to={page.href}
+                className="hover:text-[#00AEEF] hover:underline"
+              >
                 {page.name}
               </Link>
             ))}
@@ -86,7 +98,7 @@ const Footer = () => {
       <p className={`text-sm text-center`}>
         ©2025 DevByte. All rights reserved
       </p>
-    </div>
+    </HeaderWrapper>
   );
 };
 export default Footer;
