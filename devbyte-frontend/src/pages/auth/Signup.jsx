@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
 import { FaGithub, FaGoogle, FaLinkedin, FaXTwitter } from 'react-icons/fa6';
-import bgImage from "@/assets/images/auth-bg.jpg";
+import bgImage from "@/assets/images/auth-bg.WEBP";
 
 const Signup = () => {
   const [show, setShow] = useState(false);

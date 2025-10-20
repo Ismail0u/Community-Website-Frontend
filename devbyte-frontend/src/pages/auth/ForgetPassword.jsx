@@ -1,6 +1,6 @@
 import React from "react";
 import HeaderWrapper from "@/components/ui/Header";
-import bgImage from "@/assets/images/auth-bg2.jpg";
+import bgImage from "@/assets/images/auth-bg2.WEBP";
 
 const ForgetPassword = () => {
   return (
