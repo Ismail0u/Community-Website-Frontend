@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { FaGithub, FaGoogle, FaLinkedin, FaXTwitter } from "react-icons/fa6";
-import bgImage from "@/assets/images/auth-bg.WEBP";
+import bgImage from "@/assets/images/auth-bg.webp";
 
 const Login = () => {
   const [show, setShow] = useState(false);
