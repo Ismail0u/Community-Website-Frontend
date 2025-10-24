@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
-import bgImage from "@/assets/images/auth-bg2.jpg";
+import bgImage from "@/assets/images/auth-bg2.webp";
 
 const ResetPassword = () => {
   const [showNew, setShowNew] = useState(false);
