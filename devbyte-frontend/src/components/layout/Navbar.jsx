@@ -86,19 +86,13 @@ const Navbar = () => {
 
           {/* Actions */}
           <div className=" flex  items-center gap-2 sm:gap-3 ">
-            <div className="hidden lg:flex gap-3">
-              <Button
-                onClick={() => navigate("/signup")}
-                className="bg-[#6A5DFF]/15   sm:px-4  text-sm sm:text-base  text-[#161B22] dark:bg-gray-600 dark:text-gray-100   whitespace-nowrap"
+            <div className="relative">
+              <button
+                onClick={() => setAuthOpen(!authOpen)}
+                className="rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 p-2 transition"
               >
-                Sign Up
-              </Button>
-              <Button
-                onClick={() => navigate("/login")}
-                className="bg-[#6A5DFF]/15 sm:px-4  text-sm sm:text-base   text-[#161B22] dark:bg-gray-600 dark:text-gray-100    whitespace-nowrap"
-              >
-                Log In
-              </Button>
+                <UserCircle />
+              </button>
             </div>
 
             <button
@@ -107,16 +101,6 @@ const Navbar = () => {
             >
               {theme === "light" ? <Moon /> : <SunDim />}
             </button>
-
-            {/* Tablet: User Icon triggers dropdown */}
-            <div className=" block lg:hidden relative">
-              <button
-                onClick={() => setAuthOpen(!authOpen)}
-                className=" rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition"
-              >
-                <UserCircle />
-              </button>
-            </div>
 
             {/* Mobile menu toggle */}
             <button
@@ -128,39 +112,41 @@ const Navbar = () => {
           </div>
         </div>
         {authOpen && (
-          <div className="absolute left-0 right-0  text-gray-800  shadow-md transition-all duration-300 overflow-hidden">
-            <div className="border-t  border-gray-200 dark:border-gray-600 bg-[#D9D9D9] text-[#161B22] dark:bg-[#161B22] ">
-              <div className="flex justify-between items-center   px-2 py-3 ">
-                <span className=" pl-2 text-lg text-gray-900 dark:text-gray-100 pb-2">
-                  Account
-                </span>
-                <button
-                  className="text-[#161B22]  dark:text-white"
-                  onClick={() => setAuthOpen(false)}
-                >
-                  <X />
-                </button>
-              </div>
-              <div className="flex flex-col">
-                <Button
-                  onClick={() => {
-                    navigate("/signup");
-                    setAuthOpen(false);
-                  }}
-                  className="w-full text-left py-3  px-4  text-md text-[#161B22]  dark:text-gray-100 "
-                >
-                  Sign Up
-                </Button>
-                <Button
-                  onClick={() => {
-                    navigate("/login");
-                    setAuthOpen(false);
-                  }}
-                  className="w-full text-left py-3  px-4  text-md text-[#161B22]  dark:text-gray-100 "
-                >
-                  Log In
-                </Button>
-              </div>
+          <div
+            className="absolute right-0 mt-2 w-48 bg-white dark:bg-[#161B22] 
+               border border-gray-200 dark:border-gray-700 
+               shadow-lg z-50 transition-all duration-300"
+          >
+            <div className="flex justify-between items-center ">
+              <span className="text-gray-900 dark:text-gray-100 pb-4 px-4">
+                Account
+              </span>
+              <button
+                className="text-[#161B22]  dark:text-white"
+                onClick={() => setAuthOpen(false)}
+              >
+                <X />
+              </button>
+            </div>
+            <div className="flex flex-col">
+              <Button
+                onClick={() => {
+                  navigate("/signup");
+                  setAuthOpen(false);
+                }}
+                className="w-full text-left py-4 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-800"
+              >
+                Sign Up
+              </Button>
+              <Button
+                onClick={() => {
+                  navigate("/login");
+                  setAuthOpen(false);
+                }}
+                className="w-full text-left py-4 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-800"
+              >
+                Log In
+              </Button>
             </div>
           </div>
         )}
