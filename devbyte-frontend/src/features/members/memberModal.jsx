@@ -6,14 +6,14 @@ const MemberModal = ({ member, isOpen, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 bg-white/70 dark:bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 bg-white/70 dark:bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 sm:p-1"
       onClick={onClose}
     >
       <div
-        className="bg-[#fbfbfb] dark:bg-[#0D1117] border border-gray-300 dark:border-[#30363D] rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+        className="bg-[#fbfbfb] dark:bg-[#0D1117] border border-gray-300 dark:border-[#30363D] rounded-lg max-w-2xl w-full sm:max-w-2x max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative bg-gradient-to-r from-[#00AEEF] to-[#6A5DFF] p-6 rounded-t-lg">
+        <div className="relative bg-gradient-to-r from-[#00AEEF] to-[#6A5DFF] p-2 sm:p-6 rounded-t-lg">
           <button
             onClick={onClose}
             className="absolute top-4 right-4 text-white/80 hover:text-white transition-colors"
@@ -34,28 +34,28 @@ const MemberModal = ({ member, isOpen, onClose }) => {
           </div>
         </div>
 
-        <div className="p-6 space-y-6">
+        <div className="p-2 space-y-2 sm:p-6 sm:space-y-6">
           <div>
             <h3 className="text-black dark:text-white text-lg font-semibold mb-2">About</h3>
             <p className="text-gray-800 dark:text-[#8B949E] text-sm leading-relaxed">{member.bio}</p>
           </div>
 
           <div className="grid grid-cols-3 gap-4">
-            <div className="bg-gray-50 dark:bg-[#161B22] border border-gray-200 dark:border-[#30363D] rounded-lg p-4 text-center">
+            <div className="bg-gray-50 dark:bg-[#161B22] border border-gray-200 dark:border-[#30363D] rounded-lg p-2 sm:p-4 text-center">
               <div className="flex justify-center mb-2">
                 <Award className="text-[#00AEEF]" size={20} />
               </div>
               <div className="text-black dark:text-white text-xl font-bold">{member.projectsCompleted}</div>
               <div className="text-gray-800 dark:text-[#8B949E] text-xs">Projects</div>
             </div>
-            <div className="bg-gray-50 dark:bg-[#161B22] border border-gray-200 dark:border-[#30363D] rounded-lg p-4 text-center">
+            <div className="bg-gray-50 dark:bg-[#161B22] border border-gray-200 dark:border-[#30363D] rounded-lg p-2 sm:p-4 text-center">
               <div className="flex justify-center mb-2">
                 <TrendingUp className="text-[#6A5DFF]" size={20} />
               </div>
               <div className="text-black dark:text-white text-xl font-bold">{member.contributions}</div>
               <div className="text-gray-800 dark:text-[#8B949E] text-xs">Contributions</div>
             </div>
-            <div className="bg-gray-50 dark:bg-[#161B22] border border-gray-200 dark:border-[#30363D] rounded-lg p-4 text-center">
+            <div className="bg-gray-50 dark:bg-[#161B22] border border-gray-200 dark:border-[#30363D] rounded-lg p-2 sm:p-4 text-center">
               <div className="flex justify-center mb-2">
                 <Calendar className="text-[#58A6FF]" size={20} />
               </div>
@@ -79,9 +79,9 @@ const MemberModal = ({ member, isOpen, onClose }) => {
             </div>
           </div>
                 {/**Social Links */}
-          <div>
+          <div >
             <h3 className="text-black dark:text-white text-lg font-semibold mb-3">Connect</h3>
-            <div className="flex gap-4">
+            <div className="flex justify-center sm:justify-start gap-4">
               <a
                 href={member.social.github}
                 target="_blank"
@@ -90,7 +90,7 @@ const MemberModal = ({ member, isOpen, onClose }) => {
                          border border-gray-200 dark:border-[#30363D] hover:border-[#00AEEF] hover:text-black dark:hover:text-white transition-all"
               >
                 <Github size={20} />
-                <span className="text-sm">GitHub</span>
+                <span className="text-sm hidden sm:block">GitHub</span>
               </a>
               <a
                 href={member.social.linkedin}
@@ -100,7 +100,7 @@ const MemberModal = ({ member, isOpen, onClose }) => {
                          border border-gray-200 dark:border-[#30363D] hover:border-[#0A66C2] hover:text-[#0A66C2] transition-all"
               >
                 <Linkedin size={20} />
-                <span className="text-sm">LinkedIn</span>
+                <span className="text-sm hidden sm:block">LinkedIn</span>
               </a>
               <a
                 href={member.social.twitter}
@@ -110,7 +110,7 @@ const MemberModal = ({ member, isOpen, onClose }) => {
                          border border-gray-200 dark:border-[#30363D] hover:border-[#1DA1F2] hover:text-[#1DA1F2] transition-all"
               >
                 <Twitter size={20} />
-                <span className="text-sm">Twitter</span>
+                <span className="text-sm hidden sm:block">Twitter</span>
               </a>
             </div>
           </div>
