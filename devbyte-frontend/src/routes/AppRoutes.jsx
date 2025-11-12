@@ -19,6 +19,7 @@ import PrivacyPolicy from "@/pages/PrivacyPolicy.jsx";
 import Jobs from "@/pages/Jobs.jsx";
 import Member from "@/pages/Member.jsx";
 import Contact from "@/pages/Contact.jsx";
+import AdminDashboard from "@/pages/AdminDashboard.jsx";
 
 
 export default function AppRoutes() {
@@ -43,6 +44,7 @@ export default function AppRoutes() {
         <Route path="terms" element={<TermsOfService />} />
         <Route path="policy" element={<PrivacyPolicy />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="adminDashboard" element={<AdminDashboard/>} />
       </Route>
     </Routes>
   );
