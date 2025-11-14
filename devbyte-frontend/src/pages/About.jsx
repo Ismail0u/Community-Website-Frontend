@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import HeaderWrapper from "@/components/ui/Header";
+import ProjectDetails from "@/features/projects/ProjectDetails";
 const Items = [
   {
     id: 1,
@@ -64,7 +65,7 @@ const About = () => {
       </section>
 
       {/* Our Mission & Vision content goes here */}
-      <section className="py-[100px] px-[20px]  md:py-[120px] md:px-[100px] bg-white dark:border-none">
+      <section className="py-[100px] px-[20px]   md:py-[120px] md:px-[100px] dark:border-none ">
         <h1 className="text-center font-bold text-3xl md:text-[28px] my-[20px] tracking-wide">
           Our Mission & Vision
         </h1>
@@ -113,7 +114,7 @@ const About = () => {
       </section>
 
       {/* Why Join Us content goes here */}
-      <section className="py-[100px] bg-white">
+      <section className="py-[100px] ">
         <h1 className="text-3xl font-bold text-center mb-7">Why Join Us</h1>
 
         {/* design card component goes here  */}
@@ -175,7 +176,7 @@ const About = () => {
               </p>
               <div className="flex justify-center gap-3 mt-4">
                 <Link to={"/signup"}>
-                  <Button className="capitalize transition duration-500 ease-in-out border-yellow-500 border-solid border-[1px] text-[blue] rounded-full">
+                  <Button className="capitalize transition duration-500 ease-in-out border-yellow-500 border-solid border-[1px]  text-[blue] dark:text-white hover:text-white hover:bg-yellow-500 rounded-full">
                     sign up free
                   </Button>
                 </Link>
