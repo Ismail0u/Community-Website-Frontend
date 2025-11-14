@@ -17,6 +17,7 @@ import zenBook from "@/assets/images/ZenBook Duo 14.png";
 import macbookair from "@/assets/images/MacBook Air (2022).png"
 import macbookair2022 from"@/assets/images/MacBook Air (2022) (1).png"
 import macbookair3 from "@/assets/images/MacBook Air3 (2022).png"
+import { Link } from "react-router-dom";
 function ProjectDetails() {
   const data = [
     { id: 1, title: "#UI" },
@@ -66,16 +67,17 @@ function ProjectDetails() {
         {/* header section */}
 
         <div className="flex md:justify-between flex-col justify-center  md:flex-row mt-6 ">
-          <Button className="border-blue-500 md:border-2  rounded-xl pl-0 w-[120px] h-[40px] ">
+          <Button className="border-blue-500 md:border-2  rounded-xl pl-0 w-[120px] h-[40px]  md:hover:bg-blue-500 hover:text-white ">
             {" "}
-            <a href="/" className="flex gap-4 ">
+            
+            <Link to="/projects" className="flex gap-4 ">
               {" "}
               <ArrowLeft
-                className=" md:w-[20px md:h-[20px] md:text-black  md:dark:text-white md:bg-transparent bg-black  text-white  rounded-full"
+                className=" md:w-[20px md:h-[20px] md:text-black  hover:p-5 md:dark:text-white md:bg-transparent bg-black  text-white  rounded-full"
                 size={30}
               />
               <h3 className="hidden md:block">Back</h3>
-            </a>
+            </Link>
           </Button>
           <div className="text-center ">
             <h1 className="font-bold tracking-wide text-2xl uppercase mb-1 md:text-end">
@@ -169,7 +171,7 @@ function ProjectDetails() {
             {images.map((image) => (
               <div
                 key={image.id}
-                className="bg-[#161B22]   rounded-md"
+                className="bg-[#161B22]  overflow-hidden  rounded-md"
               >
                 <img src={image.image} alt="images" className="w-[350px] h-[262px] object-cover" />
               </div>
@@ -177,7 +179,7 @@ function ProjectDetails() {
           </div>
 
           <div className="flex justify-center my-8">
-            <Button className="w-[249px] h-[56px] border-2 border-blue-500 ">
+            <Button className="w-[249px] h-[56px] border-2 border-blue-500 font-bold ">
               View More
             </Button>
           </div>

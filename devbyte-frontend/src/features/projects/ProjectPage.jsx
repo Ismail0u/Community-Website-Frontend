@@ -5,6 +5,7 @@ import { ProjectSidebar } from "./ProjectSidebar";
 import { ProjectPagination } from "./ProjectPagination";
 import { ProjectFilters } from "./projectFilter";
 import HeaderWrapper from "@/components/ui/Header";
+import { Link } from "react-router-dom";
 
 export const ProjectPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -99,7 +100,9 @@ export const ProjectPage = () => {
                 </h2>
                 <div className="grid grid-cols-1 gap-4 mr-8 sm:grid-cols-2 xl:grid-cols-3 sm:gap-6 lg:gap-8">
                 {featuredProjects.map((project) => (
+                  <Link to="/project-details">
                     <ProjectCard key={project.id} project={project} />
+                    </Link>
                 ))}
                 </div>
             </div>
@@ -113,7 +116,9 @@ export const ProjectPage = () => {
             {/* Projects Grid */}
             <div className="grid grid-cols-1 gap-4 mr-8 sm:grid-cols-2 xl:grid-cols-3 sm:gap-6 lg:gap-8">
               {regularProjects.map((project) => (
+                <Link to={"/project-details"}>
                 <ProjectCard key={project.id} project={project} />
+                </Link>
               ))}
             </div>
              <ProjectPagination
