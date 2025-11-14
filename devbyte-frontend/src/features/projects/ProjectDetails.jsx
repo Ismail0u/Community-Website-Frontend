@@ -73,7 +73,7 @@ function ProjectDetails() {
             <Link to="/projects" className="flex gap-4 ">
               {" "}
               <ArrowLeft
-                className=" md:w-[20px md:h-[20px] md:text-black  hover:p-5 md:dark:text-white md:bg-transparent bg-black  text-white  rounded-full"
+                className=" md:w-[20px md:h-[20px] md:text-black  md:dark:text-white md:bg-transparent bg-black  text-white  rounded-full"
                 size={30}
               />
               <h3 className="hidden md:block">Back</h3>
