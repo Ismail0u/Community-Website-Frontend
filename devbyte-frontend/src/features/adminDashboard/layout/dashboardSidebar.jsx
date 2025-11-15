@@ -86,17 +86,23 @@ const DashboardSidebar = ({ sidebarOpen, setSidebarOpen }) => {
         ))}
       </nav>
 
-      {/* BOTTOM */}
-      <div className="p-4 border-t space-y-1">
-        <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg">
+      
+      {/* Bottom Actions: Settings and Logout buttons */}
+      <div className="p-4 border-t  space-y-1">
+        {/* Settings Button */}
+        <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg ">
           <Settings size={20} />
           <span>Settings</span>
         </button>
+        {/* Logout Button */}
         <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg">
           <LogOut size={20} />
           <span>Logout</span>
         </button>
       </div>
+
+      {/* Version Indicator */}
+      <div className="p-4 text-xs text-right">v 0.0.0</div>
     </div>
   );
 };
