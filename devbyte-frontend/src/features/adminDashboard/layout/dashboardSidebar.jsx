@@ -50,61 +50,53 @@ const NavItem = ({ item }) => {
 /**
  * DashboardSidebar Component: Renders the entire persistent navigation bar.
  */
-const DashboardSidebar = () => {
+const DashboardSidebar = ({ sidebarOpen, setSidebarOpen }) => {
   const theme = useSelector((state) => state.theme.mode);
-
-  // Define colors based on theme
+  
   const sidebarBg = theme === 'light' ? 'bg-white border-gray-200' : 'bg-[#161B22] border-slate-800';
-  const dividerBorder = theme === 'light' ? 'border-gray-200' : 'border-slate-800';
-  const bottomItemClasses = theme === 'light' 
-    ? 'text-gray-600 hover:bg-gray-100 hover:text-gray-900' 
-    : 'text-gray-400 hover:bg-slate-800 hover:text-gray-200';
-  const versionColor = theme === 'light' ? 'text-gray-400' : 'text-gray-600';
-
 
   return (
-    <div className={`w-1/4 max-w-64 border-r flex flex-col ${sidebarBg}`}>
-      
-      {/* Header Section: Logo and branding */}
-      <div className={`p-6 border-b ${dividerBorder}`}>
-        <div>
-          <NavLink to="/">
-            <img
-              src={CommunityLogo}
-              alt="community logo"
-              className="w-28 sm:w-40 h-auto"
-            />
-          </NavLink>
-        </div>
+    <div
+      className={`
+        fixed inset-y-0 left-0 z-40 w-64 border-r ${sidebarBg}
+        transform transition-transform duration-300 ease-in-out
+        ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
+        lg:translate-x-0 lg:static
+      `}
+    >
+      {/* HEADER */}
+      <div className={`p-6 border-b`}>
+        <NavLink to="/">
+          <img src={CommunityLogo} alt="Logo" className="w-28 sm:w-40 h-auto" />
+        </NavLink>
+
+        {/* ✖ close button on mobile */}
+        <button
+          className="absolute top-4 right-4 lg:hidden p-2 rounded hover:bg-slate-800"
+          onClick={() => setSidebarOpen(false)}
+        >
+          ✕
+        </button>
       </div>
 
-      {/* Primary Navigation Links */}
+      {/* NAVIGATION */}
       <nav className="flex-1 p-4 space-y-1">
-        {NAVIGATION_ITEMS.map((item) => (
-          // Only item prop is passed; NavLink handles active state
-          <NavItem
-            key={item.id}
-            item={item}
-          />
+        {NAVIGATION_ITEMS.map(item => (
+          <NavItem key={item.id} item={item} />
         ))}
       </nav>
 
-      {/* Bottom Actions: Settings and Logout buttons */}
-      <div className={`p-4 border-t ${dividerBorder} space-y-1`}>
-        {/* Settings Button */}
-        <button className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg ${bottomItemClasses}`}>
+      {/* BOTTOM */}
+      <div className="p-4 border-t space-y-1">
+        <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg">
           <Settings size={20} />
           <span>Settings</span>
         </button>
-        {/* Logout Button */}
-        <button className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg ${bottomItemClasses}`}>
+        <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg">
           <LogOut size={20} />
           <span>Logout</span>
         </button>
       </div>
-
-      {/* Version Indicator */}
-      <div className={`p-4 text-xs ${versionColor}`}>v 0.0.0</div>
     </div>
   );
 };

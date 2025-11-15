@@ -1,5 +1,5 @@
 import React from "react";
-import { Search, Bell } from 'lucide-react';
+import { Search, Bell, Menu } from 'lucide-react';
 
 
 // SearchBar Component
@@ -49,16 +49,27 @@ const UserAvatar = () => (
 );
 
 // Header Component (Main container for the dashboard header)
-const DashboardHeader = () => {
-  
+const DashboardHeader = ({ setSidebarOpen }) => {
   return (
-    // Header container with theme-specific background and a bottom divider
     <div className="border-b px-8 py-4 bg-white border-gray-200 dark:bg-[#161b22] dark:border-slate-800">
       <div className="flex items-center justify-between">
-        {/* Title of the current section */}
-        <h1 className="text-2xl font-bold text-blue-600 dark:text-blue-600">Dashboard Overview</h1>
-        
-        {/* Action items: Search, Notifications, and User Profile */}
+
+        {/* LEFT : HAMBURGER + TITLE */}
+        <div className="flex items-center gap-4">
+          {/* 🟦 HAMBURGER only on mobile */}
+          <button
+            className="lg:hidden p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-800"
+            onClick={() => setSidebarOpen(true)}
+          >
+            <Menu size={24} />
+          </button>
+
+          <h1 className="text-2xl font-bold text-blue-600 dark:text-blue-600">
+            Dashboard Overview
+          </h1>
+        </div>
+
+        {/* RIGHT : Search, notif, avatar */}
         <div className="flex items-center gap-4">
           <SearchBar />
           <NotificationButton />
