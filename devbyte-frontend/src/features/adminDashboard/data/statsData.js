@@ -25,8 +25,8 @@ export const statsData = [
     icon: Users, 
     label: 'Active Members', 
     value: '2,540', 
-    change: '+7%', 
-    trend: TREND_DIRECTION.UP 
+    change: '-7%', 
+    trend: TREND_DIRECTION.DOWN 
   },
   { 
     id: 'projects',
