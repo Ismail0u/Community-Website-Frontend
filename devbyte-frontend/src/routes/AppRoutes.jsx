@@ -44,7 +44,7 @@ export default function AppRoutes() {
         <Route path="terms" element={<TermsOfService />} />
         <Route path="policy" element={<PrivacyPolicy />} />
         <Route path="contact" element={<Contact />} />
-        <Route path="project-details" element={<ProjectDetails/>} />
+        <Route path="project-details/:id" element={<ProjectDetails/>} />
       </Route>
     </Routes>
   );

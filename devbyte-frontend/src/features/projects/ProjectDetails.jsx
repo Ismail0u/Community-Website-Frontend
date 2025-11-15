@@ -17,7 +17,8 @@ import zenBook from "@/assets/images/ZenBook Duo 14.png";
 import macbookair from "@/assets/images/MacBook Air (2022).png"
 import macbookair2022 from"@/assets/images/MacBook Air (2022) (1).png"
 import macbookair3 from "@/assets/images/MacBook Air3 (2022).png"
-import { Link } from "react-router-dom";
+import { Link,useParams } from "react-router-dom";
+import { projectData } from "./ProjectData";
 function ProjectDetails() {
   const data = [
     { id: 1, title: "#UI" },
@@ -61,13 +62,22 @@ function ProjectDetails() {
     {id:6,image:macbookair3}
 
   ];
+
+  const {id} = useParams();
+  console.log("url", id);
+  const project = projectData.find((item)=> item.id === Number(id));
+  console.log(project);
+if (!project) {
+  return <div className="p-10 text-red-600 text-center text-xl">No project details found  😢 </div>
+  
+}
   return (
     <>
       <section className="md:px-52 md:py-5 px-4 py-2  ">
         {/* header section */}
 
         <div className="flex md:justify-between flex-col justify-center  md:flex-row mt-6 ">
-          <Button className="border-blue-500 md:border-2  rounded-xl pl-0 w-[120px] h-[40px]  md:hover:bg-blue-500 hover:text-white ">
+          <Button className="border-blue-500 md:border-2 hidden md:block rounded-xl pl-0 w-[120px] h-[40px]  md:hover:bg-blue-500 hover:text-white ">
             {" "}
             
             <Link to="/projects" className="flex gap-4 ">
@@ -76,12 +86,18 @@ function ProjectDetails() {
                 className=" md:w-[20px md:h-[20px] md:text-black  md:dark:text-white md:bg-transparent bg-black  text-white  rounded-full"
                 size={30}
               />
-              <h3 className="hidden md:block">Back</h3>
+              <h3 >Back</h3>
             </Link>
           </Button>
+          <Link to="/projects" className="block md:hidden bg-white w-[30px] h-[30px] rounded-full hover:bg-blue-500">
+            <ArrowLeft
+                className="text-black "
+                size={30}
+              />
+          </Link>
           <div className="text-center ">
             <h1 className="font-bold tracking-wide text-2xl uppercase mb-1 md:text-end">
-              DevByte Website Redesign
+              {project.title}
             </h1>
             <h4 className="dark:text-[#D9D9D9] font-light">
               A refreshed UI for a smoother community experience
@@ -92,8 +108,8 @@ function ProjectDetails() {
         {/* frame image section */}
         <div className="mt-10 flex justify-center">
           <img
-            src={frame}
-            alt="frame_340"
+            src={project.image}
+            alt={project.title}
             className="md:w-[1080px] md:h-[500px] w-screen h-[200px] "
           />
         </div>
@@ -103,20 +119,16 @@ function ProjectDetails() {
             Overview
           </h3>
           <p className="text-[14px] tracking-wide md:w-[1070px] w-[350px] md:text-start text-center font-light">
-            DevByte Website Redesign focuses on simplifying navigation and
-            improving the experience for first-time users. Built with Figma and
-            Flutter, it offers a sleek dark interface and better performance.
+           {project.description}
           </p>
 
           <div className="flex gap-2">
-            {data.map((title) => (
+            
               <div
-                key={title.id}
                 className="bg-[#161B22] px-[10px] py-[5px] rounded-lg"
               >
-                <h2 className="text-white text-sm">{title.title}</h2>
+                <h2 className="text-white text-sm">#{project.technology}</h2>
               </div>
-            ))}
           </div>
           <div className="flex gap-4">
             <Button className="border-[#00C38A] border-2 flex md:gap-x-2 hover:bg-[#00C38A]  text-[#00AEEF] font-bold  hover:text-white ">
@@ -127,7 +139,9 @@ function ProjectDetails() {
               />{" "}
               View live
             </Button>
-            <Button className=" flex ring-2 ring-blue-500  p-[12px] gap-x-2 hover:bg-blue-500 text-[#6A5DFF] dark:text-white hover:text-white font-bold">
+
+            <Link to={project.github}>
+            <Button className=" flex ring-2 ring-blue-500  p-[12px] gap-x-2 hover:bg-blue-500 text-[#6A5DFF] dark:text-white hover:text-white font-bold" >
               <img
                 src={laptopComputer}
                 alt="laptop computer"
@@ -135,25 +149,30 @@ function ProjectDetails() {
               />{" "}
               Github Repo
             </Button>
+
+            </Link>
+            
           </div>
         </div>
+
+        {/* contributors  for each card */}
         <div className="my-24 ">
           <h3 className="text-[#6A5DFF] text-xl">Contributors</h3>
           <div className="grid md:grid-cols-2 grid-cols-1   text-white ">
-            {Contributors.map((user) => (
+            {project.contributors.map((contributor) => (
               <div
-                key={user.id}
+                key={contributor.id}
                 className="flex m-3 bg-[#161B22] hover:shadow-sm hover:shadow-blue-400 items-center  p-3 gap-3 rounded-xl  md:w-[400px] h-[88px]"
               >
                 <div>
-                  <img src={user.image} alt={user.name} className="w-10 h-15" />
+                  <img src={kabogo} alt="contributer" className="w-10 h-15" />
                 </div>
 
                 <div >
                   <h3 className="text-base font-bold tracking-wide">
-                    {user.name}
+                    {contributor}
                   </h3>
-                  <p className="text-sm">{user.experience}</p>
+                  <li className="text-sm list-none">{project.technology}</li>
                   <div className="flex gap-1">
                     <FaLinkedin className="w-4 h-4" />
                     <FaSquareFacebook className="w-4 h-4" />
