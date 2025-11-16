@@ -1,11 +1,14 @@
 import { DiGithubBadge } from "react-icons/di";
+import { Link } from "react-router-dom";
 
 export const ProjectCard = ({ project }) => {
   return (
+
+    <Link to={`/project-details/${project.id}`}>
     <div className="m-3 bg-[#fafafa] dark:bg-[#161B22] w-full rounded-xl shadow-md 
                     flex flex-col overflow-hidden  border-2 dark:border-[#2A2F36]  p-6
-                    transition-transform transform hover:scale-105 hover:shadow-xl">
-      
+                    transition-transform transform hover:scale-105 hover:shadow-xl" >
+     
       {/* Image */}
       <img
         src={project.image}
@@ -38,6 +41,8 @@ export const ProjectCard = ({ project }) => {
           </a>
         </div>
       </div>
+      
     </div>
-  );
+    
+    </Link>);
 };
