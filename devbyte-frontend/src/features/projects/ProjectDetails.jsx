@@ -110,7 +110,7 @@ if (!project) {
           <img
             src={project.image}
             alt={project.title}
-            className="md:w-[1080px] md:h-[500px] w-screen h-[200px] "
+            className="md:w-[1080px] md:h-[500px] w-screen h-[200px] rounded-md "
           />
         </div>
 
@@ -131,11 +131,11 @@ if (!project) {
               </div>
           </div>
           <div className="flex gap-4">
-            <Button className="border-[#00C38A] border-2 flex md:gap-x-2 hover:bg-[#00C38A]  text-[#00AEEF] font-bold  hover:text-white ">
+            <Button className="border-[#00C38A] border-2 flex md:gap-x-2 hover:bg-[#00C38A]  text-[#00AEEF] font-bold  hover:text-white  ">
               <img
                 src={viewLive}
                 alt="viewLive_png"
-                className=" w-[20px] h-[20px] object-cover"
+                className=" w-[20px] h-[20px] object-cover "
               />{" "}
               View live
             </Button>
