@@ -6,7 +6,6 @@ import laptopComputer from "@/assets/images/computer.png";
 import { ArrowLeft, Import } from "lucide-react";
 import adebowale from "@/assets/images/adebowale.png";
 import akinola from "@/assets/images/Akinola.png";
-import adebowale from "@/assets/images/adebowale.png";
 import tobechi from "@/assets/images/Tobechi.png";
 import { FaSquareTwitter } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa6";
