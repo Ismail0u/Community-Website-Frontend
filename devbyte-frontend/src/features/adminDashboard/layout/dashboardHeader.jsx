@@ -43,7 +43,7 @@ const NotificationButton = () => {
 // UserAvatar Component (Displays initials 'AK' as a placeholder)
 const UserAvatar = () => (
   // Avatar styling is theme-agnostic (gradient background)
-  <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+  <div className="w-16 h-8 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold">
     AK
   </div>
 );
@@ -51,26 +51,26 @@ const UserAvatar = () => (
 // Header Component (Main container for the dashboard header)
 const DashboardHeader = ({ setSidebarOpen }) => {
   return (
-    <div className="border-b px-8 py-4 bg-white border-gray-200 dark:bg-[#161b22] dark:border-slate-800">
+    <div className="border-b px-8 py-4 bg-white border-gray-200 dark:bg-[#161b22] dark:border-slate-800 fixed">
       <div className="flex items-center justify-between">
 
         {/* LEFT : HAMBURGER + TITLE */}
-        <div className="flex items-center gap-4">
-          {/* 🟦 HAMBURGER only on mobile */}
+        <div className="flex items-center gap-2">
+          {/* HAMBURGER only on mobile */}
           <button
-            className="lg:hidden p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-800"
+            className="lg:hidden p-1 rounded-lg  hover:bg-gray-200 dark:hover:bg-slate-800"
             onClick={() => setSidebarOpen(true)}
           >
-            <Menu size={24} />
+            <Menu size={24} className="text-black bg-white dark:text-white dark:bg-[#161b22]" />
           </button>
 
-          <h1 className="text-2xl font-bold text-blue-600 dark:text-blue-600">
+          <h1 className="text-sm sm:text-2xl font-bold text-blue-600 dark:text-blue-600">
             Dashboard Overview
           </h1>
         </div>
 
         {/* RIGHT : Search, notif, avatar */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <SearchBar />
           <NotificationButton />
           <UserAvatar />
