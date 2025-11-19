@@ -9,9 +9,10 @@ export const ActionCard = ({ action }) => {
       className="
         bg-white dark:bg-[#161b22]
         border border-gray-200 dark:border-gray-700
-        rounded-xl p-6 text-center
+        rounded-xl p-2 text-center
         hover:shadow-md hover:-translate-y-1
         transition-all
+        w-40 sm:max-w-none mx-auto
       "
     >
       {/* Icon bubble */}

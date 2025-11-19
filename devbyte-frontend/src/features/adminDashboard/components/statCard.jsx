@@ -13,10 +13,11 @@ export const StatCard = ({ stat }) => {
 
   return (
     <div
-      className="bg-white dark:bg-[#161b22] border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-sm transition-all w-full"
+      className="bg-white dark:bg-[#161b22] border border-gray-200 dark:border-gray-700 rounded-xl p-4 shadow-sm transition-all 
+       w-40 sm:max-w-none mx-auto "
     >
       {/* Header with main icon + trend */}
-      <div className="flex items-start justify-between mb-4">
+      <div className="flex items-start justify-between mb-3 sm:mb-4">
         <Icon className="text-[#00AEEF]" size={32} />
 
         {/* Trend direction */}
@@ -25,7 +26,7 @@ export const StatCard = ({ stat }) => {
             stat.trend
           )}`}
         >
-          <TrendIcon size={16} />
+          <TrendIcon size={14} className="sm:w-4 sm:h-4" />
           <span className="hidden sm:inline">{stat.change}</span>
           <span className="sm:hidden">
             {stat.change.split(" ")[0]}
