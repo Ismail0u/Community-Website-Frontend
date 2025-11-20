@@ -6,7 +6,6 @@ import laptopComputer from "@/assets/images/computer.png";
 import { ArrowLeft, Import } from "lucide-react";
 import adebowale from "@/assets/images/adebowale.png";
 import akinola from "@/assets/images/Akinola.png";
-import kabogo from "@/assets/images/kabogo.png";
 import tobechi from "@/assets/images/Tobechi.png";
 import { FaSquareTwitter } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa6";
@@ -43,7 +42,7 @@ function ProjectDetails() {
       id: 3,
       name: " Kabogo Michael",
       experience: "Graphic & UI/UX Designer",
-      image: kabogo,
+      image: adebowale,
     },
     {
       id: 4,
@@ -165,7 +164,7 @@ if (!project) {
                 className="flex  m-3 bg-[#161B22] hover:shadow-sm hover:shadow-blue-400 items-center  p-3 gap-3 rounded-xl  w-80"
               >
                 <div>
-                  <img src={kabogo} alt="contributer" className="w-10 h-15" />
+                  <img src={adebowale} alt="contributer" className="w-10 h-15" />
                 </div>
 
                 <div >
