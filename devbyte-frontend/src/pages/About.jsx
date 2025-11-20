@@ -140,11 +140,11 @@ const About = () => {
         </div>
 
         {/* knowledge sharing,collaborations,opportunities and networking cards goes here */}
-        <div className="flex flex-col items-center justify-center gap-5 md:flex-row">
+        <div className=" grid grid-cols-1 md:grid-cols-2  gap-5 lg:grid-cols-4 ml-10 ">
           {Items.map((item) => (
             <Card
               key={item.id}
-              className="shadow-md  dark:bg-[#161B22]  flex   flex-col items-center justify-center  p-[20px]   rounded-lg h-[250px] w-[300px] "
+              className="shadow-md  dark:bg-[#161B22]  flex   flex-col items-center justify-center  p-[20px]   rounded-lg w-72 h-72   "
             >
               <img
                 src={item.image}
