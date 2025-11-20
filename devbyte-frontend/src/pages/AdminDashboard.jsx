@@ -15,7 +15,9 @@ const AdminDashboard = () => {
       {/* Main content */}
       <div className="flex-1">
         <DashboardHeader setSidebarOpen={setSidebarOpen} />
-        <DashboardPage />
+        <div className="pt-16">
+            <DashboardPage />
+        </div>
       </div>
 
       {/* Overlay when sidebar is open (mobile) */}

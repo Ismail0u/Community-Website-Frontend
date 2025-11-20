@@ -10,7 +10,7 @@ const getStatusStyles = (status) => ({
 }[status] || "bg-gray-600/20 text-gray-400");
 
 export const ActivityRow = ({ activity }) => (
-    <div>
+    <>
         { /**use table on large screen (for computers ) and hidde the table on mobile  */}
         <tr className="hidden md:table-row border-b border-gray-200 dark:border-gray-700 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800/40">
             {/* User */}
@@ -66,5 +66,5 @@ export const ActivityRow = ({ activity }) => (
         </div>
       </td>
     </tr>
-  </div>
+  </>
 );
