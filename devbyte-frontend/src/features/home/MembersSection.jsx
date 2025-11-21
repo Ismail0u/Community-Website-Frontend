@@ -21,7 +21,7 @@ const MembersSection = ({
 
       <div className="relative max-w-[1200px] mx-auto px-4 mt-7 ">
         <div className="relative h-[250px] ">
-          <div className="relative h-full">
+          <div className="relative h-full ">
             {memberChunks.map((chunk, idx) => (
               <div
                 key={`members-chunk-${idx}`}
@@ -34,11 +34,11 @@ const MembersSection = ({
                 }`}
               >
                 <div className="flex items-center justify-center w-full h-full">
-                  <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 justify-items-center ">
+                  <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 justify-items-center lg:px-[0px] md:px-10 px-6">
                     {chunk.map((member, mIdx) => (
-                      <Card
+                      <div
                         key={`member-card-${idx}-${mIdx}`}
-                        className="flex flex-col items-center space-y-[6px] p-5 w-[360px] h-[212px] shadow-sm bg-[#00AEEF]/[5%]  dark:bg-white dark:text-black"
+                        className="flex flex-col items-center space-y-[6px] p-5 lg:w-[360px] md:w-[300px] w-[300px] h-[212px] shadow-sm bg-[#00AEEF]/[5%]  dark:bg-[#161B22] border border-gray-200 rounded-xl dark:border-[#2A2F36] dark:text-white  hover:scale-105 hover:shadow-xl transition duration-300"
                       >
                         <img
                           src={member.image}
@@ -53,13 +53,13 @@ const MembersSection = ({
                           {member.technologies.map((technology, tIdx) => (
                             <h1
                               key={`tech-${idx}-${mIdx}-${tIdx}`}
-                              className="bg-gradient-to-r from-[#e2e3e4] to-[#e0e0e0] rounded-sm text-black py-[2px] px-2 text-[12px] font-semibold"
+                              className="bg-[#fafafa] dark:bg-black dark:text-gray-300  border border-gray-200 dark:border-[#2A2F36] rounded-sm text-black py-[2px] px-2 text-[12px] font-semibold"
                             >
                               {technology}
                             </h1>
                           ))}
                         </div>
-                      </Card>
+                      </div>
                     ))}
                   </div>
                 </div>
