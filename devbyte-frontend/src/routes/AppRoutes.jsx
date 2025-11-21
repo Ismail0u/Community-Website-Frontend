@@ -22,7 +22,7 @@ import Contact from "@/pages/Contact.jsx";
 import AdminDashboard from "@/pages/AdminDashboard.jsx";
 import AdminLayout from "@/components/layout/adminLayout.jsx";
 import ProjectDetails from "@/features/projects/ProjectDetails.jsx";
-
+import Error400 from "@/pages/ErrorPage.jsx";
 
 export default function AppRoutes() {
   return (
@@ -46,11 +46,12 @@ export default function AppRoutes() {
         <Route path="terms" element={<TermsOfService />} />
         <Route path="policy" element={<PrivacyPolicy />} />
         <Route path="contact" element={<Contact />} />
-        <Route path="project-details/:id" element={<ProjectDetails/>} />
+        <Route path="project-details/:id" element={<ProjectDetails />} />
+        <Route path="error" element={<Error400 type="network" />} />
       </Route>
 
       <Route path="/" element={<AdminLayout />}>
-        <Route path="adminDashboard" element={<AdminDashboard/>} />
+        <Route path="adminDashboard" element={<AdminDashboard />} />
       </Route>
     </Routes>
   );
