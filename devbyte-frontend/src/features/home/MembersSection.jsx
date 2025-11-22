@@ -2,6 +2,7 @@ import React from "react";
 import Card from "@/components/ui/Card";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Button from "@/components/ui/Button";
+import { hoverEffect } from "@/lib/HoverEffect";
 
 const MembersSection = ({
   title,
@@ -38,7 +39,7 @@ const MembersSection = ({
                     {chunk.map((member, mIdx) => (
                       <div
                         key={`member-card-${idx}-${mIdx}`}
-                        className="flex flex-col items-center space-y-[6px] p-5 lg:w-[360px] md:w-[300px] w-[300px] h-[212px] shadow-sm bg-[#00AEEF]/[5%]  dark:bg-[#161B22] border border-gray-200 rounded-xl dark:border-[#2A2F36] dark:text-white  hover:scale-105 hover:shadow-xl transition duration-300"
+                        className={`flex flex-col items-center space-y-[6px] p-5 lg:w-[360px] md:w-[300px] w-[300px] h-[212px] shadow-sm bg-[#00AEEF]/[5%]  dark:bg-[#161B22] border border-gray-200 rounded-xl dark:border-[#2A2F36] dark:text-white  ${hoverEffect}`}
                       >
                         <img
                           src={member.image}

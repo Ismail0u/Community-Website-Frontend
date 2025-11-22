@@ -2,6 +2,7 @@ import React from "react";
 import Card from "@/components/ui/Card";
 import { FaGithub } from "react-icons/fa6";
 import Button from "@/components/ui/Button";
+import { hoverEffect } from "@/lib/HoverEffect";
 
 const ProjectsSection = ({ projects }) => {
   return (
@@ -17,7 +18,7 @@ const ProjectsSection = ({ projects }) => {
         {projects.map((project, pIdx) => (
           <div
             key={`project-${pIdx}`}
-            className="p-5 shadow-sm space-y-5 dark:bg-[#161B22] border border-gray-200 rounded-xl dark:border-[#2A2F36] dark:text-white  hover:scale-105 hover:shadow-xl transition duration-300"
+            className={`p-5 shadow-sm space-y-5 dark:bg-[#161B22] border border-gray-200 rounded-xl dark:border-[#2A2F36] dark:text-white ${hoverEffect}`}
           >
             <h1 className="text-[20px] font-semibold">{project.title}</h1>
             <div className="flex justify-center gap-3">
