@@ -72,7 +72,7 @@ if (!project) {
 }
   return (
     <>
-      <section className="md:px-52 md:py-5 px-4 py-2  ">
+      <section className="lg:mx-20 mx-3 md:mx-5 ">
         {/* header section */}
 
         <div className="flex md:justify-between flex-col justify-center  md:flex-row mt-6 ">
@@ -109,7 +109,7 @@ if (!project) {
           <img
             src={project.image}
             alt={project.title}
-            className="md:w-[1080px] md:h-[500px] w-screen h-[200px] rounded-md "
+            className="md:w-[800px] md:h-[400px] w-screen h-[200px] rounded-md  "
           />
         </div>
 
@@ -117,7 +117,7 @@ if (!project) {
           <h3 className="text-[#6A5DFF] text-lg font-bold text-center md:text-start ">
             Overview
           </h3>
-          <p className="text-[14px] tracking-wide md:w-[1070px] w-[350px] md:text-start text-center font-light">
+          <p className="text-[14px] tracking-wide w-screen md:text-start text-center font-light">
            {project.description}
           </p>
 
@@ -161,7 +161,7 @@ if (!project) {
             {project.contributors.map((contributor) => (
               <div
                 key={contributor.id}
-                className="flex m-3 bg-[#161B22] hover:shadow-sm hover:shadow-blue-400 items-center  p-3 gap-3 rounded-xl  md:w-[400px] h-[88px]"
+                className="flex  m-3 bg-[#161B22] hover:shadow-sm hover:shadow-blue-400 items-center  p-3 gap-3 rounded-xl  w-80"
               >
                 <div>
                   <img src={adebowale} alt="contributer" className="w-10 h-15" />
@@ -185,7 +185,7 @@ if (!project) {
 
         <div className="md:px-[65px] md:py-[31px]  ">
           <h3 className="font-bold mb-2 md:text-start text-center">Gallery</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4  justify-around">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4  justify-around">
             {images.map((image) => (
               <div
                 key={image.id}
