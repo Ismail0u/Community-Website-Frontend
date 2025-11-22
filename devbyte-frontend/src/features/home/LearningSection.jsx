@@ -2,6 +2,7 @@ import React from "react";
 import Card from "@/components/ui/Card";
 import { CircleChevronRight } from "lucide-react";
 import Button from "@/components/ui/Button";
+import { hoverEffect } from "@/lib/HoverEffect";
 
 const LearningSection = ({ learningData }) => {
   return (
@@ -16,7 +17,7 @@ const LearningSection = ({ learningData }) => {
         {learningData.map((data, idx) => (
           <div
             key={`learn-${idx}`}
-            className="p-3 text-left space-y-3 shadow-sm bg-white dark:bg-[#161B22] border border-gray-200 rounded-xl dark:border-[#2A2F36] dark:text-white hover:scale-105 hover:shadow-xl transition duration-300"
+            className={`p-3 text-left space-y-3 shadow-sm bg-white dark:bg-[#161B22] border border-gray-200 rounded-xl dark:border-[#2A2F36] dark:text-white ${hoverEffect}`}
           >
             <img src={data.image} alt="" className="w-full" />
             <h1 className="w-fit bg-[#fafafa]  rounded-sm  text-black dark:bg-black border border-gray-200 dark:border-[#2A2F36] dark:text-gray-300 font-semibold py-[2px] px-2 text-[12px]">

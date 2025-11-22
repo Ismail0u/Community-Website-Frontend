@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
+import { hoverEffect } from "@/lib/HoverEffect";
 
 const OpportunitiesSection = ({ opportunities }) => {
   return (
@@ -18,7 +19,7 @@ const OpportunitiesSection = ({ opportunities }) => {
         {opportunities.map((opportunity, oIdx) => (
           <div
             key={`opp-${oIdx}`}
-            className="flex md:flex-row bg-white  flex-col md:justify-between md:p-5 p-[30px] shadow-sm items-center md:text-left text-center lg:w-[1160px]  dark:bg-[#161B22] border border-gray-200 rounded-xl dark:border-[#2A2F36] dark:text-white  hover:scale-105 hover:shadow-xl transition duration-300"
+            className={`flex md:flex-row bg-white  flex-col md:justify-between md:p-5 p-[30px] shadow-sm items-center md:text-left text-center lg:w-[1160px]  dark:bg-[#161B22] border border-gray-200 rounded-xl dark:border-[#2A2F36] dark:text-white ${hoverEffect}`}
           >
             <div className="space-y-[6px] md:w-[50%]">
               <h1 className="text-[20px] font-semibold">{opportunity.title}</h1>
