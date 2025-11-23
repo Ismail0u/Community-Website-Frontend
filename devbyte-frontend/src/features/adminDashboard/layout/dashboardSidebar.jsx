@@ -13,7 +13,6 @@ const NAVIGATION_ITEMS = [
   { id: 'projects', name: 'Projects', icon: Briefcase, path: '/projects' },
   { id: 'events', name: 'Events', icon: Calendar, path: '/events' },
   { id: 'blog', name: 'Blog', icon: FileText, path: '/blogs' },
-  { id: 'reports', name: 'Reports', icon: TrendingUp, path: '/reports' },
 ];
 
 /**
@@ -88,21 +87,21 @@ const DashboardSidebar = ({ sidebarOpen, setSidebarOpen }) => {
 
       
       {/* Bottom Actions: Settings and Logout buttons */}
-      <div className="p-4 border-t  space-y-1">
+      <div className="p-4 border-t  space-y-1 ">
         {/* Settings Button */}
-        <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg ">
+        <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-black hover:text-gray-800 dark:text-white dark:hover:text-gray-100">
           <Settings size={20} />
           <span>Settings</span>
         </button>
         {/* Logout Button */}
-        <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg">
+        <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-black hover:text-gray-800 dark:text-white dark:hover:text-gray-100">
           <LogOut size={20} />
           <span>Logout</span>
         </button>
       </div>
 
       {/* Version Indicator */}
-      <div className="p-4 text-xs text-right">v 0.0.0</div>
+      <div className="p-4 text-xs text-right text-black hover:text-gray-800 dark:text-white dark:hover:text-gray-100">v 0.0.0</div>
     </div>
   );
 };

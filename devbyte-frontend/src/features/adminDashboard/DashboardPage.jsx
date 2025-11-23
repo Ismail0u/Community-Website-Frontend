@@ -12,7 +12,7 @@ import { LineChart } from "./components/chartBar";
 // ---------------------- StatsGrid Component ----------------------
 // Displays stats in a responsive grid layout
 const StatsGrid = () => (
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+  <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2">
     {statsData.map((stat) => (
       <StatCard key={stat.id} stat={stat} />
     ))}
@@ -29,7 +29,7 @@ const RecentActivityTable = () => (
     {/* Horizontal scroll for small devices */}
     <div className="overflow-x-auto">
       <table className="w-full">
-        <thead>
+        <thead className="hidden md:table-header-group">
           <tr className="text-left text-gray-700 dark:text-gray-400 text-sm border-b border-gray-200 dark:border-gray-800">
             <th className="pb-4 font-medium">User</th>
             <th className="pb-4 font-medium">Action</th>
@@ -74,7 +74,7 @@ const WeeklyEngagementChart = () => {
 // ---------------------- QuickActionsGrid ----------------------
 // Displays quick action buttons in a responsive grid
 const QuickActionsGrid = () => (
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+  <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3">
     {quickActionsData.map((action) => (
       <ActionCard key={action.id} action={action} />
     ))}
