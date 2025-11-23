@@ -14,7 +14,6 @@ export const AddProjectModal = ({ isOpen, onClose }) => {
     technology: '',
     image: '',
     github: '',
-    tags: [],
     contributors: [],
   });
 
@@ -88,12 +87,6 @@ export const AddProjectModal = ({ isOpen, onClose }) => {
           placeholder="https://github.com/username/repo"
           value={formData.github}
           onChange={handleChange}
-        />
-
-        <TagsInput
-          label="Tags"
-          tags={formData.tags}
-          onChange={(tags) => setFormData({ ...formData, tags })}
         />
             { /** Contributors of the project */}
         <TagsInput

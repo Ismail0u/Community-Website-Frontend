@@ -14,7 +14,7 @@ export const StatCard = ({ stat }) => {
   return (
     <div
       className="bg-white dark:bg-[#161b22] border border-gray-200 dark:border-gray-700 rounded-xl p-4 shadow-sm transition-all 
-       w-40 sm:max-w-none mx-auto "
+       w-40 sm:w-11/12 sm:max-w-none mx-auto "
     >
       {/* Header with main icon + trend */}
       <div className="flex items-start justify-between mb-3 sm:mb-4">

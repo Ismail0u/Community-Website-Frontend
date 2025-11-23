@@ -13,7 +13,6 @@ const NAVIGATION_ITEMS = [
   { id: 'projects', name: 'Projects', icon: Briefcase, path: '/projects' },
   { id: 'events', name: 'Events', icon: Calendar, path: '/events' },
   { id: 'blog', name: 'Blog', icon: FileText, path: '/blogs' },
-  { id: 'reports', name: 'Reports', icon: TrendingUp, path: '/reports' },
 ];
 
 /**

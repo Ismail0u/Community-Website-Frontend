@@ -12,7 +12,6 @@ export const AddBlogModal = ({ isOpen, onClose }) => {
     description: '',
     category: '',
     image: '',
-    link: '',
   });
 
   // Static array defining the available blog categories for the SelectField
@@ -83,14 +82,6 @@ export const AddBlogModal = ({ isOpen, onClose }) => {
           required
         />
 
-        <InputField
-          label="Article Link"
-          name="link"
-          type="url"
-          placeholder="https://yourblog.com/article"
-          value={formData.link}
-          onChange={handleChange}
-        />
         {/* Action Buttons Container (responsive layout using flex) */}
         <div className="flex flex-col sm:flex-row gap-3 pt-4">
           <button

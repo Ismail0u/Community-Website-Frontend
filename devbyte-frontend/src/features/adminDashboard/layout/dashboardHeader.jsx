@@ -43,7 +43,7 @@ const NotificationButton = () => {
 // UserAvatar Component (Displays initials 'AK' as a placeholder)
 const UserAvatar = () => (
   // Avatar styling is theme-agnostic (gradient background)
-  <div className="w-16 h-8 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+  <div className="w-16 h-8 sm:w-12 sm:h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold">
     AK
   </div>
 );
@@ -51,11 +51,11 @@ const UserAvatar = () => (
 // Header Component (Main container for the dashboard header)
 const DashboardHeader = ({ setSidebarOpen }) => {
   return (
-    <div className="border-b px-8 py-4 bg-white border-gray-200 dark:bg-[#161b22] dark:border-slate-800 fixed">
+    <div className="border-b px-8 py-4 bg-white border-gray-200 dark:bg-[#161b22] dark:border-slate-800 sm:w-10/12 fixed">
       <div className="flex items-center justify-between">
 
         {/* LEFT : HAMBURGER + TITLE */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 sm:gap-5">
           {/* HAMBURGER only on mobile */}
           <button
             className="lg:hidden p-1 rounded-lg  hover:bg-gray-200 dark:hover:bg-slate-800"
