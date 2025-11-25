@@ -130,12 +130,12 @@ const Events = () => {
        </HeaderWrapper>
       {/* FILTER SECTION */}
       <section
-        className={`mx-auto max-w-6xl px-4 flex flex-wrap gap-4 justify-center items-center bg-[#D9D9D9] dark:bg-[#161B22] text-[#161B22] dark:text-[#D9D9D9] mt-[20px] py-[20px]`}
+        className={`mx-auto max-w-6xl px-2 sm:px-4 flex flex-wrap gap-2 sm:gap-4 justify-center text-xs sm:text-sm items-center bg-[#D9D9D9] dark:bg-[#161B22] text-[#161B22] dark:text-[#D9D9D9] mt-[20px] py-[20px]`}
       >
         {/* EVENT TYPE */}
-        <div className="w-[25%] sm:w-[15%] bg-[white] text-[black] dark:dark:bg-gray-600 font-medium px-1 sm:px-4 py-2 rounded-lg">
+        <div className="w-[25%] sm:w-[15%] bg-[white] text-[black] dark:dark:bg-gray-600 font-medium px-1 sm:px-4 py-2 rounded-lg overflow-hidden">
           <select
-            className="w-[150px] bg-white outline-none bg-inherit"
+            className="w-[150px] outline-none bg-inherit"
             value={selectedEventType}
             onChange={(e) => setSelectedEventType(e.target.value)}
           >
@@ -149,7 +149,7 @@ const Events = () => {
 
         {/* DATE */}
         <div
-          className="w-[25%] sm:w-[15%] h-[10] flex items-center justify-between py-2  bg-[white] text-[black] dark:bg-gray-600 px-2 sm:px-6 rounded-lg cursor-pointer font-medium "
+          className="w-[25%] sm:w-[15%] h-[10] flex items-center justify-between py-2  bg-[white] text-[black] dark:bg-gray-600 px-2 sm:px-6 rounded-lg cursor-pointer font-medium overflow-hidden"
           onClick={() => {
             setInputType("date");
           }}
@@ -178,7 +178,7 @@ const Events = () => {
         </div>
 
         {/* SEARCH INPUT */}
-        <div className="w-[40%] md:w-[25%] flex items-center justify-between bg-[white] text-[black] dark:dark:bg-gray-600 px-2 sm:px-6 py-2 rounded-lg font-medium ">
+        <div className="w-[40%] md:w-[25%] flex items-center justify-between bg-[white] text-[black] dark:dark:bg-gray-600 px-2 sm:px-6 py-2 rounded-lg font-medium overflow-hidden">
           <input
             className="bg-transparent w-[90%] outline-none"
             type="text"
