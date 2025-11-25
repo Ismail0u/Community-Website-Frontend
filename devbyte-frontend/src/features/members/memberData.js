@@ -4,7 +4,7 @@ export const memberData = [
   {
     id: 1,
     name: "Sarah Johnson",
-    role: "Full Stack Developer",
+    stack: "Full Stack Developer",
     bio: "Passionate about building scalable web applications and mentoring junior developers.",
     skills: ["React", "Node.js", "TypeScript", "PostgreSQL"],
     avatar: "https://i.pravatar.cc/150?img=1",
@@ -20,7 +20,7 @@ export const memberData = [
   {
     id: 2,
     name: "Marcus John",
-    role: "UI/UX Designer",
+    stack: "UI/UX Designer",
     bio: "Creating beautiful and intuitive user experiences that make a difference.",
     skills: ["Figma", "UI Design", "Prototyping", "Design Systems"],
     avatar: "https://i.pravatar.cc/150?img=12",
@@ -36,7 +36,7 @@ export const memberData = [
   {
     id: 3,
     name: "Emma Ademola",
-    role: "Backend Developer",
+    stack: "Backend Developer",
     bio: "Specialized in microservices architecture and cloud infrastructure.",
     skills: ["Python", "Docker", "Kubernetes", "AWS"],
     avatar: "https://i.pravatar.cc/150?img=5",
@@ -52,7 +52,7 @@ export const memberData = [
   {
     id: 4,
     name: "Ismael Adam",
-    role: "DevOps Engineer",
+    stack: "DevOps Engineer",
     bio: "Automating deployments and building robust CI/CD pipelines.",
     skills: ["Jenkins", "Terraform", "Linux", "Git"],
     avatar: "https://i.pravatar.cc/150?img=13",
@@ -69,7 +69,7 @@ export const memberData = [
   {
     id: 5,
     name: "Aisha Patel",
-    role: "Frontend Developer",
+    stack: "Frontend Developer",
     bio: "Crafting pixel-perfect interfaces with modern frameworks and tools.",
     skills: ["React", "Vue.js", "Tailwind CSS", "JavaScript"],
     avatar: "https://i.pravatar.cc/150?img=9",
@@ -86,7 +86,7 @@ export const memberData = [
   {
     id: 6,
     name: "Moussa ALI",
-    role: "Mobile Developer",
+    stack: "Mobile Developer",
     bio: "Building cross-platform mobile apps that users love.",
     skills: ["React Native", "Flutter", "iOS", "Android"],
     avatar: "https://i.pravatar.cc/150?img=14",
@@ -103,7 +103,7 @@ export const memberData = [
   {
     id: 7,
     name: "Sofia Abubakar",
-    role: "Data Scientist",
+    stack: "Data Scientist",
     bio: "Turning data into actionable insights with machine learning.",
     skills: ["Python", "Machine Learning", "TensorFlow", "SQL"],
     avatar: "https://i.pravatar.cc/150?img=10",
@@ -120,7 +120,7 @@ export const memberData = [
   {
     id: 8,
     name: "Kwame Owusu",
-    role: "Full Stack Developer",
+    stack: "Full Stack Developer",
     bio: "End-to-end development with a focus on clean code and best practices.",
     skills: ["JavaScript", "Node.js", "MongoDB", "Express"],
     avatar: "https://i.pravatar.cc/150?img=15",
@@ -137,7 +137,7 @@ export const memberData = [
   {
     id: 9,
     name: "Nana Konadu",
-    role: "Backend Developer",
+    stack: "Backend Developer",
     bio: "Building scalable APIs and optimizing database performance.",
     skills: ["Java", "Spring Boot", "MySQL", "Redis"],
     avatar: "https://i.pravatar.cc/150?img=20",
@@ -154,7 +154,7 @@ export const memberData = [
   {
     id: 10,
     name: "Yacouba Koné",
-    role: "UI/UX Designer",
+    stack: "UI/UX Designer",
     bio: "Designing accessible and user-friendly digital experiences.",
     skills: ["Adobe XD", "Sketch", "User Research", "Wireframing"],
     avatar: "https://i.pravatar.cc/150?img=8",
@@ -171,7 +171,7 @@ export const memberData = [
   {
     id: 11,
     name: "Maya Anderson",
-    role: "Frontend Developer",
+    stack: "Frontend Developer",
     bio: "Specializing in responsive design and web accessibility.",
     skills: ["HTML", "CSS", "JavaScript", "SASS"],
     avatar: "https://i.pravatar.cc/150?img=16",
@@ -188,7 +188,7 @@ export const memberData = [
   {
     id: 12,
     name: "Usman Bello",
-    role: "DevOps Engineer",
+    stack: "DevOps Engineer",
     bio: "Streamlining deployments and maintaining high availability systems.",
     skills: ["Azure", "CircleCI", "Ansible", "Monitoring"],
     avatar: "https://i.pravatar.cc/150?img=17",
@@ -204,8 +204,8 @@ export const memberData = [
   }
 ];
 
-export const roles = [
-  "All Roles",
+export const stacks = [
+  "All Stacks",
   "Full Stack Developer",
   "Frontend Developer",
   "Backend Developer",
