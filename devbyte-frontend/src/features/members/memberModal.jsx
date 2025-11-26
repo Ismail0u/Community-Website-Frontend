@@ -29,7 +29,7 @@ const MemberModal = ({ member, isOpen, onClose }) => {
             />
             <div>
               <h2 className="text-white text-2xl font-bold mb-1">{member.name}</h2>
-              <p className="text-white/90 text-lg mb-2">{member.role}</p>
+              <p className="text-white/90 text-lg mb-2">{member.stack}</p>
             </div>
           </div>
         </div>

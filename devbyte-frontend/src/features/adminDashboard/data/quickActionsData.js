@@ -11,11 +11,11 @@ import { Users, Briefcase, Calendar, FileText } from 'lucide-react';  // import 
 
 // array of quick actions data
 export const quickActionsData = [
-  { 
-    id: 'approve-member',
-    icon: Users, 
-    title: 'Approve Member', 
-    description: 'Review and approve new members',
+  {
+    id: 'manage-member',
+    icon: Users,
+    title: 'Manage Members',
+    description: 'View members and update roles',
   },
   { 
     id: 'add-project',

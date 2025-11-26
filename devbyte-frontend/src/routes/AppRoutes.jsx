@@ -24,6 +24,7 @@ import AdminLayout from "@/components/layout/adminLayout.jsx";
 import AuthLayout from "@/components/layout/authLayout.jsx";
 import ProjectDetails from "@/features/projects/ProjectDetails.jsx";
 import Error400 from "@/pages/ErrorPage.jsx";
+import MemberListPage from "@/features/adminDashboard/memberRoleToggleComponents/memberListPage.jsx";
 
 export default function AppRoutes() {
   return (
@@ -56,6 +57,7 @@ export default function AppRoutes() {
 
       <Route path="/" element={<AdminLayout />}>
         <Route path="adminDashboard" element={<AdminDashboard />} />
+        <Route path="membersList" element={<MemberListPage />} />
       </Route>
       
     </Routes>

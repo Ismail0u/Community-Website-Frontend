@@ -18,10 +18,10 @@ import React from "react";
 import { Search, ArrowUpDown } from "lucide-react";
 
 const MemberFilter = ({ searchTerm,setSearchTerm,
-                        selectedRole,setSelectedRole,
+                        selectedStack,setSelectedStack,
                         selectedSkill,setSelectedSkill,
                         sortOption,setSortOption,
-                        roles,allSkills,
+                        stacks,allSkills,
 }) => {
   return (
     <div
@@ -55,18 +55,18 @@ const MemberFilter = ({ searchTerm,setSearchTerm,
         {/* Role */}
         <div>
           <label className="block text-gray-600 dark:text-[#8B949E] text-sm mb-2">
-            Role
+            Stack
           </label>
           <select
-            value={selectedRole}
-            onChange={(e) => setSelectedRole(e.target.value)}
+            value={selectedStack}
+            onChange={(e) => setSelectedStack(e.target.value)}
             className="w-full bg-gray-50 dark:bg-[#161B22] border border-gray-300 dark:border-[#30363D]
                        rounded-lg px-4 py-2.5 text-gray-900 dark:text-white
                        focus:border-[#00AEEF] focus:outline-none cursor-pointer transition-colors"
           >
-            {roles.map((role) => (
-              <option key={role} value={role}>
-                {role}
+            {stacks.map((stack) => (
+              <option key={stack} value={stack}>
+                {stack}
               </option>
             ))}
           </select>
@@ -111,7 +111,7 @@ const MemberFilter = ({ searchTerm,setSearchTerm,
             >
               <option value="name-asc">Name (A–Z)</option>
               <option value="name-desc">Name (Z–A)</option>
-              <option value="role">Role</option>
+              <option value="stack">Stack</option>
               <option value="skill-count">Most Skilled</option>
             </select>
           </div>

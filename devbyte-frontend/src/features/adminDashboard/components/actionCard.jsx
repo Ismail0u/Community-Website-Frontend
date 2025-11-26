@@ -3,6 +3,8 @@ import { useState } from "react";
 import { AddProjectModal } from "@/features/projects/AddProjectModal";
 import { AddBlogModal } from "@/components/Blogs/AddBlogModal";
 import { AddEventModal } from "@/components/AddEventsModal";
+import { useNavigate } from "react-router-dom";
+
 // this card display actions for CTA : on the card , we have the icon , the title , a brief descrpition
 // and a Call To Action button
 
@@ -10,6 +12,7 @@ import { AddEventModal } from "@/components/AddEventsModal";
 export const ActionCard = ({ action }) => {
     const Icon = action.icon;
     const [activeModal, setActiveModal] = useState(null);
+    const navigate = useNavigate();
 
 
   return (
@@ -38,7 +41,14 @@ export const ActionCard = ({ action }) => {
       </p>
 
       {/* CTA */}
-      <button key={action.id}  onClick={() => setActiveModal(action.id)}
+      <button key={action.id}  
+      onClick={() => {
+        if (action.id === "manage-member") {
+          navigate("/membersList");  // ← ta route pour MemberListPage
+        } else {
+          setActiveModal(action.id);
+        }
+      }}
             className="bg-emerald-500 text-white px-6 py-2 rounded-lg font-medium hover:bg-emerald-600 transition-colors">
         Open
       </button>

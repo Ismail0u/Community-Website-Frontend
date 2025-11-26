@@ -26,7 +26,7 @@ const MemberCard = ({ member, onClick }) => {
         {member.name}
       </h3>
 
-      <h4 className="text-gray-900 dark:text-gray-50 text-sm text-center mb-3">{member.role}</h4>
+      <h4 className="text-gray-900 dark:text-gray-50 text-sm text-center mb-3">{member.stack}</h4>
 
       <p className="text-gray-500 dark:text-gray-300 text-sm text-center mb-4 line-clamp-2">
         {member.bio}
