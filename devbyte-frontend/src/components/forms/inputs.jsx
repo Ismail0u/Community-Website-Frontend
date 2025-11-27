@@ -1,4 +1,4 @@
-import { Upload , Plus} from "lucide-react";
+import { Upload , Plus, X } from "lucide-react";
 import { useState } from "react";
 // ==================== Form Input Components ====================
 
@@ -121,7 +121,7 @@ export const TagsInput = ({ label, tags, onChange }) => {
         <button
           type="button"
           onClick={addTag}
-          className="px-4 py-2.5 bg-cyan-500 text-white rounded-lg hover:bg-cyan-600 transition-colors"
+          className="px-4 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
         >
           <Plus size={18} />
         </button>

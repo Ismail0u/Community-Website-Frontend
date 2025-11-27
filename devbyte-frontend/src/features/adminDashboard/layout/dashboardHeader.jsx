@@ -51,7 +51,7 @@ const UserAvatar = () => (
 // Header Component (Main container for the dashboard header)
 const DashboardHeader = ({ setSidebarOpen }) => {
   return (
-    <div className="border-b px-8 py-4 bg-white border-gray-200 dark:bg-[#161b22] dark:border-slate-800 sm:w-10/12 fixed">
+    <div className="border-b px-8 py-4 bg-white border-gray-200 dark:bg-[#161b22] dark:border-slate-800 sm:w-10/12 fixed z-10">
       <div className="flex items-center justify-between">
 
         {/* LEFT : HAMBURGER + TITLE */}
