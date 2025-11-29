@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 
 import CommunityLogo from "@/assets/logos/IMG_20250811_164020_018-Photoroom.png";
 import { NavLink, useNavigate } from "react-router-dom";
+import { Plus } from 'lucide-react';
 
 /**
  * Array defining the primary navigation items for the application sidebar.
@@ -49,7 +50,7 @@ const NavItem = ({ item }) => {
 /**
  * DashboardSidebar Component: Renders the entire persistent navigation bar.
  */
-const DashboardSidebar = ({ sidebarOpen, setSidebarOpen }) => {
+const DashboardSidebar = ({ sidebarOpen, setSidebarOpen, onAddTagsClick }) => {
   const theme = useSelector((state) => state.theme.mode);
   
   const sidebarBg = theme === 'light' ? 'bg-white border-gray-200' : 'bg-[#161B22] border-slate-800';
@@ -83,6 +84,18 @@ const DashboardSidebar = ({ sidebarOpen, setSidebarOpen }) => {
         {NAVIGATION_ITEMS.map(item => (
           <NavItem key={item.id} item={item} />
         ))}
+
+         {/* Add Tags Button */}
+        <div className="pt-4 mt-4">
+          <button
+            onClick={onAddTagsClick}
+            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-gray-900
+             dark:text-gray-400 dark:hover:bg-slate-800 dark:hover:text-gray-200 transition-colors"
+          >
+            <Plus size={20} />
+            <span className="font-medium">Add Tags</span>
+          </button>
+        </div>
       </nav>
 
       

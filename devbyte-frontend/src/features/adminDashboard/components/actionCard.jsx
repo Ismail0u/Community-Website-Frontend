@@ -29,7 +29,7 @@ export const ActionCard = ({ action }) => {
     >
       {/* Icon bubble */}
       <div className="inline-flex items-center justify-center w-16 h-16 bg-white dark:bg-[#161b22] rounded-xl mb-4">
-        <Icon className="text-cyan-400" size={32} />
+        <Icon className="text-[#00aeff]" size={32} />
       </div>
 
       {/* Title */}

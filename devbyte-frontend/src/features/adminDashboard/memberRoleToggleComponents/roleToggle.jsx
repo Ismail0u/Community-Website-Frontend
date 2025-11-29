@@ -1,7 +1,7 @@
 
 // Used to dynamically style role badges (ADMIN vs USER)
 export const getRoleBadgeStyles = (role) => ({
-  ADMIN: 'bg-purple-500/20 text-purple-500 dark:text-purple-400',
+  ADMIN: 'bg-blue-600/20 text-blue-600 dark:text-blue-400',
   USER: 'bg-gray-500/20 text-gray-600 dark:text-gray-400',
 }[role] || 'bg-gray-500/20 text-gray-400');
 
@@ -13,7 +13,7 @@ export const RoleToggle = ({ isAdmin, onToggle, isLoading }) => (
     disabled={isLoading}
     className={`relative w-14 h-7 rounded-full transition-colors ${
       isAdmin 
-        ? 'bg-purple-500' 
+        ? 'bg-[#00aeff]' 
         : 'bg-gray-300 dark:bg-gray-600'
     } ${isLoading ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
   >
