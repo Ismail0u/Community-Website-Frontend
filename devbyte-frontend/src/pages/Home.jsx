@@ -56,7 +56,7 @@ const Home = ({ navRef }) => {
     const timer = setTimeout(() => {
       setIsTransitioning(false);
       isTransitioningRef.current = false;
-    }, 3000);
+    }, 1000);
     return () => clearTimeout(timer);
   }, [currentIndex]);
 
@@ -68,7 +68,7 @@ const Home = ({ navRef }) => {
       isTransitioningRef.current = true;
       setIsTransitioning(true);
       setCurrentIndex((prev) => (prev + 1) % carouselSlides.length);
-    }, 2000);
+    }, 7000);
     return () => clearInterval(interval);
   }, []);
 
@@ -147,22 +147,22 @@ const Home = ({ navRef }) => {
       <BlogSection blogPosts={blogPosts} />
 
       {/* <div className="bg-[#00AEEF]/[15%] mt-28 h-[400px] flex flex-col justify-center text-center items-center space-y-5 px-4"> */}
-        <HeaderWrapper className="text-center ">
-          <h1 className="text-[36px] font-bold">Join DevByte Today</h1>
-          <h1 className="text-[18px] font-semibold">
-            Connect, Collaborate, and Grow with developers worldwide
-          </h1>
-          <div className="mt-7 flex gap-3 justify-center">
-            <Button
-              children="Sign Up Free"
-              className="bg-blue-500 text-white hover:bg-blue-700 transition-colors duration-500 ease-in-out"
-            />
-            <Button
-              children="Login"
-              className="bg-blue-500 text-white hover:bg-blue-700 transition-colors duration-500 ease-in-out"
-            />
-          </div>
-         </HeaderWrapper>
+      <HeaderWrapper className="text-center ">
+        <h1 className="text-[36px] font-bold">Join DevByte Today</h1>
+        <h1 className="text-[18px] font-semibold">
+          Connect, Collaborate, and Grow with developers worldwide
+        </h1>
+        <div className="mt-7 flex gap-3 justify-center">
+          <Button
+            children="Sign Up Free"
+            className="bg-blue-500 text-white hover:bg-blue-700 transition-colors duration-500 ease-in-out"
+          />
+          <Button
+            children="Login"
+            className="bg-blue-500 text-white hover:bg-blue-700 transition-colors duration-500 ease-in-out"
+          />
+        </div>
+      </HeaderWrapper>
       {/* </div> */}
     </div>
   );

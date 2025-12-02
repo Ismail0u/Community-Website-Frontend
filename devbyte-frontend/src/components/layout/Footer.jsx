@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import CommunityLogo from "@/assets/logos/IMG_20250811_164020_018-Photoroom.png";
 import HeaderWrapper from "../ui/Header";
+
 const Footer = () => {
   const pages = [
     { href: "/", name: "Home" },

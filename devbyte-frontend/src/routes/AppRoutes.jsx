@@ -16,6 +16,8 @@ import OtpVerification from "@/pages/auth/OtpVerification.jsx";
 import ResetPassword from "@/pages/auth/ResetPassword.jsx";
 import TermsOfService from "@/pages/TermsOfService.jsx";
 import PrivacyPolicy from "@/pages/PrivacyPolicy.jsx";
+import Jobs from "@/pages/Jobs.jsx";
+import UserProfile from "@/pages/UserProfile.jsx";
 
 export default function AppRoutes() {
   return (
@@ -24,12 +26,14 @@ export default function AppRoutes() {
         <Route index element={<Home />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
+        <Route path="profile" element={<UserProfile />} />
         <Route path="communityGuidelines" element={<CommunityGuidelines />} />
         <Route path="learning" element={<Learning />} />
         <Route path="about" element={<About />} />
         <Route path="faq" element={<FAQ />} />
         <Route path="events" element={<Events />} />
         <Route path="projects" element={<Projects />} />
+        <Route path="jobs" element={<Jobs />} />
         <Route path="blogs" element={<Blogs />} />
         <Route path="forget-password" element={<ForgetPassword />} />
         <Route path="otpVerification" element={<OtpVerification />} />
