@@ -85,7 +85,7 @@ const Signup = () => {
               value={formData.fullname}
               onChange={handleChange}
               placeholder="Full Name"
-              className="w-full bg-transparent border border-[#d9d9d9] outline-none rounded-lg px-4 py-3 dark:text-[#d9d9d9] dark:placeholder:text-[#d9d9d9] focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              className="w-full bg-white/20 border border-white/30 outline-none rounded-lg px-4 py-3 text-white placeholder:text-white/70 focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400"
             />
 
             <input
@@ -94,7 +94,7 @@ const Signup = () => {
               value={formData.email}
               onChange={handleChange}
               placeholder="Email"
-              className="w-full bg-transparent border border-[#d9d9d9] outline-none rounded-lg px-4 py-3 dark:text-[#d9d9d9] dark:placeholder:text-[#d9d9d9] focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              className="w-full bg-white/20 border border-white/30 outline-none rounded-lg px-4 py-3 text-white placeholder:text-white/70 focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400"
             />
 
             <div className="relative w-full">
@@ -232,6 +232,28 @@ const Signup = () => {
               Login
             </a>
           </p>
+        </div>
+
+        {/* Right: Content Section */}
+        <div className="w-full md:w-1/2 bg-white dark:bg-[#0D1117] flex flex-col justify-center p-10 md:p-14 text-gray-800 dark:text-[#ffffff]">
+          <h3 className="text-3xl font-bold mb-4">
+            Join the DevByte Movement{" "}
+          </h3>
+          <p className="text-gray-600 dark:text-[#ffffff] leading-relaxed mb-6">
+            DevByte is more than just a community — it’s a space where
+            developers, designers, and innovators come together to learn,
+            collaborate, and grow. From hands-on projects to open-source
+            contributions and global networking opportunities, DevByte helps you
+            elevate your career and connect with like-minded talents across the
+            world.
+          </p>
+
+          <ul className="space-y-3 text-gray-700 dark:text-[#d9d9d9]">
+            <li>— Learn and grow with top developers</li>
+            <li>— Access community-driven resources</li>
+            <li>— Collaborate on open-source projects</li>
+            <li>— Showcase your portfolio globally</li>
+          </ul>
         </div>
       </div>
     </div>
