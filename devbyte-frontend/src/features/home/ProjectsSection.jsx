@@ -2,6 +2,7 @@ import React from "react";
 import Card from "@/components/ui/Card";
 import { FaGithub } from "react-icons/fa6";
 import Button from "@/components/ui/Button";
+import { hoverEffect } from "@/lib/HoverEffect";
 
 const ProjectsSection = ({ projects }) => {
   return (
@@ -13,11 +14,11 @@ const ProjectsSection = ({ projects }) => {
           members
         </h1>
       </div>
-      <div className="mt-7 grid gap-4 justify-center 2xl-grid-col-4 xl-grid-col-4 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 px-[90px]">
+      <div className="mt-7 grid gap-4 justify-center 2xl-grid-col-4 xl-grid-col-4 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 lg:px-[90px] md:px-10 px-6">
         {projects.map((project, pIdx) => (
-          <Card
+          <div
             key={`project-${pIdx}`}
-            className="p-3 shadow-sm space-y-5"
+            className={`p-5 shadow-sm space-y-5 dark:bg-[#161B22] border border-gray-200 rounded-xl dark:border-[#2A2F36] dark:text-white ${hoverEffect}`}
           >
             <h1 className="text-[20px] font-semibold">{project.title}</h1>
             <div className="flex justify-center gap-3">
@@ -36,7 +37,7 @@ const ProjectsSection = ({ projects }) => {
                 <FaGithub />
               </button>
             </div>
-          </Card>
+          </div>
         ))}
       </div>
       <div className="flex justify-center w-full px-4 mt-10 md:mt-12">

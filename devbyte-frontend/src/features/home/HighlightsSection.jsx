@@ -1,14 +1,16 @@
 import React from "react";
-import Card from "@/components/ui/Card";
 import { Users, Laptop, MicVocal, CircleChevronRight } from "lucide-react";
 import frame28 from "@/assets/images/Frame 28.png";
 import Button from "@/components/ui/Button";
+import { hoverEffect } from "@/lib/HoverEffect";
 
 const HighlightsSection = () => {
   return (
-    <div className="py-[100px] bg-[#00AEEF]/[15%]">
-      <div className="max-w-[1200px] mx-auto flex flex-wrap justify-center gap-5">
-        <Card className=" p-10 flex items-center gap-3 bg-white/90 dark:bg-white dark:text-black shadow-sm w-[386px] ">
+    <div className="py-[100px] bg-[#00AEEF]/[5%] dark:bg-[#00AEEF]/[10%] ">
+      <div className="max-w-[1200px] mx-auto flex flex-wrap justify-center gap-5 lg:px-[0px] md:px-10 px-6">
+        <div
+          className={` p-10 flex items-center gap-3 bg-white/90 dark:bg-[#161B22] dark:text-white border border-gray-200 rounded-xl dark:border-[#2A2F36] ${hoverEffect} shadow-sm lg:w-[386px] w-full`}
+        >
           <Users />
           <div>
             <h1 className="text-[20px] font-semibold text-left">2500+</h1>
@@ -16,8 +18,10 @@ const HighlightsSection = () => {
               Active Members
             </h1>
           </div>
-        </Card>
-        <Card className=" p-10 flex  items-center gap-3  dark:bg-white dark:text-black bg-white/90 dark:bg-black shadow-sm w-[350px] ">
+        </div>
+        <div
+          className={` p-10 flex  items-center gap-3  dark:bg-[#161B22] dark:text-white border border-gray-200 rounded-xl dark:border-[#2A2F36] ${hoverEffect} bg-white/90  shadow-sm lg:w-[350px] w-full`}
+        >
           <Laptop />
           <div>
             <h1 className="text-[20px] font-semibold text-left">150+</h1>
@@ -25,8 +29,10 @@ const HighlightsSection = () => {
               Open Source Projects
             </h1>
           </div>
-        </Card>
-        <Card className=" p-10 flex  dark:bg-white dark:text-black  items-center gap-3  bg-white/90 dark:bg-black shadow-sm w-[350px] ">
+        </div>
+        <div
+          className={` p-10 flex  dark:bg-[#161B22] dark:text-white border border-gray-200 rounded-xl dark:border-[#2A2F36] ${hoverEffect}  items-center gap-3  bg-white/90   lg:w-[350px] w-full`}
+        >
           <MicVocal />
           <div>
             <h1 className="text-[20px] font-semibold text-left">48</h1>
@@ -34,12 +40,14 @@ const HighlightsSection = () => {
               Events This Year
             </h1>
           </div>
-        </Card>
+        </div>
       </div>
 
-      <div className="flex flex-wrap justify-center gap-5 mt-20">
+      <div className="flex flex-wrap justify-center gap-5 mt-20 lg:px-[0px] md:px-10 px-6">
         {/* Upcoming Events */}
-        <Card className="flex flex-col  bg-white items-center dark:text-black p-4 space-y-5 shadow-sm md:w-[681px] w-[350px]">
+        <div
+          className={`flex flex-col  bg-white items-center dark:bg-[#161B22] dark:text-white border border-gray-200 rounded-xl dark:border-[#2A2F36] ${hoverEffect} p-4 space-y-5 shadow-sm lg:w-[681px] w-full`}
+        >
           <h1 className="border-0 rounded-full p-1 text-[16px] font-bold">
             UPCOMING EVENT
           </h1>
@@ -49,7 +57,7 @@ const HighlightsSection = () => {
           <h1 className="text-[16px] font-semibold">
             Friday, September 12 . 10:00 AM - 4:00 PM
           </h1>
-          <h1 className="text-[16px]">
+          <h1 className="text-[16px] dark:text-gray-300 text-center">
             Join us for a full day career fair with top tech companies,
             workshop, and networking opportunities designed to help you land
             your dream role
@@ -58,15 +66,17 @@ const HighlightsSection = () => {
             children="Register Now"
             className="text-white transition-colors duration-500 ease-in-out bg-blue-500 hover:bg-blue-700"
           />
-        </Card>
+        </div>
 
         {/* Post */}
-        <Card className="flex flex-col  bg-white items-center dark:text-black p-4 space-y-3 shadow-sm md:w-[421px] w-[350px]">
+        <div
+          className={`flex flex-col  bg-white items-center dark:bg-[#161B22] dark:text-white border border-gray-200 rounded-xl dark:border-[#2A2F36] ${hoverEffect} p-4 space-y-3 shadow-sm lg:w-[421px] w-full`}
+        >
           <img src={frame28} alt="" className="w-[200px] h-[120px]" />
           <h1 className="text-xl font-semibold">
             How Open Source Projects Shape AI
           </h1>
-          <h1 className="text-[16px]">
+          <h1 className="text-[16px] dark:text-gray-300">
             Discover how developers worldwide are collaborating on open-source
             tools that power AI, and why it matters
           </h1>
@@ -76,7 +86,7 @@ const HighlightsSection = () => {
           >
             Read More <CircleChevronRight size={15} color="#6A5DFF" />
           </a>
-        </Card>
+        </div>
       </div>
     </div>
   );

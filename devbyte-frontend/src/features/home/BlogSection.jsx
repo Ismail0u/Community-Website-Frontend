@@ -2,6 +2,7 @@ import React from "react";
 import Card from "@/components/ui/Card";
 import { CircleChevronRight } from "lucide-react";
 import Button from "@/components/ui/Button";
+import { hoverEffect } from "@/lib/HoverEffect";
 
 const BlogSection = ({ blogPosts }) => {
   return (
@@ -12,9 +13,12 @@ const BlogSection = ({ blogPosts }) => {
           Community updates, tutorials and industry insights
         </h1>
       </div>
-      <div className="mt-7 grid gap-4 justify-center 2xl-grid-col-4 xl-grid-col-4 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 px-[90px]">
+      <div className="mt-7 grid gap-4 justify-center 2xl-grid-col-4 xl-grid-col-4 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 lg:px-[90px] md:px-10 px-6">
         {blogPosts.map((blog, bIdx) => (
-          <Card key={`blog-${bIdx}`} className="space-y-3 p-3 shadow-sm">
+          <div
+            key={`blog-${bIdx}`}
+            className={`space-y-3 p-3 shadow-sm dark:bg-[#161B22] border border-gray-200 rounded-xl dark:border-[#2A2F36] dark:text-white  ${hoverEffect}`}
+          >
             <img src={blog.image} alt="" className="w-full" />
             <h1 className="bg-gradient-to-r w-fit from-[#e2e3e4] to-[#e0e0e0]  rounded-sm text-black py-[2px] px-2 text-[12px] font-semibold">
               UPDATE
@@ -27,7 +31,7 @@ const BlogSection = ({ blogPosts }) => {
             >
               Read More <CircleChevronRight size={15} color="#00AEEF" />
             </a>
-          </Card>
+          </div>
         ))}
       </div>
       <div className="flex justify-center w-full px-4 mt-10 md:mt-12">
