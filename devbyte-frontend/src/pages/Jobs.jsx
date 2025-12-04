@@ -159,6 +159,7 @@ const Jobs = () => {
 
         <div className="w-full bg-[#F9FAFB] dark:bg-[#161B22] text-gray-900 dark:text-white py-16 px-6 mt-16 flex flex-col md:flex-row items-center justify-between md:text-left border border-gray-300 dark:border-[#1e293b] transition-colors duration-500 rounded-md">
           {/* Heading */}
+
           <h2 className="font-bold ">Have a Role?Post it on DevBytes</h2>
 
           {/* Gradient Button */}
