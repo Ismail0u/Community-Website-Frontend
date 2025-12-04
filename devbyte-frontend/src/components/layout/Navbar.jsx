@@ -27,6 +27,21 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const BASE_URL = import.meta.env.VITE_IMAGE_BASE_URL;
 
+  const navRef = useRef(null);
+
+  //navbar height
+  useEffect(() => {
+    const updateNavHeight = () => {
+      if (!navRef.current) return;
+      const height = navRef.current.offsetHeight;
+      document.documentElement.style.setProperty("--nav-h", `${height}px`);
+    };
+
+    updateNavHeight();
+    window.addEventListener("resize", updateNavHeight);
+    return () => window.removeEventListener("resize", updateNavHeight);
+  }, []);
+
   // Get user from Redux
   const profileUser = useSelector((state) => state.user.user);
   const authUser = useSelector((state) => state.auth?.user);
@@ -44,7 +59,10 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="sticky top-0 z-10 w-full bg-white dark:bg-[#0D1117] shadow-md">
+    <div
+      ref={navRef}
+      className="sticky top-0 z-10 w-full bg-white dark:bg-[#0D1117] shadow-md"
+    >
       <div className="pt-3 pb-4 sm:px-10 px-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
