@@ -1,14 +1,16 @@
 import React from "react";
-
 import { Users, Laptop, MicVocal, CircleChevronRight } from "lucide-react";
 import frame28 from "@/assets/images/Frame 28.png";
 import Button from "@/components/ui/Button";
+import { hoverEffect } from "@/lib/HoverEffect";
 
 const HighlightsSection = () => {
   return (
     <div className="py-[100px] bg-[#00AEEF]/[5%] dark:bg-[#00AEEF]/[10%] ">
       <div className="max-w-[1200px] mx-auto flex flex-wrap justify-center gap-5 lg:px-[0px] md:px-10 px-6">
-        <div className=" p-10 flex items-center gap-3 bg-white/90 dark:bg-[#161B22] dark:text-white border border-gray-200 rounded-xl dark:border-[#2A2F36] hover:scale-105 hover:shadow-xl transition duration-300 shadow-sm lg:w-[386px] w-full">
+        <div
+          className={` p-10 flex items-center gap-3 bg-white/90 dark:bg-[#161B22] dark:text-white border border-gray-200 rounded-xl dark:border-[#2A2F36] ${hoverEffect} shadow-sm lg:w-[386px] w-full`}
+        >
           <Users />
           <div>
             <h1 className="text-[20px] font-semibold text-left">2500+</h1>
@@ -17,7 +19,9 @@ const HighlightsSection = () => {
             </h1>
           </div>
         </div>
-        <div className=" p-10 flex  items-center gap-3  dark:bg-[#161B22] dark:text-white border border-gray-200 rounded-xl dark:border-[#2A2F36] hover:scale-105 hover:shadow-xl transition duration-300 bg-white/90  shadow-sm lg:w-[350px] w-full">
+        <div
+          className={` p-10 flex  items-center gap-3  dark:bg-[#161B22] dark:text-white border border-gray-200 rounded-xl dark:border-[#2A2F36] ${hoverEffect} bg-white/90  shadow-sm lg:w-[350px] w-full`}
+        >
           <Laptop />
           <div>
             <h1 className="text-[20px] font-semibold text-left">150+</h1>
@@ -26,7 +30,9 @@ const HighlightsSection = () => {
             </h1>
           </div>
         </div>
-        <div className=" p-10 flex  dark:bg-[#161B22] dark:text-white border border-gray-200 rounded-xl dark:border-[#2A2F36] hover:scale-105 hover:shadow-xl transition duration-300  items-center gap-3  bg-white/90   lg:w-[350px] w-full">
+        <div
+          className={` p-10 flex  dark:bg-[#161B22] dark:text-white border border-gray-200 rounded-xl dark:border-[#2A2F36] ${hoverEffect}  items-center gap-3  bg-white/90   lg:w-[350px] w-full`}
+        >
           <MicVocal />
           <div>
             <h1 className="text-[20px] font-semibold text-left">48</h1>
@@ -39,7 +45,9 @@ const HighlightsSection = () => {
 
       <div className="flex flex-wrap justify-center gap-5 mt-20 lg:px-[0px] md:px-10 px-6">
         {/* Upcoming Events */}
-        <div className="flex flex-col  bg-white items-center dark:bg-[#161B22] dark:text-white border border-gray-200 rounded-xl dark:border-[#2A2F36] hover:scale-105 hover:shadow-xl transition duration-300 p-4 space-y-5 shadow-sm lg:w-[681px] w-full">
+        <div
+          className={`flex flex-col  bg-white items-center dark:bg-[#161B22] dark:text-white border border-gray-200 rounded-xl dark:border-[#2A2F36] ${hoverEffect} p-4 space-y-5 shadow-sm lg:w-[681px] w-full`}
+        >
           <h1 className="border-0 rounded-full p-1 text-[16px] font-bold">
             UPCOMING EVENT
           </h1>
@@ -61,7 +69,9 @@ const HighlightsSection = () => {
         </div>
 
         {/* Post */}
-        <div className="flex flex-col  bg-white items-center dark:bg-[#161B22] dark:text-white border border-gray-200 rounded-xl dark:border-[#2A2F36] hover:scale-105 hover:shadow-xl transition duration-300 p-4 space-y-3 shadow-sm lg:w-[421px] w-full">
+        <div
+          className={`flex flex-col  bg-white items-center dark:bg-[#161B22] dark:text-white border border-gray-200 rounded-xl dark:border-[#2A2F36] ${hoverEffect} p-4 space-y-3 shadow-sm lg:w-[421px] w-full`}
+        >
           <img src={frame28} alt="" className="w-[200px] h-[120px]" />
           <h1 className="text-xl font-semibold">
             How Open Source Projects Shape AI

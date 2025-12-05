@@ -26,11 +26,11 @@ import HeaderWrapper from "@/components/ui/Header";
 import MemberModal from "./memberModal";
 import MemberCard from "./memberCard";
 import MemberSidebar from "./memberSidebar";
-import { memberData, roles, allSkills } from "./memberData";
+import { memberData, allSkills, stacks } from "./memberData";
 
 const MemberPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedRole, setSelectedRole] = useState("All Roles");
+  const [selectedStack, setSelectedStack] = useState("All Stack");
   const [selectedSkill, setSelectedSkill] = useState("All Skills");
   const [sortOption, setSortOption] = useState("name-asc");
   const [selectedMember, setSelectedMember] = useState(null);
@@ -45,7 +45,7 @@ const MemberPage = () => {
         member.bio.toLowerCase().includes(searchTerm.toLowerCase());
 
       const matchesRole =
-        selectedRole === "All Roles" || member.role === selectedRole;
+        selectedStack === "All Stack" || member.stack === selectedStack;
 
       const matchesSkill =
         selectedSkill === "All Skills" ||
@@ -73,7 +73,7 @@ const MemberPage = () => {
     }
 
     return data;
-  }, [searchTerm, selectedRole, selectedSkill, sortOption]);
+  }, [searchTerm, selectedStack, selectedSkill, sortOption]);
 
   const displayedMembers = filteredMembers.slice(0, displayCount);
   const hasMore = displayCount < filteredMembers.length;
@@ -112,13 +112,13 @@ const MemberPage = () => {
         <MemberSidebar
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
-          selectedRole={selectedRole}
-          setSelectedRole={setSelectedRole}
+          selectedStack={selectedStack}
+          setSelectedStack={setSelectedStack}
           selectedSkill={selectedSkill}
           setSelectedSkill={setSelectedSkill}
           sortOption={sortOption}
           setSortOption={setSortOption}
-          roles={roles}
+          stacks={stacks}
           allSkills={allSkills}
         />
 
