@@ -53,12 +53,63 @@ export const signoutUser = createAsyncThunk(
   }
 );
 
+/**
+ * Async thunk for forgot password - sends reset link
+ */
+export const forgotPassword = createAsyncThunk(
+  "auth/forgotPassword",
+  async (email, { rejectWithValue }) => {
+    try {
+      console.log(email);
+      const res = await api.post("/v1/auth/forgot-password", { email });
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data || error.message);
+    }
+  }
+);
+
+/**
+ * Async thunk for reset password with token
+ */
+export const resetPassword = createAsyncThunk(
+  "auth/resetPassword",
+  async ({ token, password }, { rejectWithValue }) => {
+    try {
+      const res = await api.post("/v1/auth/reset-password", { 
+        token, 
+        password 
+      });
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data || error.message);
+    }
+  }
+);
+
+/**
+ * Async thunk for OTP verification
+ */
+export const verifyOtp = createAsyncThunk(
+  "auth/verifyOtp",
+  async ({ email, otp }, { rejectWithValue }) => {
+    try {
+      const res = await api.post("/v1/auth/verify-otp", { email, otp });
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data || error.message);
+    }
+  }
+);
+
 // Initial authentication state
 const initialState = {
-  user: null, // Stores logged-in user info
-  loading: false, // Indicates async request status
-  error: null, // Stores API or validation errors
-  successMessage: false, // Shows whether the last action succeeded
+  user: null,
+  loading: false,
+  error: null,
+  successMessage: null,
+  isOtpVerified: false,
+  resetToken: null,
 };
 
 const authSlice = createSlice({
@@ -121,6 +172,51 @@ const authSlice = createSlice({
       state.loading = false;
       state.successMessage = false;
       state.error = null;
+    });
+    // FORGOT PASSWORD
+    builder.addCase(forgotPassword.pending, (state) => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(forgotPassword.fulfilled, (state, action) => {
+      state.loading = false;
+      state.successMessage = action.payload?.message || "Reset link sent successfully";
+    });
+    builder.addCase(forgotPassword.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    });
+
+    // VERIFY OTP
+    builder.addCase(verifyOtp.pending, (state) => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(verifyOtp.fulfilled, (state, action) => {
+      state.loading = false;
+      state.successMessage = action.payload?.message || "OTP verified successfully";
+      state.isOtpVerified = true;
+      state.resetToken = action.payload?.token; // Store token for password reset
+    });
+    builder.addCase(verifyOtp.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    });
+
+    // RESET PASSWORD
+    builder.addCase(resetPassword.pending, (state) => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(resetPassword.fulfilled, (state, action) => {
+      state.loading = false;
+      state.successMessage = action.payload?.message || "Password reset successfully";
+      state.isOtpVerified = false;
+      state.resetToken = null;
+    });
+    builder.addCase(resetPassword.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
     });
   },
 });
