@@ -23,6 +23,7 @@ const LearningSection = ({ learningData }) => {
             <h1 className="w-fit bg-[#fafafa]  rounded-sm  text-black dark:bg-black border border-gray-200 dark:border-[#2A2F36] dark:text-gray-300 font-semibold py-[2px] px-2 text-[12px]">
               {data.tag}
             </h1>
+
             <h1 className="text-[20px] font-semibold ">{data.title}</h1>
             <h1 className="line-clamp-3 text-[16px]  dark:text-gray-300">
               {data.body}

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ChevronDown, SearchIcon } from "lucide-react";
+import AnimatedWrapper from "@/components/ui/AnimatedWrapper";
 import {
   DiGithubBadge,
   DiJavascript,
@@ -194,100 +195,108 @@ const Learning = () => {
       </HeaderWrapper>
 
       {/* Filters */}
-      <div className=" mx-auto max-w-6xl px-4 flex flex-wrap gap-4 justify-center items-center bg-[#D9D9D9] dark:bg-[#161B22] text-[#161B22] dark:text-[#D9D9D9]  p-5  mt-6">
-        {/* Category */}
-        <div className="relative w-full sm:w-40">
-          <select
-            value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
-            className="w-full bg-[#FFFF] dark:bg-[#2A2F36] dark:text-[#D9D9D9]  px-3 py-2 pr-5 rounded-md appearance-none focus:outline-none "
-          >
-            <option value="">All Category</option>
-            <option value="javascript">Javascript</option>
-            <option value="react">React</option>
-            <option value="tailwind">Tailwind</option>
-            <option value="css">CSS</option>
-          </select>
-          <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 h-5 w-5 text-[#161B22] dark:text-[#D9D9D9] pointer-events-none" />
-        </div>
+      <AnimatedWrapper>
+        <div className=" mx-auto max-w-6xl px-4 flex flex-wrap gap-4 justify-center items-center bg-[#D9D9D9] dark:bg-[#161B22] text-[#161B22] dark:text-[#D9D9D9]  p-5  mt-6">
+          {/* Category */}
+          <div className="relative w-full sm:w-40">
+            <select
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+              className="w-full bg-[#FFFF] dark:bg-[#2A2F36] dark:text-[#D9D9D9]  px-3 py-2 pr-5 rounded-md appearance-none focus:outline-none "
+            >
+              <option value="">All Category</option>
+              <option value="javascript">Javascript</option>
+              <option value="react">React</option>
+              <option value="tailwind">Tailwind</option>
+              <option value="css">CSS</option>
+            </select>
+            <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 h-5 w-5 text-[#161B22] dark:text-[#D9D9D9] pointer-events-none" />
+          </div>
 
-        {/* Level */}
-        <div className="relative w-full sm:w-40">
-          <select
-            value={selectedLevel}
-            onChange={(e) => setSelectedLevel(e.target.value)}
-            className="w-full bg-[#FFFF] text-[#161B22] dark:bg-[#2A2F36] dark:text-[#D9D9D9]  px-3 py-2 pr-5 rounded-md appearance-none focus:outline-none"
-          >
-            <option value="">All Levels</option>
-            <option value="beginner">Beginner</option>
-            <option value="intermediate">Intermediate</option>
-            <option value="advanced">Advanced</option>
-          </select>
-          <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 h-5 w-5 text-[#161B22] dark:text-[#D9D9D9]  pointer-events-none" />
-        </div>
+          {/* Level */}
+          <div className="relative w-full sm:w-40">
+            <select
+              value={selectedLevel}
+              onChange={(e) => setSelectedLevel(e.target.value)}
+              className="w-full bg-[#FFFF] text-[#161B22] dark:bg-[#2A2F36] dark:text-[#D9D9D9]  px-3 py-2 pr-5 rounded-md appearance-none focus:outline-none"
+            >
+              <option value="">All Levels</option>
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
+            </select>
+            <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 h-5 w-5 text-[#161B22] dark:text-[#D9D9D9]  pointer-events-none" />
+          </div>
 
-        {/* Search */}
-        <div className="relative w-full sm:w-64">
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search resources..."
-            className="w-full p-2 bg-[#FFFF] dark:bg-[#2A2F36] dark:placeholder-[#D9D9D9] placeholder-[#161B22] cursor-pointer  rounded-md           
+          {/* Search */}
+          <div className="relative w-full sm:w-64">
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search resources..."
+              className="w-full p-2 bg-[#FFFF] dark:bg-[#2A2F36] dark:placeholder-[#D9D9D9] placeholder-[#161B22] cursor-pointer  rounded-md           
  pl-3 focus:outline-none"
-          />
+            />
 
-          <SearchIcon className="absolute right-2 top-1/2 -translate-y-1/2 h-5 w-5 text-[#161B22] dark:text-[#D9D9D9]  " />
+            <SearchIcon className="absolute right-2 top-1/2 -translate-y-1/2 h-5 w-5 text-[#161B22] dark:text-[#D9D9D9]  " />
+          </div>
         </div>
-      </div>
+      </AnimatedWrapper>
 
       {/* Featured Resources */}
-      <div className="max-w-6xl px-4 pt-8 mx-auto">
-        <h1 className="text-xl sm:text-2xl  text-[#161B22] dark:text-[#D9D9D9] text-center p-5">
-          Featured Resources
-        </h1>
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredResources
-            .filter((res) => res.featured)
-            .map((res) => (
-              <ResourceCard key={res.id} resource={res} />
-            ))}
+      <AnimatedWrapper>
+        <div className="max-w-6xl px-4 pt-8 mx-auto">
+          <h1 className="text-xl sm:text-2xl  text-[#161B22] dark:text-[#D9D9D9] text-center p-5">
+            Featured Resources
+          </h1>
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {filteredResources
+              .filter((res) => res.featured)
+              .map((res) => (
+                <ResourceCard key={res.id} resource={res} />
+              ))}
+          </div>
         </div>
-      </div>
+      </AnimatedWrapper>
 
       {/* All Resources */}
-      <div className="max-w-6xl px-4 pt-10 mx-auto space-y-2">
-        <h1 className="text-xl sm:text-2xl  text-[#161B22] dark:text-[#D9D9D9] text-center pb-5">
-          All Resources
-        </h1>
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredResources
-            .filter((res) => !res.featured)
-            .map((res) => (
-              <ResourceCard key={res.id} resource={res} />
-            ))}
+      <AnimatedWrapper>
+        <div className="max-w-6xl px-4 pt-10 mx-auto space-y-2">
+          <h1 className="text-xl sm:text-2xl  text-[#161B22] dark:text-[#D9D9D9] text-center pb-5">
+            All Resources
+          </h1>
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {filteredResources
+              .filter((res) => !res.featured)
+              .map((res) => (
+                <ResourceCard key={res.id} resource={res} />
+              ))}
+          </div>
         </div>
-      </div>
+      </AnimatedWrapper>
 
       {/* Footer */}
-      <HeaderWrapper className="p-6 mt-10 text-center ">
-        <h1 className="text-[#161B22] dark:text-white text-3xl sm:text-3xl lg:text-4xl ">
-          Contribute a Resource
-        </h1>
-        <p className="text-[#161B22] dark:text-white text-sm sm:text-lg pt-3">
-          Share articles, tutorials or links with Devbyte
-        </p>
+      <AnimatedWrapper>
+        <HeaderWrapper className="p-6 mt-10 text-center ">
+          <h1 className="text-[#161B22] dark:text-white text-3xl sm:text-3xl lg:text-4xl ">
+            Contribute a Resource
+          </h1>
+          <p className="text-[#161B22] dark:text-white text-sm sm:text-lg pt-3">
+            Share articles, tutorials or links with Devbyte
+          </p>
 
-        <a
-          href="https://github.com/DevByte-Community/Community-Website-Frontend/tree/4022bfb31f53b91355bcd091b753b2d708c066dd/.github/ISSUE_TEMPLATE"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-        <Button className="inline-block  bg-blue-500 hover:bg-blue-700 mt-2  text-[#FFFFFF] dark:text-white ">
-          View Source
-        </Button>
-        </a>
-      </HeaderWrapper>
+          <a
+            href="https://github.com/DevByte-Community/Community-Website-Frontend/tree/4022bfb31f53b91355bcd091b753b2d708c066dd/.github/ISSUE_TEMPLATE"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button className="inline-block  bg-blue-500 hover:bg-blue-700 mt-2  text-[#FFFFFF] dark:text-white ">
+              View Source
+            </Button>
+          </a>
+        </HeaderWrapper>
+      </AnimatedWrapper>
     </div>
   );
 };
