@@ -43,7 +43,7 @@ const About = () => {
   return (
     <>
       <section>
-        <HeaderWrapper className="text-center ">
+        <HeaderWrapper className="text-center overflow-hidden ">
           <div className="flex flex-col items-center justify-center">
             <h1 className="text-[28px] md:text-[42px] font-extrabold mb-4 tracking-wide">
               {" "}
@@ -65,35 +65,35 @@ const About = () => {
       </section>
 
       {/* Our Mission & Vision content goes here */}
-      <section className="py-[100px] px-[20px]   md:py-[120px] md:px-[100px] dark:border-none ">
-        <h1 className="text-center font-bold text-3xl md:text-[28px] my-[20px] tracking-wide">
+      <section className=" h-[500px] md:h-[400px]  flex flex-col justify-center items-center gap-2  ">
+        <h1 className="text-center font-bold text-2xl  my-[20px] tracking-wide">
           Our Mission & Vision
         </h1>
-        <div className="flex flex-col items-center justify-center md:flex-row md:justify-around ">
+        <div className="flex flex-col items-center justify-center md:flex-row  gap-4 md:gap-10 ">
           {/* our mission title goes here */}
-          <div className=" flex flex-col items-center mb-[10px]">
+          <div className=" flex flex-col items-center mb-[10px] w-screen md:w-[380px] px-5  ">
             <div className="flex flex-col items-center gap-2 mb-2">
-              <h1 className="font-bold capitalize text-[28px] md:mb-0 mb-[10px]">
+              <h1 className="font-semibold capitalize text-xl md:mb-0 mb-[10px]">
                 our mission
               </h1>
               <div className="w-14 h-1 bg-[linear-gradient(to_right,#00AEEF,#6A5DFF)] flex " />
             </div>
 
-            <p className="text-center  text-[18px] w-[353px] tracking-wide  font-light ">
+            <p className="text-center  tracking-wide font-light ">
               To create a central hub where tech talents can connect, share
               knowledge, and build opportunities for growth{" "}
             </p>
           </div>
 
           {/* our vision title  goes here */}
-          <div className="flex flex-col items-center ">
+          <div className="flex flex-col items-center w-screen md:w-[380px] px-5 ">
             <div className="flex flex-col items-center gap-2 px-4 mb-2">
-              <h1 className="font-bold capitalize text-[28px] md:mb-0 mb-[10px]">
+              <h1 className="font-bold capitalize text-xl md:mb-0 mb-[10px]">
                 our vision
               </h1>
               <div className="w-14 h-1 bg-[linear-gradient(to_right,#00AEEF,#6A5DFF)] flex " />
             </div>
-            <p className="text-center text-[18px] w-[353px] tracking-wide font-light ">
+            <p className="text-center   tracking-wide font-light ">
               To become the go-to community where future innovators collaborate
               on projects that impact the tech world
             </p>
@@ -102,9 +102,9 @@ const About = () => {
       </section>
 
       {/* Our Story goes here */}
-      <section className="dark:bg-[#161B22] py-[200px] bg-[#00AEEF]/[15%] flex flex-col gap-1 items-center justify-center px-[15px] ">
-        <h1 className="font-bold text-[28px] mb-2">Our Story</h1>
-        <p className="   md:w-[805px]  tracking-wider  text-[18px] text-center  font-light ">
+      <section className="dark:bg-[#161B22]  bg-[#00AEEF]/[15%] flex flex-col gap-1 items-center justify-center h-[300px] ">
+        <h1 className="font-bold text-2xl mb-2">Our Story</h1>
+        <p className="     tracking-wider  text-base text-center  font-light mx-5 md:mx-10 ">
           DevByte began as a small initiative by passionate tech enthusiasts who
           wanted to create a space where learning and collaboration thrive. Over
           time, it has grown into a diverse community of developers, designers,
@@ -114,21 +114,21 @@ const About = () => {
       </section>
 
       {/* Why Join Us content goes here */}
-      <section className="py-[100px] ">
-        <h1 className="text-3xl font-bold text-center mb-7">Why Join Us</h1>
+      <section className="py-10 flex flex-col justify-center gap-5 items-center ">
+        <h1 className="text-2xl font-bold text-center  ">Why Join Us</h1>
 
         {/* design card component goes here  */}
         <div className="justify-center hidden md:flex ">
-          <Card className="w-[381px] h-[381px] shadow-md dark:bg-[#161B22] p-4 rounded-xl my-[40px]">
+          <Card className="w-[350px] h-[350px]  dark:bg-[#161B22] p-4 rounded-xl my-[40px]">
             <img src={design} alt="design" />
             <div className="flex flex-col gap-2 mt-4">
-              <h1 className="uppercase text-[#0BA7F1] font-semibold text-[12px]">
+              <h1 className="uppercase text-[#0BA7F1] font-semibold text-xs">
                 design
               </h1>
-              <h4 className="font-semibold text-[20px]">
+              <h4 className="font-semibold text-lg">
                 Designing for Accessibility
               </h4>
-              <p className="text-[16px] font-normal  tracking-wide ">
+              <p className="text-sm font-light  tracking-wide ">
                 Inclusive design principle every designer should know{" "}
               </p>
             </div>
@@ -140,21 +140,21 @@ const About = () => {
         </div>
 
         {/* knowledge sharing,collaborations,opportunities and networking cards goes here */}
-        <div className= " flex flex-col justify-center items-center md:grid  md:grid-cols-2  gap-8 lg:grid-cols-4   md:ml-16 ">
+        <div className= " grid  grid-cols-1 gap-9 md:gap-28 lg:gap-10 mb-8 sm:grid-cols-1 md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4  ">
           {Items.map((item) => (
             <Card
               key={item.id}
-              className="shadow-md  dark:bg-[#161B22]  flex   flex-col items-center justify-center  p-[20px]   rounded-lg w-72 h-72   "
+              className=" dark:bg-[#161B22]  flex   flex-col items-center justify-center  p-5   rounded-lg w-[250px] h-[250px]   "
             >
               <img
                 src={item.image}
                 alt={item.header}
                 className="w-[35px] h-[35px]  "
               />
-              <h2 className="capitalize text-[20px] my-[12px] font-semibold">
+              <h2 className="capitalize text-lg my-[12px] font-semibold">
                 {item.header}
               </h2>
-              <p className="text-[16px] text-center font-light tracking-wide ">
+              <p className="text-center text-sm font-light tracking-wide ">
                 {item.description}
               </p>
             </Card>
@@ -165,12 +165,12 @@ const About = () => {
       {/* Be Part of the DevByte Community goes here */}
       {/* [linear-gradient(to_right,#00AEEF,#6A5DFF)] */}
       <section>
-          <HeaderWrapper className="text-center ">
+          <HeaderWrapper className="text-center overflow-hidden ">
               <div className="">
-              <h1 className="text-center mb-5 text-[28px] font-bold tracking-wide ">
+              <h1 className="text-center mb-5 text-2xl font-bold tracking-wide ">
                 Be Part of the DevByte Community
               </h1>
-              <p className="text-center md:w-[500px] text-[16px] tracking-wide">
+              <p className="text-center md:w-[500px]  tracking-wide">
                 Join thousands of tech enthusiasts already sharing, collaborating,
                 and growing together,{" "}
               </p>
