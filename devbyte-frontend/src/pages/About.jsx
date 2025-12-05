@@ -8,7 +8,30 @@ import { Link } from "react-router-dom";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import HeaderWrapper from "@/components/ui/Header";
-import ProjectDetails from "@/features/projects/ProjectDetails";
+import tutorial1 from "@/assets/images/couple-using-laptop-while-couch-home-together.jpg"
+import  tutorial2 from "@/assets/images/black-couple-balances-remote-work-technology-home-office.webp"
+
+const cards = [
+  {
+    id:1,
+    image:design,
+    header:"DESIGN",
+    title:"Designing for Accessibility",
+    description:"Inclusive design principles every designer should know."
+  },
+  {id:2,
+  image:tutorial1,
+  header:"BACKEND",
+  title:"UI/UX Trends 2025",
+  description:"The design directions shaping the next generation of apps."
+},
+{id:3,
+  image:tutorial2,
+  header:"TUTORIAL",
+  title:"Mastering TypeScript",
+  description:"Why TS should be part of your dev toolkit."
+},
+]
 const Items = [
   {
     id: 1,
@@ -118,18 +141,20 @@ const About = () => {
         <h1 className="text-2xl font-bold text-center  ">Why Join Us</h1>
 
         {/* design card component goes here  */}
-        <div className="justify-center hidden md:flex ">
-          <Card className="w-[350px] h-[350px]  dark:bg-[#161B22] p-4 rounded-xl my-[40px]">
-            <img src={design} alt="design" />
+        <div className=" hidden md:flex  w-screen justify-center gap-12 ">
+
+          {cards.map((card)=>(
+            <Card className="w-[350px] h-[350px]  dark:bg-[#161B22] p-4 rounded-xl my-[40px]">
+            <img src={card.image} alt={card.title} className="rounded-xl w-screen h-[180px] object-cover "/>
             <div className="flex flex-col gap-2 mt-4">
               <h1 className="uppercase text-[#0BA7F1] font-semibold text-xs">
-                design
+                {card.header}
               </h1>
               <h4 className="font-semibold text-lg">
-                Designing for Accessibility
+               {card.title}
               </h4>
               <p className="text-sm font-light  tracking-wide ">
-                Inclusive design principle every designer should know{" "}
+                {card.description}
               </p>
             </div>
 
@@ -137,6 +162,8 @@ const About = () => {
               Read More{" "}
             </Link>
           </Card>
+          ))}
+          
         </div>
 
         {/* knowledge sharing,collaborations,opportunities and networking cards goes here */}
