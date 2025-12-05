@@ -10,14 +10,14 @@ const SearchBar = () => {
     <div className="relative">
       {/* Search Icon positioned inside the input field */}
       <Search className="absolute left-3 top-1/2 -translate-y-1/2 
-      text-gray-500 dark:text-gray-500" size={18} />
+      text-gray-500 dark:text-gray-500" size={24} />
       
       {/* Input Field with theme styling */}
       <input
         type="text"
         placeholder="Search"
         // Styling: padding for the icon, focus effect, and dynamic theme classes
-        className="w-11/12 border rounded-lg pl-10 pr-4 py-2 text-sm focus:outline-none focus:ring-2 
+        className="w-2 md:w-11/12 border rounded-lg pl-10 pr-4 py-2 text-sm focus:outline-none focus:ring-2 
              bg-white border-gray-200 text-gray-900 focus:ring-blue-500
             dark:bg-slate-800 dark:border-slate-700 dark:text-gray-300 dark:focus:ring-cyan-500 "
       />
@@ -43,7 +43,7 @@ const NotificationButton = () => {
 // UserAvatar Component (Displays initials 'AK' as a placeholder)
 const UserAvatar = () => (
   // Avatar styling is theme-agnostic (gradient background)
-  <div className="w-16 h-8 sm:w-12 sm:h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold">
     AK
   </div>
 );
