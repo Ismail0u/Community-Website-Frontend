@@ -12,6 +12,7 @@ import ItemFormModal from "@/features/user/ItemFormModal";
 import Settings from "@/features/user/Settings";
 import { clearUserProfile } from "@/redux/features/userSlice";
 import AnimatedWrapper from "@/components/ui/AnimatedWrapper";
+import { ChevronLeftSquare } from "lucide-react";
 
 const UserProfile = () => {
   const dispatch = useDispatch();
@@ -131,12 +132,19 @@ const UserProfile = () => {
                     : "U"}
                 </div>
               )}
+              {user?.role === "ADMIN" && (
+                <Button
+                  onClick={() => navigate("/adminDashboard")}
+                  className="bg-gradient-to-tr from-[#00AEEF] to-[#6A5DFF] text-white font-medium px-6 py-2 rounded-lg w-full sm:w-auto"
+                >
+                  Admin Mode
+                </Button>
+              )}
             </div>
 
             {/* Name & Role */}
             <div className="flex flex-col items-center md:items-start text-center md:text-left">
               <h1 className="text-2xl font-semibold">{user.fullname}</h1>
-              <p className="text-lg mt-1">{user.role}</p>
             </div>
 
             {/* Buttons — MOBILE FIRST STACK */}
