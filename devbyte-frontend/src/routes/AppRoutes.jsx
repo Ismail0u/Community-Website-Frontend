@@ -28,10 +28,12 @@ import AuthLayout from "@/components/layout/authLayout.jsx";
 import ProjectDetails from "@/features/projects/ProjectDetails.jsx";
 import Error400 from "@/pages/ErrorPage.jsx";
 import MemberListPage from "@/features/adminDashboard/memberRoleToggleComponents/memberListPage.jsx";
+import PageNotFound from "@/pages/PageNotFound.jsx";
 
 export default function AppRoutes() {
   return (
     <Routes>
+      <Route path="*" element={<PageNotFound />} />
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
 
