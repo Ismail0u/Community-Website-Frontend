@@ -64,7 +64,7 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className="flex h-full bg-black text-white relative">
+    <div className="flex h-screen overflow-hidden bg-black text-white relative">
       {/* Sidebar */}
       <DashboardSidebar
         sidebarOpen={sidebarOpen}
@@ -73,9 +73,9 @@ const AdminDashboard = () => {
       />
 
       {/* Main content */}
-      <div className="flex-1">
+      <div className="flex-1 flex flex-col overflow-hidden">
         <DashboardHeader setSidebarOpen={setSidebarOpen} />
-        <div className="pt-16">
+        <div className="flex-1 overflow-y-auto pt-16">
           <DashboardPage />
         </div>
         {/* Modals */}
