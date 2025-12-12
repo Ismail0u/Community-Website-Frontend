@@ -58,14 +58,15 @@ const DashboardSidebar = ({ sidebarOpen, setSidebarOpen, onAddTagsClick }) => {
   return (
     <div
       className={`
-        fixed inset-y-0 left-0 z-40 w-64 border-r ${sidebarBg}
+        fixed left-0 z-40 w-64 h-screen flex flex-col border-r ${sidebarBg}
         transform transition-transform duration-300 ease-in-out
         ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
         lg:translate-x-0 lg:static
       `}
     >
+        <div className="h-full overflow-hidden">
       {/* HEADER */}
-      <div className={`p-6 border-b`}>
+      <div className={`flex-shrink-0 p-6 border-b`}>
         <NavLink to="/">
           <img src={CommunityLogo} alt="Logo" className="w-28 sm:w-40 h-auto" />
         </NavLink>
@@ -80,7 +81,7 @@ const DashboardSidebar = ({ sidebarOpen, setSidebarOpen, onAddTagsClick }) => {
       </div>
 
       {/* NAVIGATION */}
-      <nav className="flex-1 p-4 space-y-1">
+        <nav className="flex-1 overflow-y-auto p-4">
         {NAVIGATION_ITEMS.map(item => (
           <NavItem key={item.id} item={item} />
         ))}
@@ -100,7 +101,7 @@ const DashboardSidebar = ({ sidebarOpen, setSidebarOpen, onAddTagsClick }) => {
 
       
       {/* Bottom Actions: Settings and Logout buttons */}
-      <div className="p-4 border-t  space-y-1 ">
+      <div className="flex-shrink-0 p-4 border-t  space-y-1 ">
         {/* Settings Button */}
         <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-black hover:text-gray-800 dark:text-white dark:hover:text-gray-100">
           <Settings size={20} />
@@ -114,7 +115,8 @@ const DashboardSidebar = ({ sidebarOpen, setSidebarOpen, onAddTagsClick }) => {
       </div>
 
       {/* Version Indicator */}
-      <div className="p-4 text-xs text-right text-black hover:text-gray-800 dark:text-white dark:hover:text-gray-100">v 0.0.0</div>
+      <div className="flex-shrink-0 p-4 text-xs text-right text-black hover:text-gray-800 dark:text-white dark:hover:text-gray-100">v 0.0.0</div>
+      </div>
     </div>
   );
 };
