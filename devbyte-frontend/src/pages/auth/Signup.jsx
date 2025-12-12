@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { signupUser } from "@/redux/features/authSlice";
 import { fetchUserProfile } from "@/redux/features/userSlice";
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 const Signup = () => {
   const [show, setShow] = useState(false);
@@ -126,16 +127,23 @@ const Signup = () => {
     if (successMessage) {
       (async () => {
         await dispatch(fetchUserProfile()).unwrap();
-        setFormData({
-          fullname: "",
-          email: "",
-          password: "",
-          confirmPassword: "",
-          communityGuidelines: false,
+        Swal.fire({
+          title: 'Success!',
+          text: 'Your account has been created successfully!',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        }).then(() => {
+          setFormData({
+            fullname: "",
+            email: "",
+            password: "",
+            confirmPassword: "",
+            communityGuidelines: false,
+          });
+          setPasswordErrors([]);
+          setConfirmPasswordError("");
+          navigate("/");
         });
-        setPasswordErrors([]);
-        setConfirmPasswordError("");
-        navigate("/");
       })();
     }
   }, [successMessage, dispatch, navigate]);
