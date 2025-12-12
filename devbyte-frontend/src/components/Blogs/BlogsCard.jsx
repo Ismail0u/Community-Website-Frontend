@@ -1,5 +1,7 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+
 
 const BlogsCard = ({ data }) => {
   return (
@@ -33,13 +35,13 @@ const BlogsCard = ({ data }) => {
           excepturi. */}
         </p>
 
-        <a
-          href="#"
+        <Link
+         to={`/blog-details/${data.id}`}
           className="inline-flex items-center gap-2 text-primary font-medium text-sm hover:gap-2 transition-all duration-200 group/link text-sky-400"
         >
           Read more
           <ArrowRight className="w-4 h-4  group-hover/link:translate-x-1 transition-transform duration-200" />
-        </a>
+        </Link>
       </div>
     </div>
   );

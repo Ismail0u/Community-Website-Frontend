@@ -17,6 +17,7 @@ import ResetPassword from "@/pages/auth/ResetPassword.jsx";
 import TermsOfService from "@/pages/TermsOfService.jsx";
 import PrivacyPolicy from "@/pages/PrivacyPolicy.jsx";
 import Jobs from "@/pages/Jobs.jsx";
+import BlogDetails from "@/components/Blogs/BlogDetails.jsx";
 
 import UserProfile from "@/pages/UserProfile.jsx";
 
@@ -45,6 +46,7 @@ export default function AppRoutes() {
         <Route path="projects" element={<Projects />} />
         <Route path="jobs" element={<Jobs />} />
         <Route path="blogs" element={<Blogs />} />
+        <Route path="blog-details/:id" element={<BlogDetails />} />
         <Route path="members" element={<Member />} />
         <Route path="terms" element={<TermsOfService />} />
         <Route path="policy" element={<PrivacyPolicy />} />

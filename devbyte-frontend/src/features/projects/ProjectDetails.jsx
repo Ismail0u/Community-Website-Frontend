@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "@/components/ui/Button";
-import frame from "@/assets/images/Frame 340.png";
+
 import viewLive from "@/assets/images/viewmore.png";
 import laptopComputer from "@/assets/images/computer.png";
 import { ArrowLeft, Import } from "lucide-react";
@@ -68,7 +68,6 @@ function ProjectDetails() {
   console.log(project);
 if (!project) {
   return <div className="p-10 text-red-600 text-center text-xl">No project details found  😢 </div>
-  
 }
   return (
     <>
@@ -82,7 +81,7 @@ if (!project) {
             <Link to="/projects" className="flex gap-4 ">
               {" "}
               <ArrowLeft
-                className=" md:w-[20px md:h-[20px] md:text-black  md:dark:text-white md:bg-transparent bg-black  text-white  rounded-full"
+                className=" md:w-[20px] md:h-[20px] md:text-black  md:dark:text-white md:bg-transparent bg-black  text-white  rounded-full"
                 size={30}
               />
               <h3 >Back</h3>
