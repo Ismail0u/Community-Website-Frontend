@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "@/redux/features/authSlice";
 import { fetchUserProfile } from "@/redux/features/userSlice";
+import Swal from 'sweetalert2';
 
 const Login = () => {
   const [show, setShow] = useState(false);
@@ -42,8 +43,15 @@ const Login = () => {
       dispatch(fetchUserProfile())
         .unwrap()
         .then(() => {
-          setFormData({ email: "", password: "" });
-          navigate("/");
+          Swal.fire({
+            title: 'Success!',
+            text: 'You have logged in successfully!',
+            icon: 'success',
+            confirmButtonText: 'OK'
+          }).then(() => {
+            setFormData({ email: "", password: "" });
+            navigate("/");
+          });
         })
         .catch((error) => {
           console.error("Profile fetch failed:", error);

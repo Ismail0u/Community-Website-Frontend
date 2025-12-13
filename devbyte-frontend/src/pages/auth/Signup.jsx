@@ -7,9 +7,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { signupUser } from "@/redux/features/authSlice";
 import { fetchUserProfile } from "@/redux/features/userSlice";
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 const Signup = () => {
   const [show, setShow] = useState(false);
+  const [passwordErrors, setPasswordErrors] = useState([]);
+  const [confirmPasswordError, setConfirmPasswordError] = useState("");
 
   const [formData, setFormData] = useState({
     fullname: "",
@@ -24,6 +27,37 @@ const Signup = () => {
 
   const { loading, error, successMessage } = useSelector((state) => state.auth);
 
+  // Password validation regex
+  const passwordRegex = {
+    uppercase: /[A-Z]/,
+    lowercase: /[a-z]/,
+    number: /[0-9]/,
+    length: /.{8,}/,
+  };
+
+  // Validate password
+  const validatePassword = (password) => {
+    const errors = [];
+    
+    if (!passwordRegex.uppercase.test(password)) {
+      errors.push("At least one uppercase letter");
+    }
+    
+    if (!passwordRegex.lowercase.test(password)) {
+      errors.push("At least one lowercase letter");
+    }
+    
+    if (!passwordRegex.number.test(password)) {
+      errors.push("At least one number");
+    }
+    
+    if (!passwordRegex.length.test(password)) {
+      errors.push("At least 8 characters long");
+    }
+    
+    return errors;
+  };
+
   // Handle form input change
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -32,13 +66,44 @@ const Signup = () => {
       ...formData,
       [name]: type === "checkbox" ? checked : value,
     });
+
+    // Validate password when it changes
+    if (name === "password") {
+      const errors = validatePassword(value);
+      setPasswordErrors(errors);
+      
+      // Also validate confirm password if it's already filled
+      if (formData.confirmPassword && value !== formData.confirmPassword) {
+        setConfirmPasswordError("Passwords do not match");
+      } else {
+        setConfirmPasswordError("");
+      }
+    }
+
+    // Validate confirm password when it changes
+    if (name === "confirmPassword") {
+      if (value && value !== formData.password) {
+        setConfirmPasswordError("Passwords do not match");
+      } else {
+        setConfirmPasswordError("");
+      }
+    }
   };
 
   // Handle form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Validate password requirements
+    const passwordErrors = validatePassword(formData.password);
+    if (passwordErrors.length > 0) {
+      setPasswordErrors(passwordErrors);
+      alert(`Password must meet the following requirements:\n${passwordErrors.join("\n")}`);
+      return;
+    }
+
     if (formData.password !== formData.confirmPassword) {
+      setConfirmPasswordError("Passwords do not match!");
       alert("Passwords do not match!");
       return;
     }
@@ -62,14 +127,23 @@ const Signup = () => {
     if (successMessage) {
       (async () => {
         await dispatch(fetchUserProfile()).unwrap();
-        setFormData({
-          fullname: "",
-          email: "",
-          password: "",
-          confirmPassword: "",
-          communityGuidelines: false,
+        Swal.fire({
+          title: 'Success!',
+          text: 'Your account has been created successfully!',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        }).then(() => {
+          setFormData({
+            fullname: "",
+            email: "",
+            password: "",
+            confirmPassword: "",
+            communityGuidelines: false,
+          });
+          setPasswordErrors([]);
+          setConfirmPasswordError("");
+          navigate("/");
         });
-        navigate("/");
       })();
     }
   }, [successMessage, dispatch, navigate]);
@@ -103,6 +177,7 @@ const Signup = () => {
               value={formData.fullname}
               onChange={handleChange}
               className="w-full bg-white/20 border border-white/30 outline-none rounded-lg px-4 py-3 text-white placeholder:text-white/60 focus:ring-2 focus:ring-indigo-400"
+              required
             />
 
             <input
@@ -112,6 +187,7 @@ const Signup = () => {
               value={formData.email}
               onChange={handleChange}
               className="w-full bg-white/20 border border-white/30 outline-none rounded-lg px-4 py-3 text-white placeholder:text-white/60 focus:ring-2 focus:ring-indigo-400"
+              required
             />
 
             {/* PASSWORD */}
@@ -124,6 +200,7 @@ const Signup = () => {
                 onChange={handleChange}
                 autoComplete="new-password"
                 className="w-full bg-white/20 border border-white/30 outline-none rounded-lg px-4 py-3 text-white placeholder:text-white/60 focus:ring-2 focus:ring-indigo-400"
+                required
               />
               <button
                 type="button"
@@ -134,6 +211,31 @@ const Signup = () => {
               </button>
             </div>
 
+            {/* Password requirements */}
+            {formData.password && (
+              <div className="text-sm text-white/80 bg-white/10 p-2 rounded">
+                <p className="font-medium mb-1">Password must contain:</p>
+                <ul className="space-y-1">
+                  <li className={`flex items-center ${passwordRegex.uppercase.test(formData.password) ? 'text-green-300' : 'text-white/60'}`}>
+                    <span className="mr-2">{passwordRegex.uppercase.test(formData.password) ? '✓' : '○'}</span>
+                    At least one uppercase letter
+                  </li>
+                  <li className={`flex items-center ${passwordRegex.lowercase.test(formData.password) ? 'text-green-300' : 'text-white/60'}`}>
+                    <span className="mr-2">{passwordRegex.lowercase.test(formData.password) ? '✓' : '○'}</span>
+                    At least one lowercase letter
+                  </li>
+                  <li className={`flex items-center ${passwordRegex.number.test(formData.password) ? 'text-green-300' : 'text-white/60'}`}>
+                    <span className="mr-2">{passwordRegex.number.test(formData.password) ? '✓' : '○'}</span>
+                    At least one number
+                  </li>
+                  <li className={`flex items-center ${passwordRegex.length.test(formData.password) ? 'text-green-300' : 'text-white/60'}`}>
+                    <span className="mr-2">{passwordRegex.length.test(formData.password) ? '✓' : '○'}</span>
+                    At least 8 characters long
+                  </li>
+                </ul>
+              </div>
+            )}
+
             {/* CONFIRM PASSWORD */}
             <div className="relative w-full">
               <input
@@ -143,7 +245,8 @@ const Signup = () => {
                 value={formData.confirmPassword}
                 onChange={handleChange}
                 autoComplete="new-password"
-                className="w-full bg-white/20 border border-white/30 outline-none rounded-lg px-4 py-3 text-white placeholder:text-white/60 focus:ring-2 focus:ring-indigo-400"
+                className={`w-full bg-white/20 border ${confirmPasswordError ? 'border-red-400' : 'border-white/30'} outline-none rounded-lg px-4 py-3 text-white placeholder:text-white/60 focus:ring-2 focus:ring-indigo-400`}
+                required
               />
               <button
                 type="button"
@@ -152,6 +255,9 @@ const Signup = () => {
               >
                 {show ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>
+              {confirmPasswordError && (
+                <p className="text-red-300 text-sm mt-1">{confirmPasswordError}</p>
+              )}
             </div>
 
             {/* ERRORS */}
@@ -171,6 +277,7 @@ const Signup = () => {
                 checked={formData.communityGuidelines}
                 onChange={handleChange}
                 className="rounded bg-transparent"
+                required
               />
               <span>I agree to the Community Guidelines</span>
             </label>
@@ -178,8 +285,8 @@ const Signup = () => {
             {/* SUBMIT */}
             <button
               type="submit"
-              disabled={loading}
-              className="relative text-[17px] w-full font-medium px-10 py-4 bg-gradient-to-r from-blue-900 to-blue-600 text-white rounded-lg cursor-pointer overflow-hidden active:scale-95 transition-transform duration-300 group"
+              disabled={loading || passwordErrors.length > 0}
+              className="relative text-[17px] w-full font-medium px-10 py-4 bg-gradient-to-r from-blue-900 to-blue-600 text-white rounded-lg cursor-pointer overflow-hidden active:scale-95 transition-transform duration-300 group disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <span className="relative z-10">
                 {loading ? "Signing up..." : "Sign Up"}
@@ -220,7 +327,7 @@ const Signup = () => {
         <div className="w-full md:w-1/2 bg-white dark:bg-[#0D1117] flex flex-col justify-center p-10 md:p-14 text-gray-800 dark:text-white">
           <h3 className="text-3xl font-bold mb-4">Join the DevByte Movement</h3>
           <p className="text-gray-600 dark:text-white leading-relaxed mb-6">
-            DevByte is more than just a community — it’s a place where
+            DevByte is more than just a community — it's a place where
             developers, designers and innovators learn, collaborate and grow
             through real projects and global networking.
           </p>
