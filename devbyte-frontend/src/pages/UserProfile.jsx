@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Section from "@/features/user/Section";
-import { projectData } from "@/features/projects/ProjectData";
-import { learningData } from "@/features/home/HomeData";
+
 import EditProfileModal from "@/features/user/EditProfileModal";
 import { resetAuthState, signoutUser } from "@/redux/features/authSlice";
 import Button from "@/components/ui/Button";
@@ -19,8 +18,8 @@ const UserProfile = () => {
   const navigate = useNavigate();
   const { user, loading } = useSelector((state) => state.user);
 
-  const [projects, setProjects] = useState(projectData);
-  const [resources, setResources] = useState(learningData);
+  const [projects, setProjects] = useState([]);
+  const [resources, setResources] = useState([]);
   const [activeTab, setActiveTab] = useState("overview");
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -132,26 +131,29 @@ const UserProfile = () => {
                     : "U"}
                 </div>
               )}
+              {/* Name  */}
+
+              <h1 className="text-2xl font-semibold">{user.fullname}</h1>
+            </div>
+
+            <div className="flex flex-col md:flex-row text-wrap items-center justify-between gap-2">
+              <h2 className="text-xl font-semibold">User skills</h2>
+              <p className="text-lg">{user.skills}</p>
+            </div>
+
+            {/* Buttons — MOBILE FIRST STACK */}
+            <div className="flex flex-col md:flex-row gap-4 items-end justify-center md:justify-end">
               {user?.role === "ADMIN" && (
                 <Button
                   onClick={() => navigate("/adminDashboard")}
-                  className="bg-gradient-to-tr from-[#00AEEF] to-[#6A5DFF] text-white font-medium px-6 py-2 rounded-lg w-full sm:w-auto"
+                  className="bg-gradient-to-tr from-[#00AEEF] to-[#6A5DFF] text-white font-medium px-6 py-2 rounded-lg w-full sm:w-auto text-nowrap"
                 >
                   Admin Mode
                 </Button>
               )}
-            </div>
-
-            {/* Name & Role */}
-            <div className="flex flex-col items-center md:items-start text-center md:text-left">
-              <h1 className="text-2xl font-semibold">{user.fullname}</h1>
-            </div>
-
-            {/* Buttons — MOBILE FIRST STACK */}
-            <div className="flex flex-col md:flex-row gap-4 items-center justify-center md:justify-end">
               <Button
                 onClick={handleEditProfile}
-                className="bg-gradient-to-tr from-[#00AEEF] to-[#6A5DFF] text-white font-medium px-6 py-2 rounded-lg w-full sm:w-auto"
+                className="bg-gradient-to-tr from-[#00AEEF] to-[#6A5DFF] text-white font-medium px-6 py-2 rounded-lg w-full sm:w-auto text-nowrap"
               >
                 Edit Profile
               </Button>

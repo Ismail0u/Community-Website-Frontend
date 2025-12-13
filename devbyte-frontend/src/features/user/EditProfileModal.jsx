@@ -3,7 +3,7 @@ import { X, Camera } from "lucide-react";
 import { useFormHandler } from "@/hooks/useFormHandler";
 
 const EditProfileModal = ({ user, onClose, onSave }) => {
-  const BASE_URL = import.meta.env.VITE_IMAGE_BASE_URL;
+  const STORAGE_BASE_URL = import.meta.env.VITE_IMAGE_BASE_URL;
 
   const {
     formData,
@@ -16,7 +16,7 @@ const EditProfileModal = ({ user, onClose, onSave }) => {
 
       email: user?.email || "",
 
-      profilePicture: user?.profilePicture || "",
+      profile_picture: user?.profile_picture || "",
     },
     onSave
   );
@@ -49,13 +49,15 @@ const EditProfileModal = ({ user, onClose, onSave }) => {
       overflow-hidden cursor-pointer
     "
           >
-            {formData.profilePicture ? (
+            {formData.profile_picture ? (
               <img
                 src={
-                  typeof formData.profilePicture === "string" &&
-                  formData.profilePicture.startsWith("data:")
-                    ? formData.profilePicture // New upload preview (base64)
-                    : `${BASE_URL}/${formData.profilePicture}` // Existing image from server
+                  typeof formData.profile_picture === "string" &&
+                  formData.profile_picture.startsWith("data:")
+                    ? formData.profile_picture // New upload preview (base64)
+                    : `${STORAGE_BASE_URL}/${
+                        formData.profile_picture
+                      }?t=${Date.now()}` // Existing image from server
                 }
                 alt="Profile"
                 className="w-full bg-slate-700 h-full object-cover rounded-full"

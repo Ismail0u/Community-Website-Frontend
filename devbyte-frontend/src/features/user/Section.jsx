@@ -10,6 +10,8 @@ const Section = ({
   onEdit,
   onDelete,
   onView,
+  emptyTitle = "Nothing here yet",
+  emptySubTitle = "Get started by addding your first item",
 }) => {
   return (
     <div className="mb-10 w-full">
@@ -40,16 +42,17 @@ const Section = ({
             >
               {/* Image */}
               <img
-                src={item.image}
+                src={item.image || "/placeholder.webp"}
                 alt={item.title}
                 className="w-full h-44 object-cover"
+                onError={(e) => (e.target.src = "/placeholder.webp")}
               />
 
               {/* Content */}
               <div className="p-4 flex flex-col flex-grow">
                 <h2 className="text-lg font-medium">{item.title}</h2>
                 <p className="text-sm mt-1 flex-grow">
-                  {item.description || item.body}
+                  {item.description || item.body || "No  description provided"}
                 </p>
 
                 {/* Action Buttons */}
@@ -84,9 +87,17 @@ const Section = ({
           ))}
         </div>
       ) : (
-        <p className="text-sm text-center text-gray-500 dark:text-gray-400 mt-4">
-          No items available.
-        </p>
+        <div className="flex flex-col items-center justify-center text-center border border-dashed border-gray-300 dark:border-gray-700 rounded-lg p-10">
+          {/* <Inbox className="w-10 h-10 text-gray-400 mb-4" /> */}
+
+          <h2 className="text-lg font-semibold text-gray-700 dark:text-gray-300">
+            {emptyTitle}
+          </h2>
+
+          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 mb-4">
+            {emptySubTitle}
+          </p>
+        </div>
       )}
     </div>
   );

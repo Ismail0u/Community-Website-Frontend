@@ -27,11 +27,7 @@ export const uploadProfilePicture = createAsyncThunk(
       const formData = new FormData();
       formData.append("profile_picture", file);
 
-      const { data } = await api.patch("/v1/users/profile/picture", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const { data } = await api.patch("/v1/users/profile/picture", formData);
       console.log("profile data:", data);
 
       return data.user;
@@ -95,7 +91,7 @@ const initialState = {
   error: null,
   notifications: true,
   profileVisibility: "public",
-  profilePicture: null,
+  profile_picture: null,
 };
 
 const userSlice = createSlice({
@@ -146,7 +142,7 @@ const userSlice = createSlice({
         if (!action.payload) return;
 
         // payload IS the user object
-        state.user.profilePicture = action.payload.profilePicture;
+        state.user.profile_picture = action.payload.profile_picture;
       })
 
       .addCase(uploadProfilePicture.rejected, (state, action) => {
