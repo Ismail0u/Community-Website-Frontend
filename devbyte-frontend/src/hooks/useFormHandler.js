@@ -29,7 +29,7 @@ export const useFormHandler = (initialValues = {}, onSave) => {
     reader.onloadend = () => {
       setFormData((prev) => ({
         ...prev,
-        profilePicture: reader.result,
+        profile_picture: reader.result,
       }));
     };
     reader.readAsDataURL(file);
