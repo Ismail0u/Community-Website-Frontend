@@ -1,4 +1,4 @@
-# DevByte Community Website
+# DevByte Community Platform
 
 DevByte Community is a nationwide network of over 10,000 developers, designers, product managers, AI/ML engineers, data analysts and tech enthusiast within Nigeria and some parts of Africa, connecting across multiple platforms to share knowledge, collaborate, network and grow together. This repository hosts the source code for the DevByte Community Website — an open-source platform where developers can access resources, join events, register for events, share knowledge through articles, and contribute to the growth of our tech ecosystem.
 
