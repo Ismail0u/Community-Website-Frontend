@@ -8,15 +8,14 @@ import ProjectsSection from "@/features/home/ProjectsSection";
 import OpportunitiesSection from "@/features/home/OpportunitiesSection";
 import BlogSection from "@/features/home/BlogSection";
 import {
-  members,
   learningData,
   projects,
   opportunities,
-  blogPosts,
   carouselSlides,
 } from "../features/home/HomeData";
 import Button from "@/components/ui/Button";
 import HeaderWrapper from "@/components/ui/Header";
+import { landingpageService } from "@/services/landingpageService";
 
 const Home = ({ navRef }) => {
   const navigate = useNavigate();
@@ -26,8 +25,32 @@ const Home = ({ navRef }) => {
   const [chunkSize, setChunkSize] = useState(3);
   const [membersSlideIndex, setMembersSlideIndex] = useState(0);
   const [membersIsTransitioning, setMembersIsTransitioning] = useState(false);
+  const [members, setMembers] = useState([]);
+  const [blogPosts, setBlogPosts] = useState([]);
 
-  // Hero Section Carousel
+  useEffect(() => {
+    const fetchMembers = async () => {
+      try {
+        const response = await landingpageService.getMembers();
+        console.log("Members fetched:", response);
+        setMembers(response.data);
+      } catch (error) {
+        console.error("Error fetching members:", error);
+      }
+    };
+
+    const fetchBlogPosts = async () => {
+      try {
+        const response = await landingpageService.getBlogPosts();
+        console.log("Blog posts fetched:", response);
+        setBlogPosts(response.blogs);
+      } catch (error) {
+        console.error("Error fetching blog posts:", error);
+      }
+    };
+    fetchMembers();
+    fetchBlogPosts();
+  }, []);
 
   const goToNext = () => {
     if (isTransitioning) return;
