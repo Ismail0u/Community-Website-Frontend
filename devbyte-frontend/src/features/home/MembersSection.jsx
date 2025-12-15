@@ -13,6 +13,7 @@ const MembersSection = ({
   goToNextMembers,
   goToMembersSlide,
 }) => {
+  const BASE_URL = import.meta.env.VITE_IMAGE_BASE_URL;
   return (
     <div className="py-[100px]">
       <div className="text-center max-w-[1200px] mx-auto px-4">
@@ -42,15 +43,19 @@ const MembersSection = ({
                         className={`flex flex-col items-center space-y-[6px] p-5 lg:w-[360px] md:w-[300px] w-[300px] h-[212px] shadow-sm bg-[#00AEEF]/[5%]  dark:bg-[#161B22] border border-gray-200 rounded-xl dark:border-[#2A2F36] dark:text-white  ${hoverEffect}`}
                       >
                         <img
-                          src={member.image}
-                          alt=""
+                          src={
+                            member.profilePicture
+                              ? `${BASE_URL}/${member.profilePicture}`
+                              : ""
+                          }
+                          alt={member.fullname}
                           className="w-[80px] h-[80px]"
                         />
                         <h1 className="text-[18px] font-semibold">
-                          {member.name}
+                          {member.fullname}
                         </h1>
                         <h1 className="text-[16px]">{member.role}</h1>
-                        <div className="flex gap-5">
+                        {/* <div className="flex gap-5">
                           {member.technologies.map((technology, tIdx) => (
                             <h1
                               key={`tech-${idx}-${mIdx}-${tIdx}`}
@@ -59,7 +64,7 @@ const MembersSection = ({
                               {technology}
                             </h1>
                           ))}
-                        </div>
+                        </div> */}
                       </div>
                     ))}
                   </div>
