@@ -61,6 +61,7 @@ export const useFormHandler = (initialValues = {}, onSave) => {
         updateUserProfile({
           fullname: formData.fullname,
           email: formData.email,
+          skills: formData.skills,
         })
       ).unwrap();
 
