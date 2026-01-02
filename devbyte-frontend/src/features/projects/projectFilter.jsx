@@ -1,51 +1,118 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import { useProjects } from "@/hooks/useProject";
+import { useTechs } from "@/hooks/useTech";
+import { useMembers } from "@/hooks/useMembers";
 
-// filters Hooks
-export const ProjectFilters = (projects = []) => {
-    const [selectedTechnology, setSelectedTechnology] = useState("");
-    const [selectedContributors, setSelectedContributors] = useState([]);
-    const [featuredOnly, setFeaturedOnly] = useState(false);
-    const [searchQuery, setSearchQuery] = useState("");
+export const projectFilters = (initialPage = 1, pageSize = 9) => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedTechnology, setSelectedTechnology] = useState("");
+  const [selectedContributors, setSelectedContributors] = useState([]);
+  const [featuredOnly, setFeaturedOnly] = useState(false);
+  const [currentPage, setCurrentPage] = useState(initialPage);
 
-    const filteredProjects = useMemo(() => {
-        return projects.filter((project) => {
-            // Filter by technology
-            const matchesCategory =
-                !selectedTechnology ||
-                project.technology?.toLowerCase() === selectedTechnology.toLowerCase();
+  const { 
+    projects,pagination, isLoading: projectsLoading, error: projectsError, fetchProjects 
+  } = useProjects();
 
-            // Filter by search
-            const matchesSearch =
-                !searchQuery ||
-                project.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                project.description?.toLowerCase().includes(searchQuery.toLowerCase());
+  const { techs, isLoading: techsLoading } = useTechs();
+  const { members, isLoading: membersLoading } = useMembers(1, 100);
 
-            //  Filter by contributors
-            const matchesContributors =
-                selectedContributors.length === 0 ||
-                selectedContributors.includes(project.contributor);
+  useEffect(() => {
+    const params = {
+      page: currentPage,
+      pageSize,
+    };
 
-            //  Filter by "Featured only"
-            const matchesFeatured = !featuredOnly || project.featured;
+    if (searchQuery.trim()) {
+      params.search = searchQuery;
+    }
 
-        return (
-            matchesCategory &&
-            matchesSearch &&
-            matchesContributors &&
-            matchesFeatured
+    fetchProjects(params);
+  }, [currentPage, searchQuery, pageSize]);
+
+  const filteredProjects = useMemo(() => {
+    let filtered = [...projects];
+
+    // Filter by technology
+    if (selectedTechnology && selectedTechnology !== "All") {
+      filtered = filtered.filter(project => {
+        return project.techs?.some(tech => 
+          tech.id === selectedTechnology || tech.name?.toLowerCase() === selectedTechnology.toLowerCase()
         );
-    });
-  }, [projects, selectedTechnology, searchQuery, selectedContributors, featuredOnly]);
+      });
+    }
+    // Filter by contributors
+    if (selectedContributors.length > 0) {
+      filtered = filtered.filter(project => {
+        return project.contributors?.some(contributor =>
+          selectedContributors.includes(contributor.id)
+        );
+      });
+    }
+
+    if (featuredOnly) {
+      filtered = filtered.filter(project => project.featured === true);
+    }
+
+    return filtered;
+  }, [projects, selectedTechnology, selectedContributors, featuredOnly]);
+
+  const featuredProjects = filteredProjects.filter(p => p.featured);
+  const regularProjects = filteredProjects.filter(p => !p.featured);
+
+  const hasActiveFilters = 
+    searchQuery || 
+    selectedTechnology || 
+    selectedContributors.length > 0 || 
+    featuredOnly;
+
+  // Clear all filters
+  const clearFilters = () => {
+    setSearchQuery("");
+    setSelectedTechnology("");
+    setSelectedContributors([]);
+    setFeaturedOnly(false);
+    setCurrentPage(1);
+  };
+  const isLoading = projectsLoading || techsLoading || membersLoading;
 
   return {
+    // Filtered data
+    filteredProjects,
+    featuredProjects,
+    regularProjects,
+    
+    // Filter states
+    searchQuery,
+    setSearchQuery,
     selectedTechnology,
     setSelectedTechnology,
     selectedContributors,
     setSelectedContributors,
     featuredOnly,
     setFeaturedOnly,
-    searchQuery,
-    setSearchQuery,
-    filteredProjects,
+    
+    // Pagination
+    currentPage,
+    setCurrentPage,
+    pagination,
+    
+    // Available options for filters
+    technologies: techs,
+    contributors: members,
+    
+    // Loading states
+    isLoading,
+    projectsLoading,
+    techsLoading,
+    membersLoading,
+    
+    // Error handling
+    error: projectsError,
+    
+    // Utilities
+    hasActiveFilters,
+    clearFilters,
+    refetch: fetchProjects,
   };
 };
