@@ -11,7 +11,7 @@ export const ProjectCard = ({ project }) => {
      
       {/* Image */}
       <img
-        src={project.image}
+        src={project.coverImage}
         alt={project.title}
         className="w-full h-40 sm:h-50 md:h-58 object-cover rounded-md"
       />
@@ -29,10 +29,13 @@ export const ProjectCard = ({ project }) => {
         {/* Section footer */}
         <div className="flex items-center justify-between mt-auto pt-3 border-t border-gray-100 dark:border-gray-700">
           <span className="text-xs md:text-sm text-gray-500 dark:text-gray-400">
-            contributors : {project.contributors}
+            Contributors :
+            {project.contributors?.length > 0
+              ? project.contributors.map(c => c.fullname).join(", ")
+              : " "}
           </span>
           <a
-            href={project.github}
+            href={project.repoLink}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1 text-white-600 dark:text-black-400 hover:text-black-800 dark:hover:text-white-300"
