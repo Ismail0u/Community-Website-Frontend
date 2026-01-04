@@ -182,8 +182,7 @@ export const MultiSelectField = ({
       {isOpen && (
         <div
           className="fixed inset-0 z-40"
-          onClick={() => setIsOpen(false)}
-        />
+          onClick={() => setIsOpen(false)} />
       )}
     </div>
   );
