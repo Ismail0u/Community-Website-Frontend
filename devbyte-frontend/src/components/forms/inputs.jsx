@@ -74,9 +74,16 @@ export const MultiSelectField = ({
    const [isOpen, setIsOpen] = useState(false);
 
   // Filter options when searching
-  const filteredOptions = options.filter(option =>
-    option.name?.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredOptions = options.filter(option => {
+    const query = searchQuery.toLowerCase();
+    const name = (option.name || '').toLowerCase();
+    const fullname = (option.fullname || '').toLowerCase();
+    const email = (option.email || '').toLowerCase();
+    
+    return name.includes(query) || 
+          fullname.includes(query) || 
+          email.includes(query);
+  });
 
   // Toggle an option
   const toggleOption = (id) => {
