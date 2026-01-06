@@ -102,7 +102,6 @@ export const AddProjectModal = ({ isOpen, onClose }) => {
           onChange={(newTechs) => setFormData({ ...formData, techs: newTechs })}
           placeholder="Type to search technologies..."
           isLoading={techsLoading}
-          required
           renderOption={(tech) => (
             <div className="flex items-center gap-2">
               {tech.iconUrl && (
@@ -124,12 +123,12 @@ export const AddProjectModal = ({ isOpen, onClose }) => {
         <ImageUpload
           label="Project Image"
           value={formData.coverImage}
-          onChange={(value) => setFormData({ ...formData, image: value })}
+          onChange={(value) => setFormData({ ...formData, coverImage: value })}
         />
         { /** github repository input field */}
         <InputField
           label="GitHub Repository"
-          name="github"
+          name="repoLink"
           type="url"
           placeholder="https://github.com/username/repo"
           value={formData.repoLink}
@@ -207,7 +206,7 @@ export const AddProjectModal = ({ isOpen, onClose }) => {
           </button>
           <button
             type="submit"
-            disabled={isSubmitting || formData.techs.length === 0}
+            disabled={isSubmitting || formData.contributors.length === 0}
             className="flex-1 px-6 py-3 bg-cyan-500 text-white rounded-lg hover:bg-cyan-600 transition-colors font-medium disabled:opacity-50" 
           >
             {isSubmitting ? 'Creating...' : 'Add Project'}
