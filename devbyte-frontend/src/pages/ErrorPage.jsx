@@ -83,7 +83,7 @@ const errorConfig = {
 };
 
 const ErrorPage = ({ type }) => {
-  const config = errorConfig[type] || errorConfig["network"];
+  const config = errorConfig[type] || errorConfig["404"];
 
   const {
     code,

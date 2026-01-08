@@ -34,11 +34,6 @@ export const ProjectPage = () => {
     hasActiveFilters,
   } = projectFilters(1, 9);
 
-  if (error) {
-    return (
-      <ErrorPage />
-    );
-  }
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-[#0D1117]">
@@ -106,6 +101,10 @@ export const ProjectPage = () => {
               <div className="flex flex-col justify-center items-center py-20">
                 <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-cyan-500 mb-4"></div>
                 <p className="text-gray-600 dark:text-gray-400">Loading projects...</p>
+              </div>
+            ) : error ? (
+              <div className="py-10">
+                <ErrorPage type={error} />
               </div>
             ) : (
               <>
@@ -195,7 +194,7 @@ export const ProjectPage = () => {
                 )}
               </>
             )}
-          </main>
+        </main>
         </div>
       </div>
     </div>
