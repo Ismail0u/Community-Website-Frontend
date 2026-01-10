@@ -10,8 +10,8 @@ import ItemFormModal from "@/features/user/ItemFormModal";
 import Settings from "@/features/user/Settings";
 import { clearUserProfile } from "@/redux/features/userSlice";
 import AnimatedWrapper from "@/components/ui/AnimatedWrapper";
-import api from "@/lib/api";
-import { X, Plus, PencilIcon } from "lucide-react";
+import ProfileMetaDisplay from "@/features/user/ProfileMetaDisplay";
+import ProfileMetaEditors from "@/features/user/ProfileMetaEditor";
 
 const UserProfile = () => {
   const dispatch = useDispatch();
@@ -25,18 +25,9 @@ const UserProfile = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalType, setModalType] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
-
-  const [allSkills, setAllSkills] = useState([]);
-  const [loadingSkills, setLoadingSkills] = useState(false);
   const [selectedSkills, setSelectedSkills] = useState([]);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const BASE_URL = import.meta.env.VITE_IMAGE_BASE_URL;
 
-  useEffect(() => {
-    if (user?.skills) {
-      setSelectedSkills(user.skills);
-    }
-  }, [user]);
+  const BASE_URL = import.meta.env.VITE_IMAGE_BASE_URL;
 
   // open profile modal func
   const handleEditProfile = () => {
@@ -110,36 +101,6 @@ const UserProfile = () => {
     });
   };
 
-  //handle fetch all skills
-  const fetchSkills = async () => {
-    if (allSkills.length > 0) return;
-    try {
-      setLoadingSkills(true);
-      const res = await api.get("/v1/skills");
-      console.log("fetched skills:", res);
-
-      setAllSkills(res.data.data);
-    } catch (error) {
-      console.error("Failed to fetch skills:", error.message);
-    } finally {
-      setLoadingSkills(false);
-    }
-  };
-
-  //toggle skills func
-  const toggleSkill = async (skill) => {
-    const isSelected = selectedSkills.some((s) => s.id === skill.id);
-
-    if (isSelected) {
-      await api.delete(`/v1/users/me/skills/${skill.id}`);
-      setSelectedSkills((prev) => prev.filter((s) => s.id !== skill.id));
-    } else {
-      //add skill
-      await api.post("/v1/users/me/skills", { skillId: skill.id });
-      setSelectedSkills((prev) => [...prev, skill]);
-    }
-  };
-
   return (
     <div className="max-w-6xl mx-auto min-h-screen py-10 px-4 sm:px-6">
       {/* Profile Info */}
@@ -147,7 +108,7 @@ const UserProfile = () => {
       <div className="text-[#161B22] dark:text-[#D9D9D9] shadow-md p-6 sm:p-10 rounded-lg bg-white dark:bg-[#2A2F36]">
         {/* GRID — Avatar / User Info / Buttons */}
         <AnimatedWrapper>
-          <div className="grid grid-cols-1 md:grid-cols-[240px_1fr_auto] gap-8 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-[280px_1fr_auto] gap-10 items-start">
             {/* Avatar */}
             <div className="flex flex-col items-center  gap-4 ">
               {user.profilePicture ? (
@@ -175,68 +136,18 @@ const UserProfile = () => {
               {/* Name  */}
 
               <h1 className="text-2xl  font-semibold">{user.fullname}</h1>
-
-              {/* Skills */}
-
-              <div className="w-full">
-                {selectedSkills.length === 0 && (
-                  <p className="text-sm text-gray-400 italic mb-2">
-                    No skills added yet
-                  </p>
-                )}
-
-                {selectedSkills.length > 0 && (
-                  <div className="flex flex-wrap justify-between gap-2">
-                    {selectedSkills.map((skill) => (
-                      <button
-                        key={skill.id}
-                        className=" px-2 py-1 rounded-md border   bg-white dark:bg-[#697483] text-[#161B22] dark:text-[#D9D9D9] "
-                      >
-                        {skill.name}
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
+              {/* skills and stack display */}
+              <ProfileMetaDisplay
+                selectedSkills={selectedSkills}
+                setSelectedSkills={setSelectedSkills}
+                stack={user.stack || null}
+              />
             </div>
-            {/* skills dropdown */}
-            <div className="w-full max-w-md">
-              <button
-                onClick={() => {
-                  fetchSkills();
-                  setDropdownOpen((v) => !v);
-                }}
-                className=" flex items-center px-5 gap-3 bg-white dark:bg-[#2A2F36] text-[#161B22] dark:text-[#D9D9D9] rounded-lg pt-2 "
-              >
-                <PencilIcon size={16} />
-                {dropdownOpen ? "Done editing skills" : "Edit skills"}
-              </button>
-
-              {dropdownOpen && (
-                <div className="mt-2 max-h-56 rounded-lg overflow-y-auto border">
-                  {allSkills.map((skill) => {
-                    const isSelected = selectedSkills.some(
-                      (s) => s.id === skill.id
-                    );
-                    return (
-                      <div
-                        className="px-2  flex justify-between py-2 cursor-pointer text-md text-[#161B22] dark:text-[#fffcfc]
-                       bg-white dark:bg-[#434b55] hover:bg-[#D9D9D9] dark:hover:bg-[#697483] "
-                      >
-                        {skill.name}
-                        <button
-                          type="button"
-                          className="pl-10"
-                          onClick={() => toggleSkill(skill)}
-                        >
-                          {isSelected ? <X size={14} /> : <Plus size={14} />}
-                        </button>
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
-            </div>
+            {/* skills and stack editors */}
+            <ProfileMetaEditors
+              selectedSkills={selectedSkills}
+              setSelectedSkills={setSelectedSkills}
+            />
             {/* Buttons — MOBILE FIRST STACK */}
             <div className="flex flex-col md:flex-row gap-4 items-end justify-center md:justify-around">
               {user?.role === "ADMIN" && (
