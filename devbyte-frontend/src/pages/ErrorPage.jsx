@@ -4,10 +4,9 @@ import {
   AlertCircle,
   ServerCrash,
   WifiOff,
-  Home,
+  Unplug,
   RefreshCcw,
-  ArrowLeft,
-  ZapOff,
+  FileQuestion, Clock, ShieldAlert,
 } from "lucide-react";
 import Button from "@/components/ui/Button";
 
@@ -21,6 +20,38 @@ const errorConfig = {
     buttonText: "Go to Homepage",
     IconComponent: (props) => <AlertCircle {...props} />,
   },
+  401: {
+      code: "401",
+      title: "Unauthorized",
+      message: "You must be logged in to access this resource.",
+      action: () => navigate("/login"),
+      buttonText: "Sign In",
+      IconComponent: Lock,
+    },
+    403: {
+      code: "403",
+      title: "Forbidden",
+      message: "You do not have the necessary permissions to view this page.",
+      action: () => navigate("/"),
+      buttonText: "Request Access",
+      IconComponent: ShieldAlert,
+    },
+    404: {
+      code: "404",
+      title: "Page Not Found",
+      message: "The link might be broken or the page has been moved.",
+      action: () => navigate("/"),
+      buttonText: "Back to Home",
+      IconComponent: FileQuestion,
+    },
+    408: {
+      code: "408",
+      title: "Request Timeout",
+      message: "The server took too long to respond. Your connection might be unstable.",
+      action: () => window.location.reload(),
+      buttonText: "Try Again",
+      IconComponent: Clock,
+    },
   500: {
     code: "500",
     title: "Internal Server Error",
@@ -30,6 +61,14 @@ const errorConfig = {
     buttonText: "Reload Page",
     IconComponent: (props) => <ServerCrash {...props} />,
   },
+  cors: {
+      code: "CORS",
+      title: "Access Restricted",
+      message: "The request was blocked by the browser for security reasons (Cross-Origin).",
+      action: () => window.open("https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS", "_blank"),
+      buttonText: "Learn More",
+      IconComponent: Unplug,
+    },
   network: {
     code: "Network Error",
     title: "Connection Lost",
@@ -44,7 +83,7 @@ const errorConfig = {
 };
 
 const ErrorPage = ({ type }) => {
-  const config = errorConfig[type] || errorConfig["500"];
+  const config = errorConfig[type] || errorConfig["404"];
 
   const {
     code,
@@ -63,7 +102,7 @@ const ErrorPage = ({ type }) => {
       <div className="max-w-4xl w-full flex flex-col items-center space-y-12 md:flex-row md:justify-center md:items-center md:gap-20">
         <div className="flex justify-center flex-shrink-0">
           <div className="relative">
-            <div className="absolute inset-0 rounded-full" />\{" "}
+            <div className="absolute inset-0 rounded-full" />
             <IconComponent
               className={`relative w-32 h-32 md:w-44 md:h-44 text-blue-600 animate-pulse`}
               strokeWidth={1.5}

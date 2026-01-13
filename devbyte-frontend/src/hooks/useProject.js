@@ -22,7 +22,23 @@ export const useProjects = (initialParams = {}) => {
         setPagination(response.pagination);
       }
     } catch (err) {
-      setError(err.message);
+      const isCorsError = 
+        err.message?.toLowerCase().includes('cors') ||
+        err.message?.toLowerCase().includes('blocked') ||
+        (err.message === 'Network Error' && !err.response) ||
+        err.name === 'TypeError' && err.message === 'Failed to fetch';
+      
+      if (isCorsError) {
+        setError('cors');
+      } else if (err.code === 'ECONNABORTED') {
+        setError(408); 
+      } else if (err.response?.status) {
+        setError(err.response.status); 
+      } else if (!err.response) {
+        setError('network');
+      } else {
+        setError(500);
+      }
     } finally {
       setIsLoading(false);
     }
