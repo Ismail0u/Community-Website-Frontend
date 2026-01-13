@@ -21,12 +21,13 @@
  */
 
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import HeaderWrapper from "@/components/ui/Header";
 import MemberModal from "./memberModal";
 import MemberCard from "./memberCard";
 import MemberSidebar from "./memberSidebar";
 import { memberData, allSkills, stacks } from "./memberData";
+import { useMembers } from "@/hooks/useMembers";
 
 const MemberPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -37,9 +38,38 @@ const MemberPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [displayCount, setDisplayCount] = useState(6);
 
+  const { members, pagination, isLoading, error, refetch } = useMembers(1, 70); 
+
+  useEffect(() => {
+    refetch(1, 70);
+  }, [refetch]);
+
+   const { stacks, allSkills } = useMemo(() => {
+    const stacksSet = new Set();
+    const skillsSet = new Set();
+
+    members.forEach(member => {
+      if (member.stack) stacksSet.add(member.stack);
+      if (member.skills && Array.isArray(member.skills)) {
+        member.skills.forEach(skill => {
+          if (typeof skill === 'string') {
+            skillsSet.add(skill);
+          } else if (skill.name) {
+            skillsSet.add(skill.name);
+          }
+        });
+      }
+    });
+
+    return {
+      stacks: ["All Stack", ...Array.from(stacksSet)],
+      allSkills: ["All Skills", ...Array.from(skillsSet)]
+    };
+  }, [members]);
+
   // Filter and sort members based on search criteria
   const filteredMembers = useMemo(() => {
-    let data = memberData.filter((member) => {
+    let data = members.filter((member) => {
       const matchesSearch =
         member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         member.bio.toLowerCase().includes(searchTerm.toLowerCase());
@@ -101,7 +131,7 @@ const MemberPage = () => {
                        hover:bg-[#0096D6] transition-all transform hover:scale-105
                        shadow-lg hover:shadow-xl"
           >
-            Join Directory
+            Join the Community
           </button>
         </div>
       </HeaderWrapper>
