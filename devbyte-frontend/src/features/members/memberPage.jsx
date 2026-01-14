@@ -26,7 +26,6 @@ import HeaderWrapper from "@/components/ui/Header";
 import MemberModal from "./memberModal";
 import MemberCard from "./memberCard";
 import MemberSidebar from "./memberSidebar";
-import { memberData, allSkills, stacks } from "./memberData";
 import { useMembers } from "@/hooks/useMembers";
 
 const MemberPage = () => {
@@ -38,10 +37,10 @@ const MemberPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [displayCount, setDisplayCount] = useState(6);
 
-  const { members, pagination, isLoading, error, refetch } = useMembers(1, 70); 
+  const { members, pagination, isLoading, error, refetch } = useMembers(1, 100); 
 
   useEffect(() => {
-    refetch(1, 70);
+    refetch(1, 100);
   }, [refetch]);
 
    const { stacks, allSkills } = useMemo(() => {
@@ -59,7 +58,7 @@ const MemberPage = () => {
           }
         });
       }
-    });
+    }, [members]);
 
     return {
       stacks: ["All Stack", ...Array.from(stacksSet)],
@@ -70,16 +69,23 @@ const MemberPage = () => {
   // Filter and sort members based on search criteria
   const filteredMembers = useMemo(() => {
     let data = members.filter((member) => {
+      const memberName = member.fullname || member.name || '';
+      const memberBio = member.bio || '';
+      
       const matchesSearch =
-        member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        member.bio.toLowerCase().includes(searchTerm.toLowerCase());
+        memberName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        memberBio.toLowerCase().includes(searchTerm.toLowerCase());
 
       const matchesRole =
         selectedStack === "All Stack" || member.stack === selectedStack;
 
       const matchesSkill =
         selectedSkill === "All Skills" ||
-        member.skills.includes(selectedSkill);
+        (member.skills && member.skills.some(skill => 
+          typeof skill === 'string' 
+            ? skill === selectedSkill 
+            : skill.name === selectedSkill
+        ));
 
       return matchesSearch && matchesRole && matchesSkill;
     });
@@ -87,23 +93,23 @@ const MemberPage = () => {
     // Sort based on selected option
     switch (sortOption) {
       case "name-asc":
-        data.sort((a, b) => a.name.localeCompare(b.name));
+        data.sort((a, b) => a.fullname.localeCompare(b.fullname));
         break;
       case "name-desc":
-        data.sort((a, b) => b.name.localeCompare(a.name));
+        data.sort((a, b) => b.fullname.localeCompare(a.fullname));
         break;
       case "role":
-        data.sort((a, b) => a.role.localeCompare(b.role));
+        data.sort((a, b) => a.stack.localeCompare(b.stack));
         break;
       case "skill-count":
-        data.sort((a, b) => b.skills.length - a.skills.length);
+        data.sort((a, b) => (b.skills?.length || 0) - (a.skills?.length || 0));
         break;
       default:
         break;
     }
 
     return data;
-  }, [searchTerm, selectedStack, selectedSkill, sortOption]);
+  }, [members, searchTerm, selectedStack, selectedSkill, sortOption]);
 
   const displayedMembers = filteredMembers.slice(0, displayCount);
   const hasMore = displayCount < filteredMembers.length;
