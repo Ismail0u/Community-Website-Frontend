@@ -1,6 +1,6 @@
 import React from "react";
 import { Search, Bell, Menu } from 'lucide-react';
-
+import { getMemberAvatar } from "@/services/membersService";
 
 // SearchBar Component
 const SearchBar = () => {
@@ -41,15 +41,31 @@ const NotificationButton = () => {
 };
 
 // UserAvatar Component (Displays initials 'AK' as a placeholder)
-const UserAvatar = () => (
-  // Avatar styling is theme-agnostic (gradient background)
-  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold">
-    AK
-  </div>
-);
+const UserAvatar = ({ user }) => {
+  const initials = user?.fullname 
+    ? user.fullname.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()
+    : "..";
 
+  const avatarUrl = getMemberAvatar(user);
+  const hasImage = user?.profilePicture || user?.profile_picture;
+
+  return (
+    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold overflow-hidden border-2 border-white dark:border-slate-800 shadow-sm">
+      {hasImage ? (
+        <img 
+          src={avatarUrl} 
+          alt={user?.fullname} 
+          className="w-full h-full object-cover"
+          onError={(e) => { e.target.style.display = 'none'; }}
+        />
+      ) : (
+        <span>{initials}</span>
+      )}
+    </div>
+  );
+};
 // Header Component (Main container for the dashboard header)
-const DashboardHeader = ({ setSidebarOpen }) => {
+const DashboardHeader = ({ setSidebarOpen , user }) => {
   return (
     <div className="border-b px-8 py-4 bg-white border-gray-200 dark:bg-[#161b22] dark:border-slate-800 sm:w-10/12 fixed z-10">
       <div className="flex items-center justify-between">
@@ -73,7 +89,7 @@ const DashboardHeader = ({ setSidebarOpen }) => {
         <div className="flex items-center gap-3">
           <SearchBar />
           <NotificationButton />
-          <UserAvatar />
+          <UserAvatar user={user} />
         </div>
       </div>
     </div>

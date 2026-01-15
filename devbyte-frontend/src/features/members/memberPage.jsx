@@ -27,8 +27,10 @@ import MemberModal from "./memberModal";
 import MemberCard from "./memberCard";
 import MemberSidebar from "./memberSidebar";
 import { useMembers } from "@/hooks/useMembers";
+import { useNavigate } from "react-router-dom";
 
 const MemberPage = () => {
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedStack, setSelectedStack] = useState("All Stack");
   const [selectedSkill, setSelectedSkill] = useState("All Skills");
@@ -38,10 +40,6 @@ const MemberPage = () => {
   const [displayCount, setDisplayCount] = useState(6);
 
   const { members, pagination, isLoading, error, refetch } = useMembers(1, 100); 
-
-  useEffect(() => {
-    refetch(1, 100);
-  }, [refetch]);
 
    const { stacks, allSkills } = useMemo(() => {
     const stacksSet = new Set();
@@ -132,7 +130,7 @@ const MemberPage = () => {
             Discover developers, designers, and innovators building the future
           </p>
           <button
-            onClick={() => alert("Redirect to /signup")}
+            onClick={() => navigate("/signup")}
             className="bg-[#00AEEF] text-white my-5 px-8 py-3 rounded-lg font-semibold
                        hover:bg-[#0096D6] transition-all transform hover:scale-105
                        shadow-lg hover:shadow-xl"
@@ -162,7 +160,17 @@ const MemberPage = () => {
         <main className="flex-1 min-w-0">
           <div className="px-4 py-8 mx-auto max-w-7xl sm:px-6 lg:px-8">
             {/* Members Grid or Empty State */}
-            {displayedMembers.length > 0 ? (
+            {/* Loading State */}
+            {isLoading ? (
+              <div className="flex flex-col justify-center items-center py-20">
+                <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-cyan-500 mb-4"></div>
+                <p className="text-gray-600 dark:text-gray-400">Loading members...</p>
+              </div>
+            ) : error ? (
+              <div className="py-10">
+                <ErrorPage type={error} />
+              </div>
+            ) : ( displayedMembers.length > 0 ? (
               <>
                 {/* Grid of member cards */}
                 <div className="grid grid-cols-1 gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
@@ -199,7 +207,7 @@ const MemberPage = () => {
                   Try adjusting your filters or search terms
                 </p>
               </div>
-            )}
+            ))}
           </div>
         </main>
       </div>
