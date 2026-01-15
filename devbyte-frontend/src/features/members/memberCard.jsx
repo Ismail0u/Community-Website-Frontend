@@ -1,24 +1,12 @@
 import { Github, Linkedin, Twitter } from "lucide-react";
-
-const DEFAULT_AVATAR = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf1fiSQO7JfDw0uv1Ae_Ye-Bo9nhGNg27dwg&s";
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://community-api-backend.onrender.com';
+import { getMemberAvatar } from "@/services/membersService";
 
 // MEMBERS Cards 
 
 const MemberCard = ({ member, onClick }) => {
   // normalize API DATA
   const memberName = member.fullname || member.name || 'Unknown';
-   const memberAvatar = (() => {
-    const picture = member.profilePicture || member.profile_picture;
-    if (!picture) {
-      return `${DEFAULT_AVATAR}`;
-    }
-    if (picture.startsWith("http")) {
-      return picture;
-    }
-    return `${API_BASE_URL}/${picture}`;
-  })();
-
+  const memberAvatar = getMemberAvatar(member);
   const memberStack = member.stack || 'Developer';
   const memberBio = member.bio || 'No bio available';
   

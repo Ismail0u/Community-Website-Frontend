@@ -1,4 +1,5 @@
 import { Github, Linkedin, Twitter, X, MapPin, Calendar, Award, TrendingUp } from "lucide-react";
+import { getMemberAvatar } from "@/services/membersService";
 
 // ============= MEMBER MODAL =============
 const MemberModal = ({ member, isOpen, onClose }) => {
@@ -6,7 +7,7 @@ const MemberModal = ({ member, isOpen, onClose }) => {
   if (!isOpen || !member) return null;
 
   const memberName = member.fullname || member.name || 'Unknown';
-  const memberAvatar = member.profile_picture || member.profilePicture || member.avatar;
+  const memberAvatar = getMemberAvatar(member);
   const memberStack = member.stack || 'Developer';
   const memberBio = member.bio || 'No bio available';
   const joinedDate = member.createdAt
