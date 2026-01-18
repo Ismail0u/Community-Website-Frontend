@@ -49,22 +49,22 @@ const MembersSection = ({
                               : ""
                           }
                           alt={member.fullname}
-                          className="w-[80px] h-[80px]"
+                          className="w-[80px] h-[80px] rounded-full"
                         />
                         <h1 className="text-[18px] font-semibold">
                           {member.fullname}
                         </h1>
                         <h1 className="text-[16px]">{member.role}</h1>
-                        {/* <div className="flex gap-5">
-                          {member.technologies.map((technology, tIdx) => (
+                        <div className="flex gap-5">
+                          {member.skills.map((skill, tIdx) => (
                             <h1
                               key={`tech-${idx}-${mIdx}-${tIdx}`}
                               className="bg-[#fafafa] dark:bg-black dark:text-gray-300  border border-gray-200 dark:border-[#2A2F36] rounded-sm text-black py-[2px] px-2 text-[12px] font-semibold"
                             >
-                              {technology}
+                              {skill}
                             </h1>
                           ))}
-                        </div> */}
+                        </div>
                       </div>
                     ))}
                   </div>
