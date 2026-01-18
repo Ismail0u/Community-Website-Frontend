@@ -1,8 +1,23 @@
 import { Github, Linkedin, Twitter, X, MapPin, Calendar, Award, TrendingUp } from "lucide-react";
+import { getMemberAvatar } from "@/services/membersService";
 
 // ============= MEMBER MODAL =============
 const MemberModal = ({ member, isOpen, onClose }) => {
+
   if (!isOpen || !member) return null;
+
+  const memberName = member.fullname || member.name || 'Unknown';
+  const memberAvatar = getMemberAvatar(member);
+  const memberStack = member.stack || 'Developer';
+  const memberBio = member.bio || 'No bio available';
+  const joinedDate = member.createdAt
+    ? new Date(member.createdAt).toLocaleDateString()
+    : "—";
+  
+  const memberSkills = Array.isArray(member.skills) 
+    ? member.skills.map(skill => typeof skill === 'string' ? skill : skill.name)
+    : [];
+
 
   return (
     <div
@@ -23,13 +38,13 @@ const MemberModal = ({ member, isOpen, onClose }) => {
 
           <div className="flex items-center gap-6">
             <img
-              src={member.avatar}
-              alt={member.name}
+              src={memberAvatar}
+              alt={memberName}
               className="w-24 h-24 rounded-full border-4 border-white/20"
             />
             <div>
-              <h2 className="text-white text-2xl font-bold mb-1">{member.name}</h2>
-              <p className="text-white/90 text-lg mb-2">{member.stack}</p>
+              <h2 className="text-white text-2xl font-bold mb-1">{memberName}</h2>
+              <p className="text-white/90 text-lg mb-2">{memberStack}</p>
             </div>
           </div>
         </div>
@@ -37,7 +52,7 @@ const MemberModal = ({ member, isOpen, onClose }) => {
         <div className="p-2 space-y-2 sm:p-6 sm:space-y-6">
           <div>
             <h3 className="text-black dark:text-white text-lg font-semibold mb-2">About</h3>
-            <p className="text-gray-800 dark:text-[#8B949E] text-sm leading-relaxed">{member.bio}</p>
+            <p className="text-gray-800 dark:text-[#8B949E] text-sm leading-relaxed">{memberBio}</p>
           </div>
 
           <div className="grid grid-cols-3 gap-4">
@@ -59,7 +74,7 @@ const MemberModal = ({ member, isOpen, onClose }) => {
               <div className="flex justify-center mb-2">
                 <Calendar className="text-[#58A6FF]" size={20} />
               </div>
-              <div className="text-black dark:text-white text-xl font-bold">{member.joinedDate}</div>
+              <div className="text-black dark:text-white text-xs md:text-xl font-bold">{joinedDate}</div>
               <div className="text-gray-800 dark:text-[#8B949E] text-xs">Joined</div>
             </div>
           </div>
@@ -67,7 +82,7 @@ const MemberModal = ({ member, isOpen, onClose }) => {
           <div>
             <h3 className="text-black dark:text-white text-lg font-semibold mb-3">Skills & Technologies</h3>
             <div className="flex flex-wrap gap-2">
-              {member.skills.map((skill, index) => (
+              {memberSkills.map((skill, index) => (
                 <span
                   key={index}
                   className="bg-gray-50 dark:bg-[#161B22] text-[#58A6FF] text-sm px-3 py-1.5 rounded-full
@@ -82,6 +97,7 @@ const MemberModal = ({ member, isOpen, onClose }) => {
           <div >
             <h3 className="text-black dark:text-white text-lg font-semibold mb-3">Connect</h3>
             <div className="flex justify-center sm:justify-start gap-4">
+              {member.social?.github && (
               <a
                 href={member.social.github}
                 target="_blank"
@@ -92,6 +108,8 @@ const MemberModal = ({ member, isOpen, onClose }) => {
                 <Github size={20} />
                 <span className="text-sm hidden sm:block">GitHub</span>
               </a>
+              )}
+              {member.social?.linkedin && (
               <a
                 href={member.social.linkedin}
                 target="_blank"
@@ -102,6 +120,8 @@ const MemberModal = ({ member, isOpen, onClose }) => {
                 <Linkedin size={20} />
                 <span className="text-sm hidden sm:block">LinkedIn</span>
               </a>
+              )}
+              {member.social?.twitter && (
               <a
                 href={member.social.twitter}
                 target="_blank"
@@ -112,6 +132,7 @@ const MemberModal = ({ member, isOpen, onClose }) => {
                 <Twitter size={20} />
                 <span className="text-sm hidden sm:block">Twitter</span>
               </a>
+              )}
             </div>
           </div>
         </div>

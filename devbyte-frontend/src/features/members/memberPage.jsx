@@ -21,14 +21,16 @@
  */
 
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import HeaderWrapper from "@/components/ui/Header";
 import MemberModal from "./memberModal";
 import MemberCard from "./memberCard";
 import MemberSidebar from "./memberSidebar";
-import { memberData, allSkills, stacks } from "./memberData";
+import { useMembers } from "@/hooks/useMembers";
+import { useNavigate } from "react-router-dom";
 
 const MemberPage = () => {
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedStack, setSelectedStack] = useState("All Stack");
   const [selectedSkill, setSelectedSkill] = useState("All Skills");
@@ -37,19 +39,51 @@ const MemberPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [displayCount, setDisplayCount] = useState(6);
 
+  const { members, pagination, isLoading, error, refetch } = useMembers(1, 100); 
+
+   const { stacks, allSkills } = useMemo(() => {
+    const stacksSet = new Set();
+    const skillsSet = new Set();
+
+    members.forEach(member => {
+      if (member.stack) stacksSet.add(member.stack);
+      if (member.skills && Array.isArray(member.skills)) {
+        member.skills.forEach(skill => {
+          if (typeof skill === 'string') {
+            skillsSet.add(skill);
+          } else if (skill.name) {
+            skillsSet.add(skill.name);
+          }
+        });
+      }
+    }, [members]);
+
+    return {
+      stacks: ["All Stack", ...Array.from(stacksSet)],
+      allSkills: ["All Skills", ...Array.from(skillsSet)]
+    };
+  }, [members]);
+
   // Filter and sort members based on search criteria
   const filteredMembers = useMemo(() => {
-    let data = memberData.filter((member) => {
+    let data = members.filter((member) => {
+      const memberName = member.fullname || member.name || '';
+      const memberBio = member.bio || '';
+      
       const matchesSearch =
-        member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        member.bio.toLowerCase().includes(searchTerm.toLowerCase());
+        memberName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        memberBio.toLowerCase().includes(searchTerm.toLowerCase());
 
       const matchesRole =
         selectedStack === "All Stack" || member.stack === selectedStack;
 
       const matchesSkill =
         selectedSkill === "All Skills" ||
-        member.skills.includes(selectedSkill);
+        (member.skills && member.skills.some(skill => 
+          typeof skill === 'string' 
+            ? skill === selectedSkill 
+            : skill.name === selectedSkill
+        ));
 
       return matchesSearch && matchesRole && matchesSkill;
     });
@@ -57,23 +91,23 @@ const MemberPage = () => {
     // Sort based on selected option
     switch (sortOption) {
       case "name-asc":
-        data.sort((a, b) => a.name.localeCompare(b.name));
+        data.sort((a, b) => a.fullname.localeCompare(b.fullname));
         break;
       case "name-desc":
-        data.sort((a, b) => b.name.localeCompare(a.name));
+        data.sort((a, b) => b.fullname.localeCompare(a.fullname));
         break;
       case "role":
-        data.sort((a, b) => a.role.localeCompare(b.role));
+        data.sort((a, b) => a.stack.localeCompare(b.stack));
         break;
       case "skill-count":
-        data.sort((a, b) => b.skills.length - a.skills.length);
+        data.sort((a, b) => (b.skills?.length || 0) - (a.skills?.length || 0));
         break;
       default:
         break;
     }
 
     return data;
-  }, [searchTerm, selectedStack, selectedSkill, sortOption]);
+  }, [members, searchTerm, selectedStack, selectedSkill, sortOption]);
 
   const displayedMembers = filteredMembers.slice(0, displayCount);
   const hasMore = displayCount < filteredMembers.length;
@@ -96,12 +130,12 @@ const MemberPage = () => {
             Discover developers, designers, and innovators building the future
           </p>
           <button
-            onClick={() => alert("Redirect to /signup")}
+            onClick={() => navigate("/signup")}
             className="bg-[#00AEEF] text-white my-5 px-8 py-3 rounded-lg font-semibold
                        hover:bg-[#0096D6] transition-all transform hover:scale-105
                        shadow-lg hover:shadow-xl"
           >
-            Join Directory
+            Join the Community
           </button>
         </div>
       </HeaderWrapper>
@@ -126,7 +160,17 @@ const MemberPage = () => {
         <main className="flex-1 min-w-0">
           <div className="px-4 py-8 mx-auto max-w-7xl sm:px-6 lg:px-8">
             {/* Members Grid or Empty State */}
-            {displayedMembers.length > 0 ? (
+            {/* Loading State */}
+            {isLoading ? (
+              <div className="flex flex-col justify-center items-center py-20">
+                <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-cyan-500 mb-4"></div>
+                <p className="text-gray-600 dark:text-gray-400">Loading members...</p>
+              </div>
+            ) : error ? (
+              <div className="py-10">
+                <ErrorPage type={error} />
+              </div>
+            ) : ( displayedMembers.length > 0 ? (
               <>
                 {/* Grid of member cards */}
                 <div className="grid grid-cols-1 gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
@@ -163,7 +207,7 @@ const MemberPage = () => {
                   Try adjusting your filters or search terms
                 </p>
               </div>
-            )}
+            ))}
           </div>
         </main>
       </div>

@@ -10,12 +10,18 @@ import {
   MOCK_STACKS,
 } from "@/features/adminDashboard/data/otherMockData";
 import { TagsManagementModal } from "@/features/adminDashboard/components/tagsManagementModal";
+import { useSelector } from "react-redux";
 
 const AdminDashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [showSelectionModal, setShowSelectionModal] = useState(false);
   const [selectedType, setSelectedType] = useState(null); // to select tags type
   const [showTagsModal, setShowTagsModal] = useState(false); // for the tag modal
+
+  // Get user from Redux
+  const profileUser = useSelector((state) => state.user.user);
+  const authUser = useSelector((state) => state.auth?.user);
+  const user = profileUser || authUser || null;
 
   // Data State Management (The tags that can be edited)
   const [skills, setSkills] = useState(MOCK_SKILLS);
@@ -74,7 +80,7 @@ const AdminDashboard = () => {
 
       {/* Main content */}
       <div className="flex-1 flex flex-col overflow-hidden">
-        <DashboardHeader setSidebarOpen={setSidebarOpen} />
+        <DashboardHeader setSidebarOpen={setSidebarOpen} user={user} />
         <div className="flex-1 overflow-y-auto pt-16">
           <DashboardPage />
         </div>
