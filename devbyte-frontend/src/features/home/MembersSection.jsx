@@ -31,8 +31,8 @@ const MembersSection = ({
                   idx === membersSlideIndex
                     ? "opacity-100 translate-x-0"
                     : idx < membersSlideIndex
-                    ? "opacity-0 -translate-x-full"
-                    : "opacity-0 translate-x-full"
+                      ? "opacity-0 -translate-x-full"
+                      : "opacity-0 translate-x-full"
                 }`}
               >
                 <div className="flex items-center justify-center w-full h-full">
@@ -61,7 +61,7 @@ const MembersSection = ({
                               key={`tech-${idx}-${mIdx}-${tIdx}`}
                               className="bg-[#fafafa] dark:bg-black dark:text-gray-300  border border-gray-200 dark:border-[#2A2F36] rounded-sm text-black py-[2px] px-2 text-[12px] font-semibold"
                             >
-                              {skill}
+                              {typeof skill === "string" ? skill : skill.name}
                             </h1>
                           ))}
                         </div>
