@@ -21,11 +21,21 @@ export const useMembers = (initialPage = 1, initialPageSize = 15) => {
       setIsLoading(true);
       setError(null);
       
-      const response = await membersService.getAllUsers(page, pageSize);
+      const validPage = Number(page) || 1;
+      const validPageSize = Number(pageSize) || 15;
+      
+      const response = await membersService.getAllUsers(validPage, validPageSize);
       
       if (response.success) {
         setMembers(response.data || []);
-        setPagination(response.pagination);
+        setPagination({
+          currentPage: response.pagination?.page || validPage,
+          pageSize: response.pagination?.pageSize || validPageSize,
+          totalCount: response.pagination?.totalItems || 0,
+          totalPages: response.pagination?.totalPages || 0,
+          hasNextPage: response.pagination?.hasNextPage || false,
+          hasPrevPage: response.pagination?.hasPreviousPage || false,
+        });
       }
     } catch (err) {
       setError(err.message);
