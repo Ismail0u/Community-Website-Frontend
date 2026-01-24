@@ -9,8 +9,10 @@ import { ActionCard } from "./components/actionCard";
 import { ActivityRow } from "./components/activityRow";
 import { LineChart } from "./components/chartBar";
 import { AddedTagsDisplay } from "./components/addedTagsDisplay";
-import { MOCK_BLOG_CATEGORIES, MOCK_EVENT_TYPES, MOCK_SKILLS , MOCK_STACKS } from "./data/otherMockData";
+import { MOCK_BLOG_CATEGORIES, MOCK_EVENT_TYPES , MOCK_STACKS } from "./data/otherMockData";
 import { ChevronDown } from "lucide-react";
+import { useSkills } from "@/hooks/useSkills";
+import { useTechs } from "@/hooks/useTech";
 
 
 // ---------------------- StatsGrid Component ----------------------
@@ -149,8 +151,8 @@ const ResponsiveTabsHeader = ({ tabs, activeTab, onTabChange }) => {
 
 // ---------------------- Main Dashboard Page ----------------------
 const DashboardPage = () => {
-
-  const [skills, setSkills] = useState(MOCK_SKILLS);
+  const { skills, isLoading: skillsLoading, batchCreateSkills, deleteSkill } = useSkills();
+  const { techs, isLoading: techsLoading, createTech, deleteTech } = useTechs();
   const [stacks, setStacks] = useState(MOCK_STACKS);
   const [eventTypes, setEventTypes] = useState(MOCK_EVENT_TYPES);
   const [blogCategories, setBlogCategories] = useState(MOCK_BLOG_CATEGORIES);
@@ -164,9 +166,19 @@ const DashboardPage = () => {
     { id: 'blogs', label: 'Blog Categories' },
   ];
 
-  const handleRemoveTag = (type, tag) => {
-  if (type === 'skills') setSkills(skills.filter(t => t !== tag));
-  if (type === 'stacks') setStacks(stacks.filter(t => t !== tag));
+  const handleRemoveTag = async (type, tag) => {
+    if (type === 'skills') {
+      const result = await deleteSkill(tag.id);
+      if (!result.success) {
+        console.error('Failed to delete skill:', result.error);
+      }
+    }
+    if (type === 'techs') {
+      const result = await deleteTech(tag.id);
+      if (!result.success) {
+        console.error('Failed to delete tech:', result.error);
+      }
+    }
   if (type === 'events') setEventTypes(eventTypes.filter(t => t !== tag));
   if (type === 'blogs') setBlogCategories(blogCategories.filter(t => t !== tag));
 };
@@ -193,6 +205,7 @@ const DashboardPage = () => {
             type="skills"
             tags={skills}
             onRemove={(tag) => handleRemoveTag('skills', tag)}
+            isLoading={skillsLoading}
           />
         )}
         {activeContentTab === 'stacks' && (
