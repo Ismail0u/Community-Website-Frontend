@@ -1,9 +1,12 @@
 import { LayoutDashboard, Users, Briefcase, Calendar, FileText, TrendingUp , Settings,LogOut } from 'lucide-react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import CommunityLogo from "@/assets/logos/IMG_20250811_164020_018-Photoroom.png";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Plus } from 'lucide-react';
+
+import { resetAuthState, signoutUser } from "@/redux/features/authSlice";
+import { clearUserProfile } from "@/redux/features/userSlice";
 
 /**
  * Array defining the primary navigation items for the application sidebar.
@@ -50,8 +53,19 @@ const NavItem = ({ item }) => {
 /**
  * DashboardSidebar Component: Renders the entire persistent navigation bar.
  */
-const DashboardSidebar = ({ sidebarOpen, setSidebarOpen, onAddTagsClick }) => {
+const DashboardSidebar = ({ sidebarOpen, setSidebarOpen, onAddTagsClick, onSettingsClick }) => {
   const theme = useSelector((state) => state.theme.mode);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  
+  // Logout function
+  const handleLogout = () => {
+    dispatch(signoutUser()).finally(() => {
+      dispatch(resetAuthState());
+      dispatch(clearUserProfile());
+      navigate("/signup");
+    });
+  };
   
   const sidebarBg = theme === 'light' ? 'bg-white border-gray-200' : 'bg-[#161B22] border-slate-800';
 
@@ -103,12 +117,16 @@ const DashboardSidebar = ({ sidebarOpen, setSidebarOpen, onAddTagsClick }) => {
       {/* Bottom Actions: Settings and Logout buttons */}
       <div className="flex-shrink-0 p-4 border-t  space-y-1 ">
         {/* Settings Button */}
-        <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-black hover:text-gray-800 dark:text-white dark:hover:text-gray-100">
+        <button 
+          onClick={onSettingsClick}
+          className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-black hover:text-gray-800 dark:text-white dark:hover:text-gray-100">
           <Settings size={20} />
           <span>Settings</span>
         </button>
         {/* Logout Button */}
-        <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-black hover:text-gray-800 dark:text-white dark:hover:text-gray-100">
+        <button 
+        onClick={handleLogout}
+        className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-black hover:text-gray-800 dark:text-white dark:hover:text-gray-100">
           <LogOut size={20} />
           <span>Logout</span>
         </button>
