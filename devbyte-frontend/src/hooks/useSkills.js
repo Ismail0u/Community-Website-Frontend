@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { skillsService } from '@/services/skillsService';
+import { skillsService } from '@/services/skillService';
 
 /**
  * Hook personnalisé pour gérer les skills
