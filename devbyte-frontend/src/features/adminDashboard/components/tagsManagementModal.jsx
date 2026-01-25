@@ -6,15 +6,27 @@ import { Loader2 } from "lucide-react";
 
 // This is the main component for the Tag Management popup (modal).
 // It lets users edit lists of items like skills, stacks, event types, or blog categories.
-export const TagsManagementModal = ({ isOpen, onClose, type, existingTags, onSave }) => {
-  const [tags, setTags] = useState(existingTags);
+export const TagsManagementModal = ({ isOpen, onClose, type, existingTags, onSave, onBatchCreate }) => {
   const [isLoading, setIsLoading] = useState(false);
-
+  const [tags, setTags] = useState(
+    existingTags.map(tag => typeof tag === 'object' ? tag.name : tag)
+  );
 
   const handleSave = async () => {
     setIsLoading(true);
-    await new Promise(r => setTimeout(r, 500)); // Simulate API call
-    onSave(tags);
+    if (type === 'skills' || type === 'techs') {
+      const newTags = tags.filter(tag => 
+        !existingTags.some(existing => 
+          (typeof existing === 'object' ? existing.name : existing) === tag
+        )
+      );
+      
+      if (onBatchCreate && newTags.length > 0) {
+        await onBatchCreate(newTags.map(name => ({ name })));
+      }
+    } else {
+      onSave(tags);
+    }
     setIsLoading(false);
     onClose();
   };

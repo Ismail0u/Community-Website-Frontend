@@ -1,7 +1,7 @@
-import { Trash2 } from "lucide-react";
+import { Trash2, Loader2 } from "lucide-react";
 
 // ==================== ADDED TAGS DISPLAY ====================
-export const AddedTagsDisplay = ({ type, tags, onRemove }) => {
+export const AddedTagsDisplay = ({ type, tags, onRemove, isLoading }) => {
   const getTitle = () => {
     switch(type) {
       case 'skills': return 'Added Skills';
@@ -11,6 +11,21 @@ export const AddedTagsDisplay = ({ type, tags, onRemove }) => {
       default: return 'Added Items';
     }
   };
+
+  const getDisplayName = (tag) => {
+    if (typeof tag === 'object' && tag !== null) {
+      return tag.name || tag.title || tag.label || 'Unknown';
+    }
+    return tag;
+  };
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center py-12">
+        <Loader2 size={32} className="animate-spin text-cyan-500" />
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-4">
@@ -27,13 +42,15 @@ export const AddedTagsDisplay = ({ type, tags, onRemove }) => {
         ) : (
           tags.map((tag, idx) => (
             <div
-              key={idx}
+              key={tag.id || idx}
               className="flex items-center justify-between p-3 bg-white dark:bg-[#161b22] border border-gray-200 dark:border-gray-700 rounded-lg hover:border-cyan-500 dark:hover:border-cyan-500 transition-colors"
             >
-              <span className="font-medium text-gray-900 dark:text-white">{tag}</span>
+              <span className="font-medium text-gray-900 dark:text-white truncate">
+                {getDisplayName(tag)}
+              </span>
               <button
                 onClick={() => onRemove(tag)}
-                className="p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 rounded transition-colors"
+                className="p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 rounded transition-colors flex-shrink-0"
               >
                 <Trash2 size={16} />
               </button>

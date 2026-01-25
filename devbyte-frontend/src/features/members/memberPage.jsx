@@ -28,6 +28,7 @@ import MemberCard from "./memberCard";
 import MemberSidebar from "./memberSidebar";
 import { useMembers } from "@/hooks/useMembers";
 import { useNavigate } from "react-router-dom";
+import ErrorPage from "@/pages/ErrorPage";
 
 const MemberPage = () => {
   const navigate = useNavigate();
