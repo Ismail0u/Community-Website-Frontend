@@ -30,6 +30,7 @@ import ProjectDetails from "@/features/projects/ProjectDetails.jsx";
 import Error400 from "@/pages/ErrorPage.jsx";
 import MemberListPage from "@/features/adminDashboard/memberRoleToggleComponents/memberListPage.jsx";
 import PageNotFound from "@/pages/PageNotFound.jsx";
+import AdminRoute from "@/components/auth/AdminRoute.jsx";
 
 export default function AppRoutes() {
   return (
@@ -64,9 +65,12 @@ export default function AppRoutes() {
         <Route path="profile" element={<UserProfile />} />
       </Route>
 
+      {/* Admin Routes - Protected with AdminRoute */}
+      <Route element={<AdminRoute />}>
       <Route path="/" element={<AdminLayout />}>
         <Route path="adminDashboard" element={<AdminDashboard />} />
         <Route path="membersList" element={<MemberListPage />} />
+        </Route>
       </Route>
     </Routes>
   );
