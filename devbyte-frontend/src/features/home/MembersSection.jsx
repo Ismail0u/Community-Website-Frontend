@@ -3,6 +3,7 @@ import Card from "@/components/ui/Card";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { hoverEffect } from "@/lib/HoverEffect";
+import { useNavigate } from "react-router-dom";
 
 const MembersSection = ({
   title,
@@ -14,6 +15,7 @@ const MembersSection = ({
   goToMembersSlide,
 }) => {
   const BASE_URL = import.meta.env.VITE_IMAGE_BASE_URL;
+  const navigate = useNavigate();
   return (
     <div className="py-[100px]">
       <div className="text-center max-w-[1200px] mx-auto px-4">
@@ -109,6 +111,7 @@ const MembersSection = ({
       <div className="flex flex-col items-center w-full px-4 mt-10 md:mt-12">
         <Button
           children="Explore All Members"
+          onClick={() => navigate("/members")}
           className="text-white transition-colors duration-500 ease-in-out bg-blue-500 hover:bg-blue-700"
         />
       </div>
