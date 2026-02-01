@@ -9,7 +9,7 @@ const AdminRoute = () => {
 
   // verify if he is connected and is an admin
   if (!user || user.role !== 'ADMIN') {
-    return <Navigate to="/profile" replace />; // go to homepage if not 
+    return <Navigate to="/" replace />; // go to homepage if not 
   }
 
   return <Outlet />; 
