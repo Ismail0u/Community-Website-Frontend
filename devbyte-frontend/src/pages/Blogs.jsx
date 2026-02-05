@@ -148,6 +148,7 @@ const Blogs = () => {
                 return pages.map((page) => (
                   <PaginationItem key={page}>
                     <PaginationLink
+                      className={`${page === currentPage && "bg-gradient-to-tr from-[#00AEEF] to-[#6A5DFF]"} text-lg hover:scale-105 transition-all ease-in-out duration-500`}
                       href="#"
                       isActive={page === currentPage}
                       onClick={(e) => {
