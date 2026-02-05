@@ -1,55 +1,77 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BlogsCard from "@/components/Blogs/BlogsCard";
 import { BlogsCardData } from "@/components/Blogs/BlogsCardData";
 import Button from "@/components/ui/Button";
 import { toast, Toaster } from "react-hot-toast";
 import HeaderWrapper from "@/components/ui/Header";
+import axios from "axios";
+import Skeleton from "@/components/Blogs/Skeleton";
+import { MdLayers } from "react-icons/md";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 
 const Blogs = () => {
-  const [sliceStartIdx, SetsliceStartIdx] = useState(6);
-  const [sliceEndIdx, SetsliceEndIdx] = useState(12);
-  const [ActiveBtn, SetActiveBtn] = useState(1);
+  const [blogs, setBlogs] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [loading, setLoading] = useState(false);
 
-  const ButtonsText = ["Prev", 1, 2, 3, "Next"];
+  const BaseUrl = import.meta.env.VITE_API_BASE_URL;
 
-  const paginate = () => {
-    if (ActiveBtn == 1) {
-      SetsliceStartIdx(0);
-      SetsliceEndIdx(6);
-    } else if (ActiveBtn == 2) {
-      SetsliceStartIdx(6);
-      SetsliceEndIdx(12);
-    } else if (ActiveBtn == 3) {
-      SetsliceStartIdx(12);
-      SetsliceEndIdx(18);
-    } else if (ActiveBtn == "Prev") {
-      if (sliceStartIdx <= 0) {
-      } else {
-        SetsliceStartIdx(sliceStartIdx - 6);
-        SetsliceEndIdx(sliceEndIdx - 6);
-      }
-      // console.log("An error occured");
-    } else if (ActiveBtn == "Next") {
-      if (sliceEndIdx >= BlogsCardData.length - 1) {
-      } else {
-        SetsliceStartIdx(sliceStartIdx + 6);
-        SetsliceEndIdx(sliceEndIdx + 6);
-      }
-    } else {
-      toast.error("An error occured");
+  const getCookie = (name) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(";").shift();
+  };
+
+  const fetchBlogs = async (page = 1) => {
+    try {
+      setLoading(true);
+      const token = getCookie("access_token");
+      const res = await axios.get(`${BaseUrl}/v1/blogs`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: "include",
+        params: {
+          page,
+          pageSize: 6,
+          // topics: "dev communities",
+          // createdBy: "admin",
+        },
+      });
+      console.log(res.data);
+      setBlogs(res.data.blogs || []);
+      setTotalPages(res.data.pagination?.totalPages || 1);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+      toast.error("Failed to fetch blogs");
     }
   };
+
+  useEffect(() => {
+    fetchBlogs(currentPage);
+  }, [currentPage]);
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-fit">
       <Toaster />
 
-        <HeaderWrapper className="flex justify-start w-full">
-          <div className="flex flex-col justify-start text-left">
-            <h2 className="text-4xl font-bold xl:text-4xl">Blog & News</h2>
-            <p>Latest updates, insights, and stories from our community</p>
-          </div>
-        </HeaderWrapper>
+      <HeaderWrapper className="flex justify-start w-full">
+        <div className="flex flex-col justify-start text-left">
+          <h2 className="text-4xl font-bold xl:text-4xl">Blog & News</h2>
+          <p>Latest updates, insights, and stories from our community</p>
+        </div>
+      </HeaderWrapper>
 
       <div className=" w-full max-w-[95%]">
         <div className="  my-2 flex flex-col justify-between items-center text-center h-[89vh]">
@@ -79,14 +101,80 @@ const Blogs = () => {
             <h1 className="text-3xl font-bold">All Posts</h1>
           </div>
 
-          <div className="flex flex-wrap justify-center border-red-800 ">
-            {BlogsCardData.slice(sliceStartIdx, sliceEndIdx).map((ele, idx) => (
-              <BlogsCard data={ele} key={idx} />
-            ))}
+          <div className="flex flex-wrap justify-center my-6">
+            {loading ? (
+              <>
+                <Skeleton />
+                <Skeleton />
+                <Skeleton />
+                <Skeleton />
+                <Skeleton />
+                <Skeleton />
+              </>
+            ) : blogs.length <= 0 ? (
+              <div className="flex flex-col justify-center items-center h-[50vh] gap-1">
+                <MdLayers className="text-[10rem] text-gray-500" />
+                <p className="text-xl md:text-2xl xl:text-3xl font-bold text-gray-800 dark:text-gray-500">
+                  No Blog Posts
+                </p>
+              </div>
+            ) : (
+              <>
+                {blogs.map((ele, idx) => (
+                  <BlogsCard data={ele} key={idx} />
+                ))}
+              </>
+            )}
           </div>
 
+          <Pagination>
+            <PaginationContent>
+              <PaginationItem>
+                <PaginationPrevious
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (currentPage > 1) setCurrentPage(currentPage - 1);
+                  }}
+                />
+              </PaginationItem>
+              {(() => {
+                const startPage = Math.max(1, currentPage - 1);
+                const endPage = Math.min(totalPages, currentPage + 1);
+                const pages = Array.from(
+                  { length: endPage - startPage + 1 },
+                  (_, i) => startPage + i,
+                );
+                return pages.map((page) => (
+                  <PaginationItem key={page}>
+                    <PaginationLink
+                      href="#"
+                      isActive={page === currentPage}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setCurrentPage(page);
+                      }}
+                    >
+                      {page}
+                    </PaginationLink>
+                  </PaginationItem>
+                ));
+              })()}
+              <PaginationItem>
+                <PaginationNext
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (currentPage < totalPages)
+                      setCurrentPage(currentPage + 1);
+                  }}
+                />
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
+
           <div className="flex justify-center gap-2 mt-2 ">
-            {ButtonsText.map((ele, idx) => (
+            {/* {ButtonsText.map((ele, idx) => (
               <Button
                 key={idx}
                 children={ele}
@@ -101,7 +189,7 @@ const Blogs = () => {
                   "bg-gradient-to-tr from-[#00AEEF] to-[#6A5DFF] text-white border-none"
                 }`}
               />
-            ))}
+            ))} */}
           </div>
         </div>
 
