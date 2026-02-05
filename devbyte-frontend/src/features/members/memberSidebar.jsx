@@ -23,13 +23,13 @@ const MemberSidebar = (props) => {
 
       {/* Sidebar Drawer - Mobile */}
       <aside
-        className={`fixed top-0 left-0 h-full z-30 w-8/12 sm:w-6/12 bg-white dark:bg-[#0D1117]
+        className={`fixed top-0 left-0 h-full z-20 w-8/12 sm:w-6/12 bg-white dark:bg-[#0D1117]
                     border-r border-gray-200 dark:border-gray-700 transform transition-transform
                     duration-300 ease-in-out
                     ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} 
                     lg:hidden`}
       >
-        <div className="h-full p-4 overflow-y-auto">
+        <div className="h-full overflow-y-auto">
           <MemberFilter {...props} />
         </div>
       </aside>
@@ -37,16 +37,16 @@ const MemberSidebar = (props) => {
       {/* Overlay for mobile */}
       {isSidebarOpen && (
         <div
-          className="fixed inset-0 z-20 bg-black/50 lg:hidden"
+          className="fixed inset-0 z-10 bg-black/50 lg:hidden"
           onClick={() => setIsSidebarOpen(false)}
         />
       )}
 
       {/* Filter Box - Desktop */}
-      <div className="z-20 justify-center hidden bg-transparent lg:flex">
+      <div className="z-7 justify-center hidden bg-transparent lg:flex">
         <div
-          className="bg-white dark:bg-[#0D1117] border border-gray-200 dark:border-gray-700
-                     rounded-2xl shadow-lg px-6 py-3 w-[80%] max-w-6xl"
+          className="bg-white dark:bg-[#0D1117]
+                      shadow-lg w-[80%] max-w-6xl"
         >
           <MemberFilter {...props} />
         </div>
