@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 
 import viewLive from "@/assets/images/viewmore.png";
 import laptopComputer from "@/assets/images/computer.png";

@@ -13,7 +13,7 @@ import {
   opportunities,
   carouselSlides,
 } from "../features/home/HomeData";
-import Button from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import HeaderWrapper from "@/components/ui/Header";
 import { landingpageService } from "@/services/landingpageService";
 

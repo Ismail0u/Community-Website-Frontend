@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Section from "@/features/user/Section";
 import EditProfileModal from "@/features/user/EditProfileModal";
 import { resetAuthState, signoutUser } from "@/redux/features/authSlice";
-import Button from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { fetchUserProfile } from "@/redux/features/userSlice";
 import ItemFormModal from "@/features/user/ItemFormModal";

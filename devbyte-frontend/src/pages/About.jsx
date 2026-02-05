@@ -5,7 +5,7 @@ import handshake from "@/assets/images/handshake.png";
 import handbag from "@/assets/images/handbag.png";
 import group from "@/assets/images/Group.png";
 import { Link } from "react-router-dom";
-import Button from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import Card from "@/components/ui/Card";
 import HeaderWrapper from "@/components/ui/Header";
 import tutorial1 from "@/assets/images/couple-using-laptop-while-couch-home-together.jpg"

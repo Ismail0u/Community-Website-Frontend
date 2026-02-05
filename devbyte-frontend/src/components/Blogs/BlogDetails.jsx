@@ -1,11 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import Button from "../ui/Button";
+import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 
 import { useParams } from "react-router-dom";
-import { BlogsCardData } from "./BlogsCardData";
 
 function BlogDetails() {
   const { id } = useParams();
@@ -13,23 +12,19 @@ function BlogDetails() {
   const blog = BlogsCardData.filter((blog) => blog.id == id)[0];
   return (
     <div className="flex flex-col md:flex-row my-10  mx-3 justify-center ">
-      
       <div className=" overflow-hidden ">
-        <Link to="/blogs" >
-        <Button className="border-blue-500 md:border-2 hidden md:block rounded-xl pl-0 w-[120px] h-[40px]  md:hover:bg-blue-500 hover:text-white my-4 ">
-          {" "}
-          
+        <Link to="/blogs">
+          <Button className="border-blue-500 md:border-2 hidden md:block rounded-xl pl-0 w-[120px] h-[40px]  md:hover:bg-blue-500 hover:text-white my-4 ">
             {" "}
             <div className="flex gap-4 ">
-                <ArrowLeft
-              className=" md:w-[20px] md:h-[20px] md:text-black  md:dark:text-white md:bg-transparent bg-black  text-white  rounded-full"
-              size={30}
-            />
-            <h3>Back</h3>
+              <ArrowLeft
+                className=" md:w-[20px] md:h-[20px] md:text-black  md:dark:text-white md:bg-transparent bg-black  text-white  rounded-full"
+                size={30}
+              />
+              <h3>Back</h3>
             </div>
-            
-         
-        </Button> </Link>
+          </Button>{" "}
+        </Link>
         <Link
           to="/blogs"
           className="block md:hidden bg-white w-[30px] h-[30px] rounded-full hover:bg-blue-500 my-4"
@@ -37,14 +32,14 @@ function BlogDetails() {
           <ArrowLeft className="text-black " size={30} />
         </Link>
         <div className="flex justify-end">
-        <div className=" flex  flex-col  ">
-          <h1 className="font-bold tracking-wide text-2xl uppercase mb-1  ">
-            {blog.title}
-          </h1>
-          <h4 className="dark:text-[#D9D9D9] font-light ">
-            A refreshed UI for a smoother community experience
-          </h4>
-        </div>
+          <div className=" flex  flex-col  ">
+            <h1 className="font-bold tracking-wide text-2xl uppercase mb-1  ">
+              {blog.title}
+            </h1>
+            <h4 className="dark:text-[#D9D9D9] font-light ">
+              A refreshed UI for a smoother community experience
+            </h4>
+          </div>
         </div>
 
         <div className="mt-10 flex justify-center">

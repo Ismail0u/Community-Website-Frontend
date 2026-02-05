@@ -11,7 +11,7 @@ import {
 import { SiTailwindcss, SiFigma, SiFramer } from "react-icons/si";
 import Card from "@/components/ui/Card";
 import HeaderWrapper from "@/components/ui/Header";
-import Button from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 
 const tagIcons = {
   React: <DiReact className="w-6 h-6 text-sky-500" />,

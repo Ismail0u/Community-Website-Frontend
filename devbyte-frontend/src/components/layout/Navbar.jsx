@@ -19,7 +19,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import Button from "../ui/Button";
+import { Button } from "../ui/button";
 
 const Navbar = () => {
   const navigate = useNavigate();
