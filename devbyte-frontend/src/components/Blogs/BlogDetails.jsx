@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 
 import { useParams } from "react-router-dom";
-import { BlogsCardData } from "./BlogsCardData";
 
 function BlogDetails() {
   const { id } = useParams();
