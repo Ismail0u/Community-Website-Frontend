@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import BlogsCard from "@/components/Blogs/BlogsCard";
-import { BlogsCardData } from "@/components/Blogs/BlogsCardData";
-import { Button } from "@/components/ui/button";
 import { toast, Toaster } from "react-hot-toast";
 import HeaderWrapper from "@/components/ui/Header";
 import axios from "axios";
