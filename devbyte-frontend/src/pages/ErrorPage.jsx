@@ -8,7 +8,7 @@ import {
   RefreshCcw,
   FileQuestion, Clock, ShieldAlert,
 } from "lucide-react";
-import Button from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 
 const errorConfig = {
   400: {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Users, Laptop, MicVocal, CircleChevronRight } from "lucide-react";
 import frame28 from "@/assets/images/Frame 28.png";
-import Button from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { hoverEffect } from "@/lib/HoverEffect";
 
 const HighlightsSection = () => {

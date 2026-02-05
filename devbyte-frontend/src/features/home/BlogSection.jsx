@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "@/components/ui/Card";
 import { CircleChevronRight } from "lucide-react";
-import Button from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { hoverEffect } from "@/lib/HoverEffect";
 
 const BlogSection = ({ blogPosts }) => {

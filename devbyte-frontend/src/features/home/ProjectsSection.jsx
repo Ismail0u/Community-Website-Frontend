@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "@/components/ui/Card";
 import { FaGithub } from "react-icons/fa6";
-import Button from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { hoverEffect } from "@/lib/HoverEffect";
 
 const ProjectsSection = ({ projects }) => {

@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import Button from "../ui/Button";
+import { Button } from "../ui/button";
 import { ArrowLeft } from "lucide-react";
 
 import { useParams } from "react-router-dom";

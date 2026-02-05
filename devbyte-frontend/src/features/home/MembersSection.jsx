@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "@/components/ui/Card";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import Button from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { hoverEffect } from "@/lib/HoverEffect";
 import { useNavigate } from "react-router-dom";
 
